@@ -9,8 +9,8 @@
     --text-secondary: #666666;
     --border-color: #E0E0E0;
     --card-bg: #FFFFFF;
-    --nav-bg: #000000;
-    --nav-text: #FFFFFF;
+    --nav-bg: #FFFFFF;
+    --nav-text: #000000;
     --button-bg: #000000;
     --button-text: #FFFFFF;
     --button-hover-bg: #333333;
@@ -66,8 +66,8 @@
     --text-secondary: #CCCCCC;
     --border-color: #333333;
     --card-bg: #000000;
-    --nav-bg: #FFFFFF;
-    --nav-text: #000000;
+    --nav-bg: #000000;
+    --nav-text: #FFFFFF;
     --button-bg: #FFFFFF;
     --button-text: #000000;
     --button-hover-bg: #CCCCCC;
@@ -271,11 +271,11 @@ a:hover, a:focus {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     padding: 0 1.5rem;
-    gap: 2rem;
+    gap: 1rem;
     background-color: var(--nav-bg);
     height: var(--navbar-height);
     box-shadow: var(--shadow-lg);
@@ -293,12 +293,7 @@ a:hover, a:focus {
     color: var(--nav-text);
     text-decoration: none;
     cursor: pointer;
-    transition: all var(--transition-normal);
-}
-
-.logo:hover {
-    color: var(--nav-text);
-    transform: translateY(-1px);
+    transition: color var(--transition-normal);
 }
 
 .menu-icon {
@@ -307,13 +302,14 @@ a:hover, a:focus {
     width: 24px;
     height: 24px;
     color: var(--nav-text);
+    margin-left: auto;
 }
 
 .navigation {
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    gap: 2rem;
+    gap: 1rem;
     padding: 0;
     margin: 0;
     background-color: transparent;
@@ -334,37 +330,21 @@ a:hover, a:focus {
     text-decoration: none;
     cursor: pointer;
     width: max-content;
-    padding: 0 var(--spacing-lg);
-    transition: opacity var(--transition-fast);
+    padding: 0 var(--spacing-md);
+    transition: all var(--transition-normal);
     font-weight: 500;
     font-size: var(--font-size-base);
     display: flex;
     align-items: center;
     height: 100%;
     position: relative;
-}
-
-.navigation > li > a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 8px;
-    left: 0;
-    background: var(--nav-text);
-    transform-origin: center;
-    transition: transform 0.3s ease-out;
-}
-
-.navigation > li > a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom center;
+    border-radius: var(--border-radius-md);
 }
 
 .navigation > li > a:hover {
     color: var(--nav-text);
-    opacity: 0.7;
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4), 0 2px 6px rgba(30, 144, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 @media (min-width: 769px) {
