@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#1e90ff">
+    <!-- Top petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(0 256 256)"/>
+    <!-- Top-right petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(51.4 256 256)"/>
+    <!-- Right petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(102.8 256 256)"/>
+    <!-- Bottom-right petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(154.2 256 256)"/>
+    <!-- Bottom petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(205.6 256 256)"/>
+    <!-- Bottom-left petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(257 256 256)"/>
+    <!-- Left petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(308.4 256 256)"/>
+    <!-- Top-left petal -->
+    <ellipse cx="256" cy="140" rx="80" ry="120" transform="rotate(359.8 256 256)"/>
+    <!-- Center circle -->
+    <circle cx="256" cy="256" r="50" fill="#1e90ff"/>
+  </g>
+</svg>

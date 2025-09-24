@@ -1,0 +1,15 @@
+<!-- This will be used as a reference for creating the favicon -->
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#1e90ff">
+    <!-- Smaller version for favicon -->
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(0 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(51.4 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(102.8 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(154.2 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(205.6 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(257 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(308.4 16 16)"/>
+    <ellipse cx="16" cy="8.75" rx="5" ry="7.5" transform="rotate(359.8 16 16)"/>
+    <circle cx="16" cy="16" r="3" fill="#1e90ff"/>
+  </g>
+</svg>
