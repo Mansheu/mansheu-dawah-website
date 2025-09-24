@@ -278,7 +278,6 @@ a:hover, a:focus {
     gap: 1rem;
     background-color: var(--nav-bg);
     height: var(--navbar-height);
-    box-shadow: var(--shadow-lg);
     border-bottom: 1px solid var(--border-color);
     transition: background-color var(--transition-normal), border-color var(--transition-normal);
     z-index: 1000;
@@ -342,8 +341,7 @@ a:hover, a:focus {
 }
 
 .navigation > li > a:hover {
-    color: var(--nav-text);
-    opacity: 0.7;
+    color: #1e90ff;
 }
 
 @media (min-width: 769px) {
