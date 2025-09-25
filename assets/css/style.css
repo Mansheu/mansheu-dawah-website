@@ -92,13 +92,12 @@
     font-size: 1.4rem;
     transition: all var(--transition-normal);
     z-index: 1000;
-    box-shadow: var(--shadow-lg);
 }
 
 .theme-toggle:hover {
     background: var(--button-hover-bg);
     transform: translateY(-3px) scale(1.05);
-    box-shadow: var(--shadow-2xl);
+    border-color: var(--text-color);
 }
 
 .theme-toggle svg {
@@ -237,7 +236,7 @@ a:hover, a:focus {
     color: var(--button-text);
     text-decoration: none;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    border-color: var(--text-color);
 }
 
 .btn-outline {
@@ -308,7 +307,7 @@ a:hover, a:focus {
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    gap: 1rem;
+    gap: 0.25rem;
     padding: 0;
     margin: 0;
     background-color: transparent;
@@ -329,7 +328,7 @@ a:hover, a:focus {
     text-decoration: none;
     cursor: pointer;
     width: max-content;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
     transition: all var(--transition-normal);
     font-weight: 500;
     font-size: var(--font-size-base);
@@ -370,7 +369,8 @@ a:hover, a:focus {
         padding: 1.25rem;
         background-color: var(--nav-bg);
         border-top: 1px solid var(--border-color);
-        box-shadow: var(--shadow-lg);
+        border-left: 1px solid var(--border-color);
+        border-right: 1px solid var(--border-color);
         gap: 1rem;
         z-index: 999;
         overflow-y: auto;
@@ -478,7 +478,6 @@ a:hover, a:focus {
     background-color: var(--card-bg);
     border-radius: var(--border-radius-xl);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
     border: 1px solid var(--border-color);
     position: relative;
@@ -502,8 +501,8 @@ a:hover, a:focus {
 
 .article-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-2xl);
     border-color: var(--text-color);
+    border-width: 2px;
 }
 
 .article-card.featured {
@@ -601,13 +600,12 @@ a:hover, a:focus {
     background-color: var(--card-bg);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
     border: 1px solid var(--border-color);
 }
 
 .article-item:hover {
-    box-shadow: var(--shadow-md);
+    border-color: var(--text-color);
     transform: translateX(5px);
 }
 
@@ -637,7 +635,6 @@ a:hover, a:focus {
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-2xl);
     text-align: center;
-    box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
     border: 2px solid var(--border-color);
     position: relative;
@@ -646,7 +643,7 @@ a:hover, a:focus {
 .dhikr-card:hover, .publication-card:hover, .resource-card:hover {
     transform: translateY(-8px);
     border-color: var(--text-color);
-    box-shadow: var(--shadow-2xl);
+    border-width: 3px;
 }
 
 .publication-card {
@@ -924,7 +921,7 @@ a:hover, a:focus {
     visibility: hidden;
     transition: all var(--transition-normal);
     z-index: 50;
-    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--border-color);
 }
 
 .back-to-top.visible, .back-to-top.show {
@@ -935,7 +932,7 @@ a:hover, a:focus {
 .back-to-top:hover {
     background: var(--button-hover-bg);
     transform: translateY(-3px) scale(1.05);
-    box-shadow: var(--shadow-2xl);
+    border-color: var(--text-color);
 }
 
 /* === FILTER & SEARCH SECTIONS === */
@@ -976,7 +973,6 @@ a:hover, a:focus {
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
 }
 

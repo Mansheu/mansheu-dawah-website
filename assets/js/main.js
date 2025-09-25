@@ -21,7 +21,6 @@ function initializeNavigation() {
         if (navbar) {
             // Always maintain consistent theme-based styling
             navbar.style.backgroundColor = 'var(--nav-bg)';
-            navbar.style.boxShadow = 'var(--shadow-lg)';
         }
     });
     
