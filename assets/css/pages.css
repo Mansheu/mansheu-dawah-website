@@ -141,15 +141,18 @@
 /* === FEATURED GRID === */
 .featured-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-max-width), 1fr));
     gap: var(--spacing-2xl);
+    justify-items: center;
 }
 
 .featured-grid .article-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: block;
+    grid-template-columns: none;
     gap: 0;
-    max-height: 400px;
+    max-height: none;
+    max-width: var(--card-max-width);
+    width: 100%;
 }
 
 /* === ARTICLE ENHANCEMENTS === */
@@ -231,6 +234,8 @@
 .dhikr-cards {
     display: grid;
     gap: var(--spacing-xl);
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-max-width), 1fr));
+    justify-items: center;
 }
 
 .dhikr-card {

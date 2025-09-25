@@ -13,7 +13,7 @@
     }
     
     .articles-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(var(--card-max-width), 1fr));
     }
     
     .article-card.featured {
@@ -121,18 +121,18 @@
     }
     
     .article-item .article-image {
-        aspect-ratio: 16/10;
+        aspect-ratio: 16/9;
     }
     
     /* Dhikr Grid */
     .dhikr-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(var(--card-max-width), 1fr));
         gap: var(--spacing-lg);
     }
     
     /* Publications */
     .publications-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(var(--card-max-width), 1fr));
         gap: var(--spacing-lg);
     }
     
