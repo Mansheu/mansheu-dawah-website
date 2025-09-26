@@ -69,7 +69,7 @@
     --text-color: #FFFFFF;
     --text-secondary: #CCCCCC;
     --border-color: #333333;
-    --card-bg: #000000;
+    --card-bg: #1a1a1a;
     --nav-bg: #000000;
     --nav-text: #FFFFFF;
     --button-bg: #FFFFFF;
@@ -197,6 +197,54 @@ a:hover, a:focus {
 
 .section {
     padding: var(--spacing-3xl) 0;
+    position: relative;
+}
+
+/* Blue divider line under each section - Desktop/Tablet */
+.section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 800px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #007BFF, transparent);
+    border-radius: 2px;
+}
+
+/* Remove divider from last section */
+.section:last-of-type::after {
+    display: none;
+}
+
+/* Section header positioning */
+.section-header {
+    position: relative;
+}
+
+.section-title {
+    position: relative;
+}
+
+/* Mobile: Move dividers under section titles */
+@media (max-width: 768px) {
+    .section::after {
+        display: none;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #007BFF, transparent);
+        border-radius: 2px;
+    }
 }
 
 .text-center {
@@ -340,6 +388,13 @@ a:hover, a:focus {
     height: 24px;
     color: var(--nav-text);
     margin-left: auto;
+    /* Filter to make SVG black in light mode */
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(344deg) brightness(94%) contrast(106%);
+}
+
+/* Dark mode - make hamburger white */
+[data-theme="dark"] .menu-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7479%) hue-rotate(14deg) brightness(104%) contrast(101%);
 }
 
 .navigation {
@@ -536,6 +591,16 @@ a:hover, a:focus {
     max-width: var(--card-max-width);
     width: 100%;
     box-shadow: var(--shadow-lg);
+}
+
+/* Ensure theme-aware backgrounds for all card types */
+.article-card,
+.dhikr-card,
+.resource-card,
+.publication-card,
+.article-item {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
 }
 
 .article-card::before {
@@ -750,7 +815,8 @@ a:hover, a:focus {
 @media (max-width: 768px) {
     .articles-grid.vertical,
     .content-column .articles-list.single-column {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
     }
 }
 
@@ -826,6 +892,59 @@ a:hover, a:focus {
     grid-template-columns: repeat(auto-fit, minmax(var(--card-max-width), 1fr));
     gap: var(--spacing-xl);
     justify-items: center;
+}
+
+/* Mobile: 2 cards per row for dhikr, publications, and resources */
+@media (max-width: 768px) {
+    .dhikr-grid, .publications-grid, .resources-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+    
+    .quotes-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--spacing-sm) !important;
+    }
+    
+    /* Ensure quote cards fit properly in 2-column layout */
+    .quote-card {
+        max-width: none !important;
+        width: 100% !important;
+    }
+    
+    /* Override card max-width for mobile to ensure 2-column layout works */
+    .dhikr-card,
+    .resource-card,
+    .publication-card {
+        max-width: none !important;
+        width: 100% !important;
+    }
+    
+    /* Ensure consistent card sizing for all mobile cards */
+    .dhikr-card,
+    .resource-card,
+    .publication-card,
+    .article-item {
+        max-width: none;
+        width: 100%;
+    }
+    
+    /* Consistent content padding for mobile cards */
+    .dhikr-content,
+    .resource-content,
+    .publication-content,
+    .article-content {
+        padding: var(--spacing-md);
+    }
+    
+    /* Consistent title styling for mobile */
+    .dhikr-title,
+    .resource-title,
+    .publication-title {
+        font-size: var(--font-size-base);
+        line-height: 1.3;
+        margin-bottom: var(--spacing-xs);
+    }
 }
 
 .dhikr-card, .publication-card, .resource-card {
@@ -923,15 +1042,39 @@ a:hover, a:focus {
 }
 
 .dhikr-link, .resource-link {
+    display: inline-flex;
+    align-items: center;
     color: var(--text-color);
     text-decoration: none;
-    transition: color var(--transition-normal);
-    font-weight: 300;
+    transition: all var(--transition-normal);
+    font-weight: 600;
     font-size: var(--font-size-sm);
 }
 
+/* Animated arrow for dhikr links */
+.dhikr-link::before {
+    content: '→';
+    display: inline-block;
+    transition: transform var(--transition-normal);
+    font-size: var(--font-size-base);
+    margin-right: var(--spacing-xs);
+}
+
+.dhikr-link:hover::before {
+    transform: translateX(4px);
+    animation: arrowBounce 0.6s ease-in-out;
+}
+
+@keyframes arrowBounce {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(6px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(4px); }
+}
+
 .dhikr-link:hover, .resource-link:hover {
-    color: var(--primary-color);
+    color: var(--button-bg);
+    transform: translateY(-2px);
 }
 
 .dhikr-title, .publication-title, .resource-title {
@@ -974,37 +1117,19 @@ a:hover, a:focus {
 }
 
 .quote-card {
-    background: var(--card-bg);
     border-radius: var(--border-radius-xl);
     overflow: hidden;
     transition: all var(--transition-normal);
-    border: 1px solid var(--border-color);
     position: relative;
     max-width: 280px;
     width: 100%;
-    box-shadow: var(--shadow-lg);
-}
-
-.quote-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--text-color);
-    transform: scaleX(0);
-    transition: transform var(--transition-normal);
-}
-
-.quote-card:hover::before {
-    transform: scaleX(1);
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .quote-card:hover {
     transform: translateY(-8px);
-    border-color: var(--text-color);
-    border-width: 2px;
 }
 
 /* Instagram portrait aspect ratio (4:5) */
@@ -1051,6 +1176,43 @@ a:hover, a:focus {
 
 .quote-content {
     padding: var(--spacing-lg);
+}
+
+.quote-download {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.quote-card:hover .quote-download {
+    opacity: 1;
+}
+
+.download-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.download-btn:hover {
+    transform: scale(1.1);
+    color: white;
 }
 
 .quote-title {
@@ -1474,6 +1636,43 @@ a:hover, a:focus {
         aspect-ratio: 16/10;
     }
     
+    /* Mobile: Smaller cards for 2-column layout */
+    .article-card,
+    .dhikr-card,
+    .resource-card,
+    .publication-card,
+    .article-item {
+        max-width: none;
+        width: 100%;
+    }
+    
+    /* Adjust text size for smaller mobile cards */
+    .article-title,
+    .dhikr-title,
+    .resource-title,
+    .publication-title {
+        font-size: var(--font-size-base);
+        line-height: 1.3;
+    }
+    
+    /* Reduce featured articles height to match teaching resources */
+    .articles-grid.vertical .article-card {
+        height: auto;
+    }
+    
+    .articles-grid.vertical .article-card .article-content {
+        padding: var(--spacing-md);
+    }
+    
+    .articles-grid.vertical .article-meta {
+        display: none; /* Hide meta info on mobile to reduce height */
+    }
+    
+    .articles-grid.vertical .article-title {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-xs);
+    }
+    
     /* MOBILE FIX: Remove spacing around dhikr and resource images */
     .dhikr-card, .resource-card, .article-item.resource-card {
         border: none !important;
@@ -1500,7 +1699,7 @@ a:hover, a:focus {
     }
     
     .dhikr-content, .resource-content {
-        padding: var(--spacing-lg) !important;
+        padding: var(--spacing-md) !important;
         margin: 0 !important;
     }
     
