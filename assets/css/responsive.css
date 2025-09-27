@@ -267,6 +267,18 @@
         height: 45px;
         font-size: var(--font-size-base);
     }
+    /* Match theme toggle to back-to-top sizing and stack closely above it */
+    .theme-toggle {
+        bottom: 69px; /* 20 bottom + 45 height + 4px gap */
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: var(--font-size-base);
+    }
+    .theme-toggle svg {
+        width: 16px;
+        height: 16px;
+    }
     
     /* Search overlay adjustments */
     .search-container {

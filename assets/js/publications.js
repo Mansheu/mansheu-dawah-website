@@ -372,38 +372,38 @@ function updateCartDisplay() {
     const cartContent = document.getElementById('cartContent');
     const cartTotal = document.getElementById('cartTotal');
     
-    if (!cartContent) return;
-    
-    if (shoppingCart.items.length === 0) {
-        cartContent.innerHTML = `
-            <div class="cart-empty">
-                <i class="fas fa-shopping-cart"></i>
-                <h4>Your cart is empty</h4>
-                <p>Add some publications to get started!</p>
-            </div>
-        `;
-    } else {
-        const cartItemsHTML = shoppingCart.items.map(item => `
-            <div class="cart-item">
-                <div class="cart-item-info">
-                    <h5 class="cart-item-title">${item.title}</h5>
-                    <p class="cart-item-author">${item.author}</p>
-                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+    if (cartContent) {
+        if (shoppingCart.items.length === 0) {
+            cartContent.innerHTML = `
+                <div class="cart-empty">
+                    <i class="fas fa-cart-shopping"></i>
+                    <h4>Your cart is empty</h4>
+                    <p>Add some publications to get started!</p>
                 </div>
-                <div class="cart-item-controls">
-                    <div class="quantity-controls">
-                        <button onclick="updateCartQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                        <span class="quantity">${item.quantity}</span>
-                        <button onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})">+</button>
+            `;
+        } else {
+            const cartItemsHTML = shoppingCart.items.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h5 class="cart-item-title">${item.title}</h5>
+                        <p class="cart-item-author">${item.author}</p>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
                     </div>
-                    <button class="remove-btn" onclick="removeFromCart('${item.id}')">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    <div class="cart-item-controls">
+                        <div class="quantity-controls">
+                            <button onclick="updateCartQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart('${item.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        `).join('');
-        
-        cartContent.innerHTML = cartItemsHTML;
+            `).join('');
+            
+            cartContent.innerHTML = cartItemsHTML;
+        }
     }
     
     if (cartTotal) {
@@ -554,7 +554,7 @@ function previewBook(productId) {
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="addToCart('${productId}')">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-cart-shopping"></i>
                     Add to Cart - $${product.price}
                 </button>
             </div>
@@ -732,7 +732,7 @@ function generateMorePublications() {
                 </div>
                 <div class="publication-actions">
                     <button class="btn btn-sm btn-primary" onclick="addToCart('${book.id}')">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-cart-shopping"></i>
                         Add to Cart
                     </button>
                     <button class="btn btn-sm btn-icon" onclick="addToWishlist('${book.id}')" title="Wishlist">

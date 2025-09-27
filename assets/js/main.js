@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initializeNavigation();
     injectNavCart();
+    replaceCartIcons();
+    replaceFooterLogo();
     initializeScrollEffects();
     initializeNewsletter();
     initializeCookies();
@@ -113,13 +115,70 @@ function injectNavCart() {
         }
     });
     cart.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-        </svg>
+        <i class="fas fa-cart-shopping"></i>
         <span class="cart-count">0</span>
     `;
     actions.appendChild(cart);
     menuBar.appendChild(actions);
+}
+
+// Return the unified cart SVG used in nav, with adjustable size
+// Deprecated (was Bootstrap SVG cart); keeping function name for compatibility
+function getCartSvg() { return '<i class="fas fa-cart-shopping"></i>'; }
+
+// Replace any Font Awesome cart icons in static markup for consistency
+function replaceCartIcons() {
+    try {
+        // Replace Bootstrap SVG cart icons with Font Awesome bold cart
+        document.querySelectorAll('svg.bi.bi-cart').forEach(svg => {
+            svg.outerHTML = '<i class="fas fa-cart-shopping"></i>';
+        });
+
+        // Normalize any old shopping-cart classes to the new cart-shopping
+        document.querySelectorAll('i.fa-shopping-cart, i.fas.fa-shopping-cart, i.far.fa-shopping-cart').forEach(icon => {
+            icon.classList.remove('fa-shopping-cart', 'far');
+            if (!icon.classList.contains('fas')) icon.classList.add('fas');
+            icon.classList.add('fa-cart-shopping');
+        });
+
+        // Observe for dynamically added nodes and normalize
+        if (window.MutationObserver) {
+            const obs = new MutationObserver(mutations => {
+                mutations.forEach(m => {
+                    m.addedNodes && m.addedNodes.forEach(node => {
+                        if (!(node instanceof Element)) return;
+                        if (node.matches && node.matches('svg.bi.bi-cart')) {
+                            node.outerHTML = '<i class="fas fa-cart-shopping"></i>';
+                        } else {
+                            node.querySelectorAll && node.querySelectorAll('svg.bi.bi-cart').forEach(s => {
+                                s.outerHTML = '<i class="fas fa-cart-shopping"></i>';
+                            });
+                            node.querySelectorAll && node.querySelectorAll('i.fa-shopping-cart, i.fas.fa-shopping-cart, i.far.fa-shopping-cart').forEach(ic => {
+                                ic.classList.remove('fa-shopping-cart', 'far');
+                                if (!ic.classList.contains('fas')) ic.classList.add('fas');
+                                ic.classList.add('fa-cart-shopping');
+                            });
+                        }
+                    });
+                });
+            });
+            obs.observe(document.body, { childList: true, subtree: true });
+        }
+    } catch (_) {}
+}
+
+// Replace footer moon icon with the blue site logo image
+function replaceFooterLogo() {
+    try {
+        const logoWrap = document.querySelector('.footer-logo');
+        if (!logoWrap) return;
+        const moonIcon = logoWrap.querySelector('i.fa-moon, i.fas.fa-moon, i.far.fa-moon');
+        if (moonIcon) {
+            const inPages = /(^|\/|\\)pages(\/|\\|$)/.test(window.location.pathname);
+            const src = inPages ? '../assets/images/logo.svg' : 'assets/images/logo.svg';
+            moonIcon.outerHTML = `<img src="${src}" alt="Mansheu Dawah Logo" width="32" height="32">`;
+        }
+    } catch (_) {}
 }
 
 // Mobile menu toggle function
@@ -139,7 +198,7 @@ function openMobileMenu(menuIcon, navigation) {
     if (menuIcon && menuIcon.style) menuIcon.style.transform = 'rotate(90deg)';
     menuIcon.setAttribute('aria-expanded', 'true');
     navigation.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('menu-open');
+    // Do not lock body scroll; allow page to remain scrollable
 }
 
 function closeMobileMenu(menuIcon, navigation) {
@@ -147,7 +206,7 @@ function closeMobileMenu(menuIcon, navigation) {
     if (menuIcon && menuIcon.style) menuIcon.style.transform = 'rotate(0deg)';
     menuIcon.setAttribute('aria-expanded', 'false');
     navigation.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menu-open');
+    // No scroll lock class to remove
 }
 
 // Ensure global access for inline onclick handlers
@@ -209,6 +268,20 @@ function initializeNewsletter() {
     const newsletterForm = document.getElementById('newsletter-form');
     
     if (newsletterForm) {
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+
+        // Remove any inline messages when user starts typing again
+        if (emailInput) {
+            emailInput.addEventListener('input', function() {
+                const group = emailInput.closest('.form-group') || emailInput.parentNode;
+                try {
+                    group.querySelectorAll('.error-message, .success-message').forEach(n => n.remove());
+                } catch (_) {}
+                emailInput.classList.remove('error');
+            });
+        }
+
         newsletterForm.addEventListener('submit', function(event) {
             event.preventDefault();
             
@@ -223,13 +296,30 @@ function initializeNewsletter() {
                 
                 // Simulate API call
                 setTimeout(() => {
-                    showNotification('Thank you for subscribing! You will receive our newsletter shortly.', 'success');
+                    // Inline success below the input/button row
+                    const group = emailInput.closest('.form-group') || emailInput.parentNode;
+                    // Remove any existing messages
+                    try { group.querySelectorAll('.error-message, .success-message').forEach(n => n.remove()); } catch (_) {}
+                    const success = document.createElement('div');
+                    success.className = 'success-message';
+                    success.textContent = 'Thank you for subscribing! You will receive our newsletter shortly.';
+                    if (group && group.insertAdjacentElement) {
+                        group.insertAdjacentElement('afterend', success);
+                    }
+                    // Auto-dismiss after a few seconds
+                    setTimeout(() => { success.remove(); }, 4000);
                     emailInput.value = '';
+                    // Clean any inline errors when successful
+                    const inlineErrorInGroup = (emailInput.parentNode && emailInput.parentNode.querySelector('.error-message'));
+                    if (inlineErrorInGroup) inlineErrorInGroup.remove();
+                    if (group && group.nextElementSibling && group.nextElementSibling.classList && group.nextElementSibling.classList.contains('error-message')) { group.nextElementSibling.remove(); }
                     submitBtn.classList.remove('loading');
                     submitBtn.disabled = false;
                 }, 2000);
             } else {
-                showNotification('Please enter a valid email address.', 'error');
+                // Inline error just under the input for newsletter
+                validateField(emailInput);
+                emailInput.focus({ preventScroll: true });
             }
         });
     }
@@ -264,17 +354,17 @@ function initializeFormValidation() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
+        const isNewsletter = form.classList.contains('newsletter-form');
         const inputs = form.querySelectorAll('input, textarea, select');
         
         inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-            
+            if (isNewsletter) {
+                // For newsletter, only show messages on submit; skip blur/auto-validation
+                return;
+            }
+            input.addEventListener('blur', function() { validateField(this); });
             input.addEventListener('input', function() {
-                if (this.classList.contains('error')) {
-                    validateField(this);
-                }
+                if (this.classList.contains('error')) validateField(this);
             });
         });
     });
@@ -292,10 +382,11 @@ function validateField(field) {
         existingError.remove();
     }
     
-    // Required field validation
-    if (field.hasAttribute('required') && !value) {
+    // Required field validation (do not inject custom text, rely on native UI)
+    const requiredEmpty = field.hasAttribute('required') && !value;
+    if (requiredEmpty) {
         isValid = false;
-        errorMessage = 'This field is required';
+        // Intentionally no custom error message
     }
     
     // Email validation
@@ -304,13 +395,37 @@ function validateField(field) {
         errorMessage = 'Please enter a valid email address';
     }
     
-    // Show error if invalid
+    // Show error if invalid; only render a message when we have one (e.g., email format)
     if (!isValid) {
         field.classList.add('error');
-        const errorElement = document.createElement('div');
-        errorElement.className = 'error-message';
-        errorElement.textContent = errorMessage;
-        field.parentNode.appendChild(errorElement);
+        if (errorMessage) {
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            errorElement.textContent = errorMessage;
+
+            const isNewsletter = !!field.closest('.newsletter-form');
+            if (isNewsletter) {
+                const group = field.closest('.form-group') || field.parentNode;
+                // Remove any prior inline errors under this group or immediately after the group
+                try { group.querySelectorAll('.error-message').forEach(n => n.remove()); } catch (_) {}
+                if (group && group.nextElementSibling && group.nextElementSibling.classList && group.nextElementSibling.classList.contains('error-message')) {
+                    group.nextElementSibling.remove();
+                }
+                // Place error after the entire group so it appears under the Subscribe button
+                if (group && group.insertAdjacentElement) {
+                    group.insertAdjacentElement('afterend', errorElement);
+                } else {
+                    field.parentNode.appendChild(errorElement);
+                }
+                // Auto-dismiss the inline error after a few seconds for newsletter form
+                setTimeout(() => {
+                    try { if (errorElement && errorElement.parentNode) errorElement.remove(); } catch (_) {}
+                    field.classList.remove('error');
+                }, 4000);
+            } else {
+                field.parentNode.appendChild(errorElement);
+            }
+        }
     }
     
     return isValid;
