@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initializeNavigation();
+    injectNavCart();
     initializeScrollEffects();
     initializeNewsletter();
     initializeCookies();
@@ -81,6 +82,44 @@ function initializeNavigation() {
             }
         });
     }
+}
+
+// Inject cart icon into the header and wrap hamburger + cart on the right
+function injectNavCart() {
+    const menuBar = document.querySelector('.menu__bar');
+    if (!menuBar) return;
+    // Avoid duplicates
+    if (menuBar.querySelector('.nav-actions')) return;
+
+    const directMenuIcon = menuBar.querySelector(':scope > .menu-icon');
+    const actions = document.createElement('div');
+    actions.className = 'nav-actions';
+
+    if (directMenuIcon) {
+        actions.appendChild(directMenuIcon);
+    }
+
+    const cart = document.createElement('a');
+    cart.className = 'cart-icon';
+    cart.title = 'Shopping Cart';
+    // Determine correct link target based on current location
+    const inPages = /(^|\/|\\)pages(\/|\\|$)/.test(window.location.pathname);
+    cart.href = inPages ? 'publications.html' : 'pages/publications.html';
+    // Try opening sidebar if available
+    cart.addEventListener('click', function(e) {
+        if (typeof window.showCartSidebar === 'function') {
+            e.preventDefault();
+            try { window.showCartSidebar(); } catch(_) {}
+        }
+    });
+    cart.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+        </svg>
+        <span class="cart-count">0</span>
+    `;
+    actions.appendChild(cart);
+    menuBar.appendChild(actions);
 }
 
 // Mobile menu toggle function

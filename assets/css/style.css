@@ -1,3 +1,38 @@
+/* Publications grid and card styling to match quotes/reminders */
+.publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    justify-items: center;
+}
+
+.publications-grid .publication-card {
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    position: relative;
+    width: 280px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.publications-grid .publication-card .article-image {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    min-height: unset;
+    aspect-ratio: unset;
+    overflow: hidden;
+    background: var(--border-color);
+    border-radius: var(--border-radius-xl);
+}
 /* Mansheu Dawah Website - Main Styles */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
@@ -391,6 +426,9 @@ a:hover, a:focus {
     /* Filter to make SVG black in light mode */
     filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(344deg) brightness(94%) contrast(106%);
 }
+
+/* Hide standalone hamburger when we use nav-actions wrapper */
+.menu__bar > .menu-icon { display: none; }
 
 /* Dark mode - make hamburger white */
 [data-theme="dark"] .menu-icon {
@@ -981,17 +1019,41 @@ a:hover, a:focus {
     border-width: 2px;
 }
 
-.publication-card {
-    overflow: hidden;
-    padding: 0;
+/* Right-side actions (cart + hamburger) */
+.nav-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-.publication-image {
+
+.publication-card {
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-normal);
     position: relative;
-    aspect-ratio: 16/9;
-    height: var(--card-img-height);
+    max-width: 280px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.publication-image, .article-item.publication-item .article-image {
+    position: relative;
+    aspect-ratio: 4/5;
+    width: 100%;
+    height: auto;
     overflow: hidden;
     background: var(--border-color);
+    border-radius: var(--border-radius-xl);
 }
 
 .publication-image img {
@@ -1003,6 +1065,11 @@ a:hover, a:focus {
 
 .publication-card:hover .publication-image img {
     transform: scale(1.15);
+}
+
+/* Hover zoom for homepage publication items */
+.article-item.publication-item:hover .article-image img {
+    transform: none;
 }
 
 .publication-content {
@@ -1152,7 +1219,7 @@ a:hover, a:focus {
 }
 
 /* Download icon overlay */
-.download-icon {
+.download-icon, .preview-icon {
     position: absolute;
     top: var(--spacing-sm);
     right: var(--spacing-sm);
@@ -1172,6 +1239,48 @@ a:hover, a:focus {
 
 .quote-card:hover .download-icon {
     opacity: 1;
+}
+
+/* Show download icon on publication cards hover */
+.publication-card:hover .download-icon,
+.article-item.publication-item:hover .download-icon {
+    opacity: 1;
+}
+
+/* Publications: place cart icon bottom-right and always visible */
+.publication-image .download-icon,
+.article-item.publication-item .article-image .download-icon,
+.publication-image .preview-icon,
+.article-item.publication-item .article-image .preview-icon {
+    top: auto;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    opacity: 1;
+}
+
+/* Offset preview icon to sit left of cart */
+.publication-image .preview-icon,
+.article-item.publication-item .article-image .preview-icon {
+    right: calc(var(--spacing-sm) + 48px);
+}
+
+/* Remove hover lift/border for Islamic publication cards */
+.publication-card:hover {
+    transform: none;
+    border-color: var(--border-color);
+    border-width: 1px;
+}
+
+.article-item.publication-item:hover {
+    transform: none;
+    border-color: var(--border-color);
+    border-width: 1px;
+}
+
+/* Remove hover zoom on publication images */
+.publication-card:hover .publication-image img,
+.article-item.publication-item:hover .article-image img {
+    transform: none;
 }
 
 .quote-content {

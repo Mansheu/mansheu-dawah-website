@@ -409,6 +409,11 @@ function updateCartDisplay() {
     if (cartTotal) {
         cartTotal.textContent = shoppingCart.total.toFixed(2);
     }
+    // Update all cart badges in the nav
+    try {
+        const totalItems = shoppingCart.items.reduce((sum, it) => sum + (it.quantity || 0), 0);
+        document.querySelectorAll('.cart-count').forEach(el => el.textContent = totalItems);
+    } catch (_) {}
 }
 
 function showCartSidebar() {
@@ -763,6 +768,30 @@ function getProductById(productId) {
             price: 15.99,
             image: '/assets/images/book-hadith-40.jpg'
         },
+        'aqidah-foundations': {
+            title: 'Foundations of Islamic Belief',
+            author: 'Sheikh Omar Mansheu',
+            price: 22.99,
+            image: '/assets/images/book-aqidah.jpg'
+        },
+        'soul-purification': {
+            title: 'Purification of the Soul',
+            author: 'Dr. Fatima Mansheu',
+            price: 14.99,
+            image: '/assets/images/book-purification-soul.jpg'
+        },
+        'prophet-biography': {
+            title: 'Life of Prophet Muhammad (PBUH)',
+            author: 'Dr. Hassan Mansheu',
+            price: 18.99,
+            image: '/assets/images/book-prophet-biography.jpg'
+        },
+        'children-stories': {
+            title: 'Islamic Stories for Young Hearts',
+            author: 'Ustadha Maryam Mansheu',
+            price: 12.99,
+            image: '/assets/images/book-children-stories.jpg'
+        },
         'daily-duas': {
             title: 'Daily Du\'as and Adhkar',
             author: 'Mansheu Dawah Team',
@@ -774,6 +803,31 @@ function getProductById(productId) {
             author: 'Qari Abdul Rahman',
             price: 25.99,
             image: '/assets/images/book-audio-quran.jpg'
+        },
+        // Homepage sample publications
+        'path-to-paradise': {
+            title: 'The Path to Paradise',
+            author: 'Mansheu Dawah',
+            price: 12.99,
+            image: '/assets/images/image_example.jpg'
+        },
+        'daily-dhikr': {
+            title: 'Daily Dhikr Companion',
+            author: 'Mansheu Dawah',
+            price: 8.99,
+            image: '/assets/images/image_example.jpg'
+        },
+        'quranic-reflections': {
+            title: 'Quranic Reflections',
+            author: 'Mansheu Dawah',
+            price: 15.99,
+            image: '/assets/images/image_example.jpg'
+        },
+        'islamic-ethics': {
+            title: 'Islamic Ethics & Morality',
+            author: 'Mansheu Dawah',
+            price: 10.99,
+            image: '/assets/images/image_example.jpg'
         }
     };
     
