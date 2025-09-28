@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 /* Publications grid and card styling to match quotes/reminders */
 .publications-grid {
     display: grid;
@@ -34,7 +35,6 @@
     border-radius: var(--border-radius-xl);
 }
 /* Mansheu Dawah Website - Main Styles */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 /* === CSS VARIABLES === */
 :root {
@@ -50,6 +50,18 @@
     --button-text: #FFFFFF;
     --button-hover-bg: #333333;
     --shadow-color: rgba(0, 0, 0, 0.1);
+
+    /* Brand palette (used by pages.css) */
+    --primary-color: #1e90ff;   /* DodgerBlue */
+    --primary-dark: #1870cc;
+    --primary-light: #66b3ff;
+    --secondary-color: #FFD700; /* Gold */
+    --secondary-dark: #ccac00;
+    --white: #FFFFFF;
+    --light-gray: #F0F0F0;
+    --medium-gray: #808080;
+    --dark-gray: #000000;
+    --black: #000000;
     
     /* Typography */
     --font-primary: 'DM Sans', sans-serif;
@@ -788,6 +800,27 @@ a:hover, a:focus {
     color: var(--text-color);
     font-weight: 600;
     font-size: var(--font-size-sm);
+}
+
+/* Author profile (used on homepage and articles) */
+.article-author-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.article-author-profile img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+.article-author-profile .author-name {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
 }
 
 /* Publication Actions in Article Items */
