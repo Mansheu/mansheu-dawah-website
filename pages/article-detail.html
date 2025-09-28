@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - Mansheu Dawah</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="alternate icon" href="../assets/images/favicon.ico">
+</head>
+<body class="articles-page">
+  <!-- Header (reuse site header) -->
+  <div class="menu__wrapper">
+    <div class="menu__bar">
+      <a href="../index.html" title="Mansheu Dawah">
+        <div class="logo">
+          <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
+          <span>Mansheu Dawah</span>
+        </div>
+      </a>
+      <img class="menu-icon" src="../assets/images/burger-menu.svg" title="Menu" alt="Menu">
+      <ul class="navigation">
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+        <li><a href="quotes-reminders.html">Quotes & Reminders</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="resources.html">Teaching Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <section class="section article-detail">
+      <div class="container">
+        <!-- Hero image -->
+        <div class="article-hero">
+          <img id="articleHero" src="../assets/images/image_example.jpg" alt="Article image" loading="lazy">
+        </div>
+
+        <!-- Title -->
+        <h1 id="articleTitle" class="article-title-detail">Article Title</h1>
+
+        <!-- Meta: date, read-time, author -->
+        <div class="article-meta-row">
+          <span class="article-date" id="articleDate"><i class="fas fa-calendar"></i> </span>
+          <span class="read-time" id="articleRead"><i class="fas fa-clock"></i> </span>
+          <span class="author-profile">
+            <img id="articleAuthorAvatar" src="../assets/images/image_example.jpg" alt="Author" width="28" height="28">
+            <span id="articleAuthor">Sheu Babakar</span>
+          </span>
+        </div>
+
+        <!-- Social share -->
+        <div class="social-share">
+          <button class="btn btn-sm btn-outline" id="shareBtn"><i class="fas fa-share"></i> Share</button>
+          <a class="btn btn-sm btn-outline" id="shareTwitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-sm btn-outline" id="shareFacebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+          <a class="btn btn-sm btn-outline" id="shareWhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a class="btn btn-sm btn-outline" id="shareEmail"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <!-- Article body -->
+        <article id="articleBody" class="article-body">
+          <p>Loading...</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Suggested Articles -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Suggested Articles</h2>
+        </div>
+        <div class="featured-grid" id="suggestedGrid"></div>
+      </div>
+    </section>
+      <!-- Newsletter Section -->
+    <section class="newsletter section bg-primary">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2 class="newsletter-title">Join Our Islamic Community</h2>
+          <p class="newsletter-subtitle">
+            Subscribe to receive weekly Islamic insights, du'as, and spiritual guidance directly in your inbox
+          </p>
+          <form class="newsletter-form" id="newsletter-form">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Enter your email address" required>
+              <button type="submit" class="btn btn-secondary">
+                <span>Subscribe</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
+          </form>
+        </div>
+      </div>
+    </section>  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-moon"></i>
+            <span>Mansheu Dawah</span>
+          </div>
+          <p class="footer-description">
+            A dawah initiative dedicated to connecting hearts to Allah through authentic Islamic knowledge, 
+            spiritual guidance, and community support.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="resources.html">Teaching Resources</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3 class="footer-title">Contact Info</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@mansheudawah.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+44 (0)7XXX XXX XXX</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>United Kingdom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <p>&copy; 2025 Mansheu Dawah. All rights reserved. | A dawah initiative to connect creation to The Creator.</p>
+        </div>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- JS -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/article.js"></script>
+</body>
+</html>
+

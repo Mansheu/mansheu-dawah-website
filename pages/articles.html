@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,7 +26,7 @@
     <link rel="alternate icon" href="../assets/images/favicon.ico">
 </head>
 
-<body>
+<body class="articles-page">
     <!-- Header -->
     <div class="menu__wrapper">
         <div class="menu__bar">
@@ -56,7 +57,7 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Page Header -->
-        <section class="page-header">
+        <section class="page-header page-header--articles">
             <div class="container">
                 <div class="page-header-content">
                     <h1 class="page-title">Islamic Articles</h1>
@@ -78,6 +79,7 @@
             <div class="container">
                 <div class="filter-controls">
                     <div class="filter-categories">
+                        <span class="filter-label">Filter: </span>
                         <button class="filter-btn active" data-category="all">All Articles</button>
                         <button class="filter-btn" data-category="faith">Faith & Belief</button>
                         <button class="filter-btn" data-category="prayer">Prayer & Worship</button>
@@ -88,6 +90,7 @@
                     </div>
                     
                     <div class="filter-sort">
+                        <span class="sort-label">Sort: </span>
                         <select class="sort-select" aria-label="Sort articles">
                             <option value="newest">Newest First</option>
                             <option value="oldest">Oldest First</option>
@@ -102,217 +105,328 @@
         <!-- Featured Articles -->
         <section class="featured-articles section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Articles</h2>
-                </div>
-                
-                <div class="featured-grid">
-                    <article class="article-card featured" data-category="faith">
+                <div class="featured-content-grid">
+                    <div class="content-column">
+                        <div class="section-header">
+                            <h2 class="section-title">Featured Articles</h2>
+                        </div>
+                        
+                        <div class="featured-grid">
+                    <article class="article-card" data-category="faith">
                         <div class="article-image">
-                            <img src="../assets/images/featured-1.jpg" alt="The Power of Sincere Repentance" loading="lazy">
+                            <img src="../assets/images/image_example.jpg" alt="The Power of Sincere Repentance" loading="lazy">
                             <div class="article-category">Faith</div>
                         </div>
                         <div class="article-content">
                             <h3 class="article-title">
-                                <a href="article-detail.html">The Power of Sincere Repentance (Tawbah)</a>
+                                <a href="article-detail.html?id=sincere-repentance">The Power of Sincere Repentance (Tawbah)</a>
                             </h3>
                             <p class="article-excerpt">
                                 Explore the transformative power of sincere repentance and how it brings us closer to Allah's mercy and forgiveness. Learn about the conditions of true tawbah and its impact on spiritual purification.
                             </p>
                             <div class="article-meta">
-                                <span class="article-author">
-                                    <i class="fas fa-user"></i> Mansheu Dawah Team
-                                </span>
-                                <span class="article-date">
-                                    <i class="fas fa-calendar"></i> September 20, 2025
-                                </span>
-                                <span class="read-time">
-                                    <i class="fas fa-clock"></i> 8 min read
-                                </span>
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 20, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
                             </div>
-                            <div class="article-tags">
-                                <span class="tag">Tawbah</span>
-                                <span class="tag">Repentance</span>
-                                <span class="tag">Spirituality</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- All Articles -->
-        <section class="all-articles section bg-light">
-            <div class="container">
-                <div class="articles-grid" id="articlesContainer">
-                    <!-- Faith & Belief Articles -->
-                    <article class="article-card" data-category="faith">
-                        <div class="article-image">
-                            <img src="../assets/images/article-1.jpg" alt="Understanding Allah's 99 Beautiful Names" loading="lazy">
-                            <div class="article-category">Faith</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html">Understanding Allah's 99 Beautiful Names (Asma ul-Husna)</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Discover the profound meanings behind Allah's beautiful names and how reflecting upon them can transform our relationship with our Creator.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date">September 18, 2025</span>
-                                <span class="read-time">6 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="character">
-                        <div class="article-image">
-                            <img src="../assets/images/article-2.jpg" alt="Building Strong Character Through Islamic Values" loading="lazy">
-                            <div class="article-category">Character</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html">Building Strong Character Through Islamic Values</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Learn how Islamic teachings guide us in developing noble character traits that benefit both this life and the hereafter.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date">September 16, 2025</span>
-                                <span class="read-time">7 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="prayer">
-                        <div class="article-image">
-                            <img src="../assets/images/article-3.jpg" alt="The Beauty of Night Prayer (Tahajjud)" loading="lazy">
-                            <div class="article-category">Prayer</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html">The Beauty of Night Prayer (Tahajjud)</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Discover the spiritual rewards and practical benefits of establishing night prayers in your daily routine.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date">September 14, 2025</span>
-                                <span class="read-time">5 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="quran">
-                        <div class="article-image">
-                            <img src="../assets/images/article-4.jpg" alt="The Miracle of the Quran" loading="lazy">
-                            <div class="article-category">Quran</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html">The Miracle of the Quran: Scientific and Linguistic Wonders</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Explore the miraculous aspects of the Holy Quran that continue to amaze scientists and linguists worldwide.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date">September 12, 2025</span>
-                                <span class="read-time">9 min read</span>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="article-card" data-category="spirituality">
                         <div class="article-image">
-                            <img src="../assets/images/article-5.jpg" alt="Understanding Rizq in Islam" loading="lazy">
+                            <img src="../assets/images/image_example.jpg" alt="Sincere Intention (Ikhlas) in Worship" loading="lazy">
                             <div class="article-category">Spirituality</div>
                         </div>
                         <div class="article-content">
                             <h3 class="article-title">
-                                <a href="article-detail.html">Understanding the Concept of Rizq in Islam</a>
+                                <a href="article-detail.html?id=ikhlas">Sincere Intention (Ikhlas) in Worship</a>
                             </h3>
                             <p class="article-excerpt">
-                                Learn about Allah's provision (rizq) and how understanding this concept can bring peace and contentment to your life.
+                                Understanding the role of sincerity in all acts of worship and how to purify intentions for Allah alone.
                             </p>
                             <div class="article-meta">
-                                <span class="article-date">September 10, 2025</span>
-                                <span class="read-time">6 min read</span>
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 19, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
                             </div>
                         </div>
                     </article>
+                        </div>
+                    </div>
 
-                    <article class="article-card" data-category="sunnah">
+                    <div class="content-column">
+                        <div class="section-header">
+                            <h2 class="section-title">Latest Articles</h2>
+                        </div>
+                        <div class="featured-grid">
+                            <article class="article-card" data-category="latest">
+                                <div class="article-image">
+                                    <img src="../assets/images/image_example.jpg" alt="Balancing Hope and Fear in Islam" loading="lazy">
+                                    <div class="article-category">Latest</div>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">
+                                        <a href="article-detail.html?id=hope-fear-balance">Balancing Hope and Fear in Islam</a>
+                                    </h3>
+                                    <p class="article-excerpt">
+                                        A practical look at maintaining balance between hope in Allah’s mercy and fear of accountability.
+                                    </p>
+                                    <div class="article-meta">
+                                        <span class="article-date"><i class="fas fa-calendar"></i> September 17, 2025</span>
+                                        <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                                    </div>
+                                    <div class="article-author-profile">
+                                        <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                        <span class="author-name">Sheu Babakar</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="article-card" data-category="latest">
+                                <div class="article-image">
+                                    <img src="../assets/images/image_example.jpg" alt="Guarding the Tongue: Speech Etiquette" loading="lazy">
+                                    <div class="article-category">Latest</div>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">
+                                        <a href="article-detail.html?id=guarding-tongue">Guarding the Tongue: Speech Etiquette</a>
+                                    </h3>
+                                    <p class="article-excerpt">
+                                        Teachings from Quran and Sunnah on mindful speech and avoiding harmful words.
+                                    </p>
+                                    <div class="article-meta">
+                                        <span class="article-date"><i class="fas fa-calendar"></i> September 15, 2025</span>
+                                        <span class="read-time"><i class="fas fa-clock"></i> 5 min read</span>
+                                    </div>
+                                    <div class="article-author-profile">
+                                        <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                        <span class="author-name">Sheu Babakar</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Articles (Filtered) -->
+        <section class="all-articles section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Filtered Articles</h2>
+                </div>
+                <div class="articles-grid" id="articlesContainer">
+                    <!-- Faith & Belief Articles -->
+                    <article class="article-card" data-category="faith">
                         <div class="article-image">
-                            <img src="../assets/images/article-6.jpg" alt="Following the Sunnah in Daily Life" loading="lazy">
-                            <div class="article-category">Sunnah</div>
+                            <img src="../assets/images/image_example.jpg" alt="Understanding Allah's 99 Beautiful Names" loading="lazy">
+                            <div class="article-category">Faith</div>
                         </div>
                         <div class="article-content">
                             <h3 class="article-title">
-                                <a href="article-detail.html">Following the Sunnah in Daily Life</a>
+                                <a href="article-detail.html?id=asma-ul-husna">Understanding Allah's 99 Beautiful Names (Asma ul-Husna)</a>
                             </h3>
                             <p class="article-excerpt">
-                                Discover practical ways to incorporate the beautiful teachings of Prophet Muhammad (ﷺ) into your daily routine.
+                                Discover the profound meanings behind Allah's beautiful names and how reflecting upon them can transform our relationship with our Creator.
                             </p>
                             <div class="article-meta">
-                                <span class="article-date">September 8, 2025</span>
-                                <span class="read-time">7 min read</span>
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 18, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
                             </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="prayer">
-                        <div class="article-image">
-                            <img src="../assets/images/article-7.jpg" alt="The Importance of Seeking Knowledge in Islam" loading="lazy">
-                            <div class="article-category">Knowledge</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html">The Importance of Seeking Knowledge in Islam</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Explore the Islamic perspective on seeking knowledge and its role in spiritual and personal development.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date">September 6, 2025</span>
-                                <span class="read-time">8 min read</span>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="article-card" data-category="character">
                         <div class="article-image">
-                            <img src="../assets/images/article-8.jpg" alt="Patience and Gratitude in Islam" loading="lazy">
+                            <img src="../assets/images/image_example.jpg" alt="Building Strong Character Through Islamic Values" loading="lazy">
                             <div class="article-category">Character</div>
                         </div>
                         <div class="article-content">
                             <h3 class="article-title">
-                                <a href="article-detail.html">Patience (Sabr) and Gratitude (Shukr) in Islam</a>
+                                <a href="article-detail.html?id=strong-character">Building Strong Character Through Islamic Values</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                Learn how Islamic teachings guide us in developing noble character traits that benefit both this life and the hereafter.
+                            </p>
+                            <div class="article-meta">
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 16, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="prayer">
+                        <div class="article-image">
+                            <img src="../assets/images/image_example.jpg" alt="The Beauty of Night Prayer (Tahajjud)" loading="lazy">
+                            <div class="article-category">Prayer</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="article-detail.html?id=tahajjud-beauty">The Beauty of Night Prayer (Tahajjud)</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                Discover the spiritual rewards and practical benefits of establishing night prayers in your daily routine.
+                            </p>
+                            <div class="article-meta">
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 14, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 5 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="quran">
+                        <div class="article-image">
+                            <img src="../assets/images/image_example.jpg" alt="The Miracle of the Quran" loading="lazy">
+                            <div class="article-category">Quran</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="article-detail.html?id=quran-miracle">The Miracle of the Quran: Scientific and Linguistic Wonders</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                Explore the miraculous aspects of the Holy Quran that continue to amaze scientists and linguists worldwide.
+                            </p>
+                            <div class="article-meta">
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 12, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 9 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="spirituality">
+                        <div class="article-image">
+                            <img src="../assets/images/image_example.jpg" alt="Understanding Rizq in Islam" loading="lazy">
+                            <div class="article-category">Spirituality</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="article-detail.html?id=rizq-concept">Understanding the Concept of Rizq in Islam</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                Learn about Allah's provision (rizq) and how understanding this concept can bring peace and contentment to your life.
+                            </p>
+                            <div class="article-meta">
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 10, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="sunnah">
+                        <div class="article-image">
+                            <img src="../assets/images/image_example.jpg" alt="Following the Sunnah in Daily Life" loading="lazy">
+                            <div class="article-category">Sunnah</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="article-detail.html?id=following-sunnah">Following the Sunnah in Daily Life</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                Discover practical ways to incorporate the beautiful teachings of Prophet Muhammad (ﷺ) into your daily routine.
+                            </p>
+                            <div class="article-meta">
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 8, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="prayer">
+                        <div class="article-image">
+                            <img src="../assets/images/image_example.jpg" alt="The Importance of Seeking Knowledge in Islam" loading="lazy">
+                            <div class="article-category">Knowledge</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="article-detail.html?id=seeking-knowledge">The Importance of Seeking Knowledge in Islam</a>
+                            </h3>
+                            <p class="article-excerpt">
+                                Explore the Islamic perspective on seeking knowledge and its role in spiritual and personal development.
+                            </p>
+                            <div class="article-meta">
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 6, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card" data-category="character">
+                        <div class="article-image">
+                            <img src="../assets/images/image_example.jpg" alt="Patience and Gratitude in Islam" loading="lazy">
+                            <div class="article-category">Character</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="article-detail.html?id=sabr-shukr">Patience (Sabr) and Gratitude (Shukr) in Islam</a>
                             </h3>
                             <p class="article-excerpt">
                                 Learn about the twin virtues of patience and gratitude and how they can transform your spiritual journey.
                             </p>
                             <div class="article-meta">
-                                <span class="article-date">September 4, 2025</span>
-                                <span class="read-time">6 min read</span>
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 4, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="article-card" data-category="faith">
                         <div class="article-image">
-                            <img src="../assets/images/article-9.jpg" alt="The Five Pillars of Islam Explained" loading="lazy">
+                            <img src="../assets/images/image_example.jpg" alt="The Five Pillars of Islam Explained" loading="lazy">
                             <div class="article-category">Faith</div>
                         </div>
                         <div class="article-content">
                             <h3 class="article-title">
-                                <a href="article-detail.html">The Five Pillars of Islam: A Comprehensive Guide</a>
+                                <a href="article-detail.html?id=five-pillars">The Five Pillars of Islam: A Comprehensive Guide</a>
                             </h3>
                             <p class="article-excerpt">
                                 Understand the fundamental pillars of Islam and their significance in building a strong foundation of faith.
                             </p>
                             <div class="article-meta">
-                                <span class="article-date">September 2, 2025</span>
-                                <span class="read-time">10 min read</span>
+                                <span class="article-date"><i class="fas fa-calendar"></i> September 2, 2025</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
+                            </div>
+                            <div class="article-author-profile">
+                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+                                <span class="author-name">Sheu Babakar</span>
                             </div>
                         </div>
                     </article>
