@@ -117,6 +117,9 @@
         rgba(30,144,255,0.06) 45%,
         rgba(30,144,255,0.02) 100%
     );
+
+    /* Inform browsers that both schemes are supported (form controls, etc.) */
+    color-scheme: light dark;
 }
 
 /* Dark Theme */
@@ -141,6 +144,32 @@
         rgba(30,144,255,0.10) 45%,
         rgba(30,144,255,0.04) 100%
     );
+}
+
+/* Match device theme automatically when there is no manual override */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --bg-color: #000000;
+        --text-color: #FFFFFF;
+        --text-secondary: #CCCCCC;
+        --border-color: #333333;
+        --card-bg: #1a1a1a;
+        --nav-bg: #000000;
+        --nav-text: #FFFFFF;
+        --button-bg: #FFFFFF;
+        --button-text: #000000;
+        --button-hover-bg: #CCCCCC;
+        --shadow-color: rgba(255, 255, 255, 0.1);
+
+        /* Slightly stronger noise for dark */
+        --noise-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+        /* Smooth blue gradient (dark) */
+        --bg-gradient: linear-gradient(180deg,
+            rgba(30,144,255,0.18) 0%,
+            rgba(30,144,255,0.10) 45%,
+            rgba(30,144,255,0.04) 100%
+        );
+    }
 }
 
 /* === THEME TOGGLE BUTTON === */
@@ -185,6 +214,12 @@
 
 [data-theme="dark"] .theme-toggle .moon-icon {
     display: none;
+}
+
+/* Ensure toggle icons reflect system dark mode when no manual override */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .theme-toggle .sun-icon { display: block; }
+    :root:not([data-theme]) .theme-toggle .moon-icon { display: none; }
 }
 
 /* === RESET & BASE STYLES === */

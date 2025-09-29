@@ -1,22 +1,40 @@
-// Theme Toggle Functionality
+// Theme Toggle with system preference support
 class ThemeManager {
     constructor() {
-        this.theme = localStorage.getItem('theme') || 'light';
+        this.mql = window.matchMedia('(prefers-color-scheme: dark)');
+        this.storedTheme = localStorage.getItem('theme'); // 'light' | 'dark' | null
+        this.isAuto = !this.storedTheme;
+        this.theme = this.storedTheme || (this.mql.matches ? 'dark' : 'light');
         this.init();
     }
 
     init() {
-        // Set initial theme
-        this.setTheme(this.theme);
-        
         // Create theme toggle button if it doesn't exist
         this.createThemeToggle();
-        
-        // Add event listener
+
+        // Apply stored theme; otherwise follow system (no attribute so CSS @media applies)
+        if (this.isAuto) {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            this.applyThemeAttribute(this.theme);
+        }
+
+        // Set initial button label
+        this.updateButtonLabel();
+
+        // Add click listener
         const toggleButton = document.querySelector('.theme-toggle');
         if (toggleButton) {
             toggleButton.addEventListener('click', () => this.toggleTheme());
         }
+
+        // Watch for system theme changes when in auto mode
+        this.mql.addEventListener('change', (e) => {
+            if (this.isAuto) {
+                this.theme = e.matches ? 'dark' : 'light';
+                this.updateButtonLabel();
+            }
+        });
     }
 
     createThemeToggle() {
@@ -38,20 +56,34 @@ class ThemeManager {
         document.body.appendChild(button);
     }
 
+    applyThemeAttribute(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    updateButtonLabel() {
+        const button = document.querySelector('.theme-toggle');
+        if (!button) return;
+        const effectiveTheme = this.isAuto ? (this.mql.matches ? 'dark' : 'light') : this.theme;
+        const newLabel = effectiveTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+        button.setAttribute('aria-label', newLabel);
+    }
+
     setTheme(theme) {
         this.theme = theme;
-        document.documentElement.setAttribute('data-theme', theme);
+        this.isAuto = false;
+        this.applyThemeAttribute(theme);
         localStorage.setItem('theme', theme);
-        
-        // Update button aria-label
-        const button = document.querySelector('.theme-toggle');
-        if (button) {
-            const newLabel = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
-            button.setAttribute('aria-label', newLabel);
-        }
+        this.updateButtonLabel();
     }
 
     toggleTheme() {
+        // If following system (auto), first click becomes explicit opposite of current system theme
+        if (this.isAuto) {
+            const systemTheme = this.mql.matches ? 'dark' : 'light';
+            const newTheme = systemTheme === 'light' ? 'dark' : 'light';
+            this.setTheme(newTheme);
+            return;
+        }
         const newTheme = this.theme === 'light' ? 'dark' : 'light';
         this.setTheme(newTheme);
     }

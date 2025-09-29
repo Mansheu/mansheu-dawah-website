@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
     <title>Dhikr & Du'a - Mansheu Dawah | Islamic Remembrance & Supplications</title>
     <meta name="description" content="Discover beautiful Islamic dhikr and du'a collections including morning adhkar, evening adhkar, Quranic supplications, and prophetic prayers for daily spiritual connection.">
     <meta name="keywords" content="dhikr, dua, adhkar, morning adhkar, evening adhkar, islamic prayers, supplications, remembrance of Allah">
@@ -23,9 +26,187 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="alternate icon" href="../assets/images/favicon.ico">
+    <style>
+        /* Page-scoped styles for Dhikr & Du'a only */
+        body.dhikr-page {
+            /* Blue gradient background across the page (light) */
+            background-color: var(--bg-color);
+            background-image: var(--noise-image), linear-gradient(180deg,
+                rgba(30,144,255,0.10) 0%,
+                rgba(30,144,255,0.06) 45%,
+                rgba(30,144,255,0.02) 100%
+            );
+            background-repeat: repeat, no-repeat;
+            background-size: 128px 128px, 100% 100%;
+            background-attachment: scroll, fixed;
+        }
+        /* Dark theme variant for the same gradient */
+        [data-theme="dark"] body.dhikr-page {
+            background-image: var(--noise-image), linear-gradient(180deg,
+                rgba(30,144,255,0.18) 0%,
+                rgba(30,144,255,0.10) 45%,
+                rgba(30,144,255,0.04) 100%
+            );
+        }
+        /* Remove Arabic line from page header */
+        body.dhikr-page .page-header .arabic-text { display: none !important; }
+        /* When following system theme (no data-theme), honor system dark */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme]) body.dhikr-page {
+                background-image: var(--noise-image), linear-gradient(180deg,
+                    rgba(30,144,255,0.18) 0%,
+                    rgba(30,144,255,0.10) 45%,
+                    rgba(30,144,255,0.04) 100%
+                );
+            }
+        }
+
+        /* Let sections sit on the gradient (no local backgrounds) */
+        body.dhikr-page .section,
+        body.dhikr-page .page-header,
+        body.dhikr-page .dhikr-nav,
+        body.dhikr-page .dhikr-counter.section,
+        body.dhikr-page .section.bg-primary {
+            background: transparent !important;
+        }
+
+        /* Keep the footer as-is (original background) */
+        body.dhikr-page .footer {
+            background-color: var(--bg-color);
+            background-image: none;
+        }
+
+        /* Blue section titles for requested sections */
+        body.dhikr-page .section-title--blue,
+        body.dhikr-page .dhikr-counter .section-title {
+            color: #1e90ff;
+        }
+
+        /* Hide specific content SECTIONS only (do not hide similarly-named anchors in cards) */
+        body.dhikr-page section#morning,
+        body.dhikr-page section#evening,
+        body.dhikr-page section#quranic,
+        body.dhikr-page section#prophetic {
+            display: none !important;
+        }
+
+        /* Dark mode: make page title and breadcrumb white */
+        [data-theme="dark"] body.dhikr-page .page-header .page-title { color: #ffffff !important; }
+        [data-theme="dark"] body.dhikr-page .breadcrumb-list li,
+        [data-theme="dark"] body.dhikr-page .breadcrumb-list a { color: #ffffff !important; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme]) body.dhikr-page .page-header .page-title { color: #ffffff !important; }
+            :root:not([data-theme]) body.dhikr-page .breadcrumb-list li,
+            :root:not([data-theme]) body.dhikr-page .breadcrumb-list a { color: #ffffff !important; }
+        }
+
+        /* Main Adhkar grid */
+        .main-adhkar {
+            padding-top: var(--spacing-2xl);
+            padding-bottom: var(--spacing-2xl);
+        }
+        .main-adhkar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--spacing-lg);
+            align-items: stretch;
+        }
+        .adhkar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+        .adhkar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: #1e90ff;
+        }
+        .adhkar-card a {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+        .adhkar-card .card-image {
+            width: 100%;
+            height: 140px;
+            overflow: hidden;
+            background: var(--border-color);
+        }
+        .adhkar-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .adhkar-card .card-content {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            flex: 1 1 auto;
+        }
+        .adhkar-card .card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text-color);
+            transition: color var(--transition-normal);
+        }
+        .adhkar-card:hover .card-title,
+        .adhkar-card .card-title:hover {
+            color: #1e90ff; /* same as navigation hover */
+        }
+        .adhkar-card .card-note {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        /* Compact list styling for simple guide sections */
+        .guide-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        .guide-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        .guide-card h3 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-color);
+            font-size: var(--font-size-xl);
+        }
+        .guide-card ul {
+            margin-left: 1rem;
+        }
+        .guide-card li {
+            margin-bottom: .4rem;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile: force 2 columns for all card grids on this page (except counter) */
+        @media (max-width: 600px) {
+            body.dhikr-page .main-adhkar-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            /* optional: slightly shorter images for tighter layouts */
+            body.dhikr-page .adhkar-card .card-image {
+                height: 120px;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="dhikr-page">
     <!-- Header -->
     <div class="menu__wrapper">
         <div class="menu__bar">
@@ -63,9 +244,7 @@
                         <span class="arabic-text">اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا</span>
                         Dhikr & Du'a Collection
                     </h1>
-                    <p class="page-subtitle">
-                        "Remember Allah much, so that you may be successful" - Quran 8:45
-                    </p>
+                    
                     <nav class="breadcrumb" aria-label="Breadcrumb">
                         <ol class="breadcrumb-list">
                             <li><a href="../index.html">Home</a></li>
@@ -76,44 +255,216 @@
             </div>
         </section>
 
-        <!-- Quick Navigation -->
-        <section class="dhikr-nav section">
+        <!-- Main Adhkar Section -->
+        <section id="main-adhkar" class="main-adhkar section">
             <div class="container">
-                <div class="dhikr-nav-grid">
-                    <a href="#morning" class="nav-card">
-                        <div class="nav-icon">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <h3>Morning Adhkar</h3>
-                        <p>Start your day with Allah's remembrance</p>
-                    </a>
-                    
-                    <a href="#evening" class="nav-card">
-                        <div class="nav-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <h3>Evening Adhkar</h3>
-                        <p>End your day with peaceful remembrance</p>
-                    </a>
-                    
-                    <a href="#quranic" class="nav-card">
-                        <div class="nav-icon">
-                            <i class="fas fa-book-quran"></i>
-                        </div>
-                        <h3>Quranic Du'as</h3>
-                        <p>Beautiful supplications from the Quran</p>
-                    </a>
-                    
-                    <a href="#prophetic" class="nav-card">
-                        <div class="nav-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>Prophetic Du'as</h3>
-                        <p>Blessed supplications from the Sunnah</p>
-                    </a>
+                <div class="section-header">
+                    <h2 class="section-title section-title--blue">Main Adhkar</h2>
+                    <p class="section-subtitle">Explore essential daily remembrances and popular du'as</p>
+                </div>
+                <div class="main-adhkar-grid">
+                    <div class="adhkar-card">
+                        <a id="card-morning" href="#card-morning">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Morning Adhkar">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Morning Adhkar</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="card-evening" href="#card-evening">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Evening Adhkar">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Evening Adhkar</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="sleep" href="#sleep">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Before Sleep">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Before Sleep</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="salah" href="#salah">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Salah">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Salah</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="after-salah" href="#after-salah">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="After Salah">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">After Salah</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="ruqyah" href="#ruqyah">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Ruqyah &amp; Illness">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Ruqyah &amp; Illness</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="praises" href="#praises">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Praises of Allah">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Praises of Allah</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="salawat" href="#salawat">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Salawat">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Salawat</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="card-quranic" href="#card-quranic">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Qur’anic Duas">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Qur’anic Duas</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="card-prophetic" href="#card-prophetic">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Sunnah Duas">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Sunnah Duas</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="names-of-allah" href="#names-of-allah">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Names of Allah">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Names of Allah</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="social" href="#social">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Social">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Social</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="adhkar-card">
+                        <a id="istighfar" href="#istighfar">
+                            <div class="card-image">
+                                <img src="../assets/images/image_example.jpg" alt="Istighfar">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-title">Istighfar</div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Other Adhkar Section -->
+        <section id="other-adhkar" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title section-title--blue">Other Adhkar</h2>
+                    <p class="section-subtitle">More supplications and remembrances for daily life</p>
+                </div>
+                <div class="main-adhkar-grid">
+                    <div class="adhkar-card"><a id="waking-up" href="#waking-up"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Waking up"></div><div class="card-content"><div class="card-title">Waking up</div></div></a></div>
+                    <div class="adhkar-card"><a id="nightmares" href="#nightmares"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Nightmares"></div><div class="card-content"><div class="card-title">Nightmares</div></div></a></div>
+                    <div class="adhkar-card"><a id="clothes" href="#clothes"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Clothes"></div><div class="card-content"><div class="card-title">Clothes</div></div></a></div>
+                    <div class="adhkar-card"><a id="lavatory-wudu" href="#lavatory-wudu"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Lavatory &amp; Wudu"></div><div class="card-content"><div class="card-title">Lavatory &amp; Wudu</div></div></a></div>
+                    <div class="adhkar-card"><a id="home" href="#home"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Home"></div><div class="card-content"><div class="card-title">Home</div></div></a></div>
+                    <div class="adhkar-card"><a id="adhan-masjid" href="#adhan-masjid"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Adhan &amp; Masjid"></div><div class="card-content"><div class="card-title">Adhan &amp; Masjid</div></div></a></div>
+                    <div class="adhkar-card"><a id="istikharah" href="#istikharah"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Istikharah"></div><div class="card-content"><div class="card-title">Istikharah</div></div></a></div>
+                    <div class="adhkar-card"><a id="gatherings" href="#gatherings"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Gatherings"></div><div class="card-content"><div class="card-title">Gatherings</div></div></a></div>
+                    <div class="adhkar-card"><a id="food-drink" href="#food-drink"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Food &amp; Drink"></div><div class="card-content"><div class="card-title">Food &amp; Drink</div></div></a></div>
+                    <div class="adhkar-card"><a id="travel" href="#travel"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Travel"></div><div class="card-content"><div class="card-title">Travel</div></div></a></div>
+                    <div class="adhkar-card"><a id="death" href="#death"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Death"></div><div class="card-content"><div class="card-title">Death</div></div></a></div>
+                    <div class="adhkar-card"><a id="nature" href="#nature"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Nature"></div><div class="card-content"><div class="card-title">Nature</div></div></a></div>
+                    <div class="adhkar-card"><a id="social-interactions" href="#social-interactions"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Social Interactions"></div><div class="card-content"><div class="card-title">Social Interactions</div></div></a></div>
+                    <div class="adhkar-card"><a id="protection-of-iman" href="#protection-of-iman"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Protection of Iman"></div><div class="card-content"><div class="card-title">Protection of Iman</div></div></a></div>
+                    <div class="adhkar-card"><a id="difficulties-happiness" href="#difficulties-happiness"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Difficulties &amp; Happiness"></div><div class="card-content"><div class="card-title">Difficulties &amp; Happiness</div></div></a></div>
+                    <div class="adhkar-card"><a id="hajj-umrah" href="#hajj-umrah"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Hajj &amp; Umrah"></div><div class="card-content"><div class="card-title">Hajj &amp; Umrah</div></div></a></div>
+                    <div class="adhkar-card"><a id="money-shopping" href="#money-shopping"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Money &amp; Shopping"></div><div class="card-content"><div class="card-title">Money &amp; Shopping</div></div></a></div>
+                    <div class="adhkar-card"><a id="marriage-children" href="#marriage-children"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Marriage &amp; Children"></div><div class="card-content"><div class="card-title">Marriage &amp; Children</div></div></a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dhikr Guide Section -->
+        <section id="dhikr-guide" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title section-title--blue">Dhikr Guide</h2>
+                    <p class="section-subtitle">Simple tips to make your remembrance consistent and meaningful</p>
+                </div>
+                <div class="main-adhkar-grid">
+                    <div class="adhkar-card"><a href="#quran-best-dhikr"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Qur’an: The Best Dhikr"></div><div class="card-content"><div class="card-title">The Qur’an: The Best Dhikr</div></div></a></div>
+                    <div class="adhkar-card"><a href="#virtues-of-dhikr"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Virtues of Dhikr"></div><div class="card-content"><div class="card-title">The Virtues of Dhikr</div></div></a></div>
+                    <div class="adhkar-card"><a href="#key-to-contentment"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Dhikr: The Key to Contentment"></div><div class="card-content"><div class="card-title">Dhikr: The Key to Contentment</div></div></a></div>
+                    <div class="adhkar-card"><a href="#universe-glorifies-allah"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Universe Glorifies Allah"></div><div class="card-content"><div class="card-title">The Universe Glorifies Allah</div></div></a></div>
+                    <div class="adhkar-card"><a href="#how-to-do-dhikr"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="How to Do Dhikr"></div><div class="card-content"><div class="card-title">How to Do Dhikr</div></div></a></div>
+                    <div class="adhkar-card"><a href="#why-sunnah-adhkar"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Why the Sunnah Adhkar?"></div><div class="card-content"><div class="card-title">Why the Sunnah Adhkar?</div></div></a></div>
+                    <div class="adhkar-card"><a href="#types-of-dhikr"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Types of Dhikr"></div><div class="card-content"><div class="card-title">The Types of Dhikr</div></div></a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dua Guide Section -->
+        <section id="dua-guide" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title section-title--blue">Dua Guide</h2>
+                    <p class="section-subtitle">Etiquettes and blessed times for supplication</p>
+                </div>
+                <div class="main-adhkar-grid">
+                    <div class="adhkar-card"><a href="#occasions-accepted"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Occasions When Du’a is Readily Accepted"></div><div class="card-content"><div class="card-title">Occasions When Du’a is Readily Accepted</div></div></a></div>
+                    <div class="adhkar-card"><a href="#etiquette-of-making-dua"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Etiquette of Making Du’a’"></div><div class="card-content"><div class="card-title">The Etiquette of Making Du’a’</div></div></a></div>
+                    <div class="adhkar-card"><a href="#names-of-allah"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Names of Allah"></div><div class="card-content"><div class="card-title">The Names of Allah</div></div></a></div>
+                    <div class="adhkar-card"><a href="#optimal-guide-for-making-dua"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="The Optimal Guide For Making Du’a’"></div><div class="card-content"><div class="card-title">The Optimal Guide For Making Du’a’</div></div></a></div>
+                    <div class="adhkar-card"><a href="#what-is-dua"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="What is Du’a’?"></div><div class="card-content"><div class="card-title">What is Du’a’?</div></div></a></div>
+                    <div class="adhkar-card"><a href="#five-steps-in-dua"><div class="card-image"><img src="../assets/images/image_example.jpg" alt="Five Steps to Follow in Du’a"></div><div class="card-content"><div class="card-title">Five Steps to Follow in Du’a</div></div></a></div>
+                </div>
+            </div>
+        </section>
+
+        
 
         <!-- Morning Adhkar Section -->
         <section id="morning" class="dhikr-section section">
@@ -514,7 +865,7 @@
         </section>
 
         <!-- Daily Dhikr Counter Section -->
-        <section class="dhikr-counter section bg-primary">
+        <section id="counter" class="dhikr-counter section bg-primary">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Digital Dhikr Counter</h2>
@@ -602,12 +953,16 @@
                 <div class="footer-section">
                     <h3 class="footer-title">Dhikr Collections</h3>
                     <ul class="footer-links">
-                        <li><a href="#morning">Morning Adhkar</a></li>
-                        <li><a href="#evening">Evening Adhkar</a></li>
-                        <li><a href="#quranic">Quranic Du'as</a></li>
-                        <li><a href="#prophetic">Prophetic Du'as</a></li>
-                        <li><a href="dhikr-dua.html#general">General Dhikr</a></li>
-                        <li><a href="dhikr-dua.html#special">Special Occasions</a></li>
+                        <li><a href="#card-morning">Morning Adhkar</a></li>
+                        <li><a href="#after-salah">After Salah</a></li>
+                        <li><a href="#ruqyah">Ruqyah &amp; Illness</a></li>
+                        <li><a href="#names-of-allah">Names of Allah</a></li>
+                        <li><a href="#istighfar">Istighfar</a></li>
+                        <li><a href="#salawat">Salawat</a></li>
+                        <li><a href="#waking-up">Waking up</a></li>
+                        <li><a href="#lavatory-wudu">Lavatory &amp; Wudu</a></li>
+                        <li><a href="#food-drink">Food &amp; Drink</a></li>
+                        <li><a href="#travel">Travel</a></li>
                     </ul>
                 </div>
                 
