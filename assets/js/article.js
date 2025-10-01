@@ -53,6 +53,12 @@
   }
 
   function renderArticle(a) {
+    // Update page header
+    const pageTitle = byId('pageTitle');
+    const breadcrumbTitle = byId('breadcrumbTitle');
+    if (pageTitle) pageTitle.textContent = a.title;
+    if (breadcrumbTitle) breadcrumbTitle.textContent = a.title;
+    
     byId('articleHero').src = a.image;
     byId('articleHero').alt = a.title;
     byId('articleTitle').textContent = a.title;

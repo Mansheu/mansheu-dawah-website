@@ -50,8 +50,26 @@
   </div>
 
   <main id="main-content">
-    <section class="section article-detail">
+    <!-- Page Header -->
+    <section class="page-header bg-primary">
       <div class="container">
+        <div class="page-header-content text-center">
+          <h1 class="page-title" style="color: white;" id="pageHeaderTitle">Article</h1>
+          
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="articles.html">Articles</a></li>
+              <li aria-current="page" id="breadcrumbTitle">Article</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <div class="container">
+      <section class="section article-detail">
         <!-- Hero image -->
         <div class="article-hero">
           <img id="articleHero" src="../assets/images/image_example.jpg" alt="Article image" loading="lazy">
@@ -83,8 +101,8 @@
         <article id="articleBody" class="article-body">
           <p>Loading...</p>
         </article>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Suggested Articles -->
     <section class="section">
@@ -192,9 +210,20 @@
     </div>
   </footer>
 
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+    <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
   <!-- Back to Top -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-arrow-up"></i>
   </button>
 
   <!-- JS -->
