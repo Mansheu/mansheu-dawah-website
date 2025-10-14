@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Duas - Mansheu Dawah</title>
+    <meta name="description" content="Duas and adhkar for travel, seeking safety, ease and blessings during journeys.">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="menu__wrapper">
+        <div class="menu__bar">
+            <a href="../index.html" title="Mansheu Dawah">
+                <div class="logo">
+                    <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
+                    <span>Mansheu Dawah</span>
+                </div>
+            </a>
+            <img class="menu-icon" src="../assets/images/burger-menu.svg" title="Menu" alt="Menu">
+            <ul class="navigation">
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="dhikr-dua.html" class="active">Dhikr & Du'a</a></li>
+                <li><a href="quotes-reminders.html">Quotes & Reminders</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="resources.html">Teaching Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <section class="page-header bg-primary">
+            <div class="container">
+                <div class="page-header-content text-center">
+                    <h1 class="page-title" style="color: white;">Travel</h1>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <ol class="breadcrumb-list">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+                            <li aria-current="page">Travel</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="adhkar-content">
+                <div class="adhkar-introduction">
+                    <p class="adhkar-description">Seek Allah’s protection and blessing in travel: at departure, while riding, and on return.</p>
+                </div>
+
+                <!-- Embarking / Riding -->
+                <div class="adhkar-item">
+                    <h3 class="subheader-blue">Embarking</h3>
+                    <div class="arabic-text">
+                        <p class="arabic" dir="rtl">سبحانَ الذي سخَّرَ لنا هذا وما كنَّا لهُ مقرنين، وإنَّا إلى ربِّنا لمنقلبون</p>
+                        <span class="recitation-count">(When setting off/riding)</span>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Transliteration</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Subḥāna alladhī sakhkhara lanā hādhā wa mā kunnā lahu muqrinīn, wa innā ilā rabbinā lamunqalibūn.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Translation</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Glory be to the One who subjected this to us, and we could not have done so on our own. And surely to our Lord we will return.</p>
+                                    <p class="source">Source: Qur'an 43:13–14</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Virtue</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Qur’anic remembrance that instills humility and destination awareness.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Explanation</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Say it upon boarding a vehicle or setting off, mindful of Allah’s favor in enabling travel.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Audio</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <div class="audio-player">
+                                        <div class="audio-controls">
+                                            <button class="play-btn" id="playBtnTravel1"><i class="fas fa-play"></i></button>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"><div class="progress" id="progressTravel1"></div></div>
+                                                <div class="time-display"><span id="currentTimeTravel1">0:00</span> / <span id="durationTravel1">0:00</span></div>
+                                            </div>
+                                            <div class="volume-container">
+                                                <i class="fas fa-volume-up"></i>
+                                                <input type="range" id="volumeSliderTravel1" min="0" max="100" value="70">
+                                            </div>
+                                        </div>
+                                        <audio id="audioTravel1" preload="metadata">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+
+                <!-- Travel supplication -->
+                <div class="adhkar-item">
+                    <h3 class="subheader-blue">Travel Du'a</h3>
+                    <div class="arabic-text">
+                        <p class="arabic" dir="rtl">اللهمَّ إنّا نسألُكَ في سفرِنا هذا البِرَّ والتقوى، ومن العملِ ما ترضى، اللهمَّ هوِّن علينا سفرَنا هذا واطوِ عنَّا بُعدَه، اللهمَّ أنتَ الصاحبُ في السفرِ والخليفةُ في الأهل</p>
+                        <span class="recitation-count">(At departure)</span>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Transliteration</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Allāhumma innā nasʾaluka fī safarinā hādhā l‑birra wa t‑taqwā, wa mina l‑ʿamali mā tarḍā; Allāhumma hawwin ʿalaynā safaranā hādhā wa‑ṭwi ʿannā buʿdah; Allāhumma anta ṣ‑ṣāḥibu fī s‑safar wa l‑khalīfatu fī l‑ahl.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Translation</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>O Allah, we ask You in this journey for righteousness and God‑consciousness and deeds You approve. O Allah, ease this journey for us and fold up its distance. O Allah, You are the Companion on the journey and Guardian over the family.</p>
+                                    <p class="source">Source: Sahih Muslim</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Virtue</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Seeks piety, ease, and divine companionship on the journey.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Explanation</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Recite at departure and as needed; complement with adhkar of riding and morning/evening.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Audio</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <div class="audio-player">
+                                        <div class="audio-controls">
+                                            <button class="play-btn" id="playBtnTravel2"><i class="fas fa-play"></i></button>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"><div class="progress" id="progressTravel2"></div></div>
+                                                <div class="time-display"><span id="currentTimeTravel2">0:00</span> / <span id="durationTravel2">0:00</span></div>
+                                            </div>
+                                            <div class="volume-container">
+                                                <i class="fas fa-volume-up"></i>
+                                                <input type="range" id="volumeSliderTravel2" min="0" max="100" value="70">
+                                            </div>
+                                        </div>
+                                        <audio id="audioTravel2" preload="metadata">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+
+                <!-- Returning -->
+                <div class="adhkar-item">
+                    <h3 class="subheader-blue">On Return</h3>
+                    <div class="arabic-text">
+                        <p class="arabic" dir="rtl">آيِبونَ، تائِبونَ، عابدونَ، لِربِّنا حامدون</p>
+                        <span class="recitation-count">(When returning home)</span>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Transliteration</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Āʾibūna, tāʾibūna, ʿābidūna, li‑rabbinā ḥāmidūn.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Meaning</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Returning repentant, worshiping, praising our Lord.</p>
+                                    <p class="source">Source: Sahih Muslim</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Virtue</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Completes the journey with repentance and praise; a sunnah remembrance at return.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Explanation</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p>Say when approaching one’s city or home as the journey concludes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Audio</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <div class="audio-player">
+                                        <div class="audio-controls">
+                                            <button class="play-btn" id="playBtnTravel3"><i class="fas fa-play"></i></button>
+                                            <div class="progress-container">
+                                                <div class="progress-bar"><div class="progress" id="progressTravel3"></div></div>
+                                                <div class="time-display"><span id="currentTimeTravel3">0:00</span> / <span id="durationTravel3">0:00</span></div>
+                                            </div>
+                                            <div class="volume-container">
+                                                <i class="fas fa-volume-up"></i>
+                                                <input type="range" id="volumeSliderTravel3" min="0" max="100" value="70">
+                                            </div>
+                                        </div>
+                                        <audio id="audioTravel3" preload="metadata">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="40" height="40">
+                        <span class="footer-brand">Mansheu Dawah</span>
+                    </div>
+                    <p class="footer-description">Spreading authentic Islamic knowledge and fostering spiritual growth through dawah activities.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+                        <li><a href="quotes-reminders.html">Quotes & Reminders</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Islamic Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="morning-adhkar.html">Morning Adhkar</a></li>
+                        <li><a href="evening-adhkar.html">Evening Adhkar</a></li>
+                        <li><a href="before-sleep-adhkar.html">Before Sleep Adhkar</a></li>
+                        <li><a href="after-salah.html">After Salah Adhkar</a></li>
+                        <li><a href="ruqyah.html">Ruqyah & Healing</a></li>
+                        <li><a href="praises.html">Praises of Allah</a></li>
+                        <li><a href="salawat.html">Salawat</a></li>
+                        <li><a href="quranic-duas.html">Qur'anic Duas</a></li>
+                        <li><a href="sunnah-duas.html">Sunnah Duas</a></li>
+                        <li><a href="names-of-allah.html">Names of Allah</a></li>
+                        <li><a href="social.html">Social Duas</a></li>
+                        <li><a href="istighfar.html">Istighfar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect With Us</h4>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> info@mansheudawah.com</p>
+                        <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Mansheu Dawah. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headers = document.querySelectorAll('.accordion-header');
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = header.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const icon = header.querySelector('.accordion-icon');
+                    const expanded = header.getAttribute('aria-expanded') === 'true';
+                    document.querySelectorAll('.accordion-header').forEach(h => {
+                        if (h !== header) {
+                            h.setAttribute('aria-expanded', 'false');
+                            const it = h.parentElement;
+                            const c = it.querySelector('.accordion-content');
+                            const i = h.querySelector('.accordion-icon');
+                            if (c) c.style.maxHeight = null;
+                            if (i) i.style.transform = 'rotate(0deg)';
+                            it.classList.remove('active');
+                        }
+                    });
+                    if (expanded) {
+                        header.setAttribute('aria-expanded', 'false');
+                        content.style.maxHeight = null;
+                        if (icon) icon.style.transform = 'rotate(0deg)';
+                        item.classList.remove('active');
+                    } else {
+                        header.setAttribute('aria-expanded', 'true');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        if (icon) icon.style.transform = 'rotate(180deg)';
+                        item.classList.add('active');
+                    }
+                });
+            });
+            const players = [1,2,3].map(n=>({
+                audio: document.getElementById('audioTravel'+n),
+                playBtn: document.getElementById('playBtnTravel'+n),
+                progress: document.getElementById('progressTravel'+n),
+                currentTime: document.getElementById('currentTimeTravel'+n),
+                duration: document.getElementById('durationTravel'+n),
+                volumeSlider: document.getElementById('volumeSliderTravel'+n)
+            }));
+            players.forEach((p,idx)=>{
+                if(!p.audio||!p.playBtn) return; p.audio.volume=0.7;
+                p.playBtn.addEventListener('click',function(){ players.forEach((q,i)=>{ if(i!==idx && q.audio && !q.audio.paused){ q.audio.pause(); if(q.playBtn) q.playBtn.innerHTML='<i class="fas fa-play"></i>'; } }); if(p.audio.paused){ p.audio.play(); this.innerHTML='<i class="fas fa-pause"></i>'; } else { p.audio.pause(); this.innerHTML='<i class="fas fa-play"></i>'; }});
+                p.audio.addEventListener('timeupdate',function(){ if(p.progress&&p.audio.duration){ p.progress.style.width=(p.audio.currentTime/p.audio.duration*100)+'%'; } if(p.currentTime){ const m=Math.floor(p.audio.currentTime/60); const s=Math.floor(p.audio.currentTime%60).toString().padStart(2,'0'); p.currentTime.textContent=`${m}:${s}`; }});
+                p.audio.addEventListener('loadedmetadata',function(){ if(p.duration && isFinite(p.audio.duration)){ const m=Math.floor(p.audio.duration/60); const s=Math.floor(p.audio.duration%60).toString().padStart(2,'0'); p.duration.textContent=`${m}:${s}`; }});
+                p.audio.addEventListener('ended',function(){ if(p.playBtn) p.playBtn.innerHTML='<i class="fas fa-play"></i>'; if(p.progress) p.progress.style.width='0%'; if(p.currentTime) p.currentTime.textContent='0:00'; });
+                if(p.volumeSlider) p.volumeSlider.addEventListener('input',function(){ p.audio.volume=this.value/100; });
+            });
+        });
+    </script>
+</body>
+</html>
