@@ -3,6 +3,7 @@
 (function() {
   let currentCategory = 'all';
   let availableArticles = []; // Pool of articles that haven't been loaded yet
+  let articlesLoaded = false; // Track if we've already loaded additional articles
 
   document.addEventListener('DOMContentLoaded', function() {
     initializeArticles();
@@ -15,9 +16,6 @@
 
     // Initialize the pool of available articles
     initializeAvailableArticles();
-
-    // Make all article cards clickable
-    initializeArticleCardClicks();
 
     // Initialize category from URL if present
     const urlCategory = (new URLSearchParams(window.location.search).get('category') || '').toLowerCase();
@@ -62,28 +60,6 @@
     }
   }
 
-  function initializeArticleCardClicks() {
-    // Make entire article card clickable (delegate to handle dynamically loaded cards)
-    document.addEventListener('click', function(e) {
-      const articleCard = e.target.closest('.article-card');
-      if (!articleCard) return;
-      
-      // Don't trigger if clicking on a link directly (let the link handle it)
-      if (e.target.tagName === 'A' || e.target.closest('a')) return;
-      
-      // Find the main article link
-      const articleLink = articleCard.querySelector('.article-title a');
-      if (articleLink) {
-        articleLink.click();
-      }
-    });
-
-    // Add cursor pointer style to article cards
-    const style = document.createElement('style');
-    style.textContent = '.article-card { cursor: pointer; }';
-    document.head.appendChild(style);
-  }
-
   function initializeAvailableArticles() {
     // Define all available articles that can be loaded
     availableArticles = [
@@ -109,7 +85,7 @@
         category: 'quran',
         img: '../assets/images/image_example.jpg',
         title: 'Reflecting on Short Surahs',
-        excerpt: 'Key themes and reflections from the last juz that transform daily living.',
+        excerpt: 'Key themes and reflections from the last juz' that transform daily living.',
         date: 'August 25, 2025',
         read: '7 min read',
         id: 'short-surahs'
@@ -345,6 +321,59 @@
 
     // Keep current filter applied
     applyCategoryFilter(currentCategory);
+  }
+
+    const more = [
+      {
+        category: 'faith',
+        img: '../assets/images/image_example.jpg',
+        title: 'Strengthening Tawheed in Daily Life',
+        excerpt: 'Practical steps to keep your heart firm upon pure monotheism (tawheed) amidst daily distractions.',
+        date: 'August 30, 2025',
+        read: '6 min read'
+      },
+      {
+        category: 'prayer',
+        img: '../assets/images/image_example.jpg',
+        title: 'Khushu in Salah: Cultivating Presence',
+        excerpt: 'Simple techniques from the Quran and Sunnah to help you develop focus and humility in prayer.',
+        date: 'August 28, 2025',
+        read: '5 min read'
+      },
+      {
+        category: 'quran',
+        img: '../assets/images/image_example.jpg',
+        title: 'Reflecting on Short Surahs',
+        excerpt: 'Key themes and reflections from the last juz’ that transform daily living.',
+        date: 'August 25, 2025',
+        read: '7 min read'
+      }
+    ];
+
+    const html = more.map(item => `
+      <article class="article-card" data-category="${item.category}">
+        <div class="article-image">
+          <img src="${item.img}" alt="${escapeHtml(item.title)}" loading="lazy">
+          <div class="article-category">${capitalize(item.category)}</div>
+        </div>
+        <div class="article-content">
+          <h3 class="article-title">
+            <a href="article-detail.html">${escapeHtml(item.title)}</a>
+          </h3>
+          <p class="article-excerpt">${escapeHtml(item.excerpt)}</p>
+          <div class="article-meta">
+            <span class="article-date"><i class="fas fa-calendar"></i> ${item.date}</span>
+            <span class="read-time"><i class="fas fa-clock"></i> ${item.read}</span>
+          </div>
+          <div class="article-author-profile">
+            <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
+            <span class="author-name">Sheu Babakar</span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    container.insertAdjacentHTML('beforeend', html);
   }
 
   function capitalize(s) {

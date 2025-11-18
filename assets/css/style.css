@@ -1689,8 +1689,8 @@ a:hover, a:focus {
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-normal);
-    z-index: 50;
-    border: 2px solid var(--border-color);
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .back-to-top.visible, .back-to-top.show {

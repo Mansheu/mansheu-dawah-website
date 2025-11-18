@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+    <title>Digital Dhikr Counter - Mansheu Dawah</title>
+    <meta name="description" content="Keep track of your daily dhikr with our beautiful, easy-to-use digital counter. Track SubhanAllah, Alhamdulillah, Allahu Akbar and more.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="alternate icon" href="../assets/images/favicon.ico">
+    
+    <style>
+        /* Digital Counter Specific Styles */
+        .counter-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .counter-hero {
+            padding: 6rem 0 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .counter-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .counter-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .counter-main {
+            padding: 2rem 0 4rem;
+        }
+        
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .counter-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .counter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+        }
+        
+        .counter-card.completed {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .counter-card.completed::before {
+            background: linear-gradient(90deg, #38ef7d, #11998e);
+        }
+        
+        .counter-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+        
+        .counter-card.completed .counter-title {
+            color: white;
+        }
+        
+        .counter-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            font-weight: 700;
+        }
+        
+        .counter-card.completed .counter-arabic {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* Circular Progress */
+        .progress-circle-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+        }
+        
+        .progress-circle {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-circle-bg {
+            fill: none;
+            stroke: #e2e8f0;
+            stroke-width: 12;
+        }
+        
+        .counter-card.completed .progress-circle-bg {
+            stroke: rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-circle-progress {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 12;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        
+        .counter-card.completed .progress-circle-progress {
+            stroke: #fff;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .count-display {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #667eea;
+            line-height: 1;
+        }
+        
+        .counter-card.completed .count-display {
+            color: white;
+        }
+        
+        .target-display {
+            font-size: 1.25rem;
+            color: #718096;
+            margin-top: 0.25rem;
+        }
+        
+        .counter-card.completed .target-display {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .counter-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .counter-btn {
+            flex: 1;
+            padding: 1.25rem 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 60px;
+            touch-action: manipulation;
+        }
+        
+        .counter-btn.increment {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .counter-btn.increment:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .counter-btn.increment:active {
+            transform: scale(0.95);
+        }
+        
+        .counter-btn.reset {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .counter-btn.reset:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+        
+        .counter-card.completed .counter-btn.increment {
+            background: white;
+            color: #11998e;
+        }
+        
+        .counter-card.completed .counter-btn.reset {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Total Section */
+        .total-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+        
+        .total-label {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .total-count {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+        
+        .reset-all-btn {
+            padding: 1rem 2.5rem;
+            background: #f5576c;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+        }
+        
+        /* Celebration Animation */
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.05) rotate(2deg); }
+            50% { transform: scale(1.08); }
+            75% { transform: scale(1.05) rotate(-2deg); }
+        }
+        
+        .counter-card.celebrating {
+            animation: celebrate 0.6s ease;
+        }
+        
+        /* Confetti */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall 3s linear forwards;
+        }
+        
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .counter-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .counter-hero p {
+                font-size: 1rem;
+            }
+            
+            .counter-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .counter-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .progress-circle-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .count-display {
+                font-size: 3rem;
+            }
+            
+            .counter-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1.125rem;
+            }
+            
+            .total-count {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            .counter-card {
+                background: #2d3748;
+            }
+            
+            .counter-title,
+            .counter-arabic {
+                color: #e2e8f0;
+            }
+            
+            .progress-circle-bg {
+                stroke: #4a5568;
+            }
+            
+            .target-display {
+                color: #a0aec0;
+            }
+            
+            .counter-btn.reset {
+                background: #4a5568;
+                color: #e2e8f0;
+                border-color: #718096;
+            }
+            
+            .counter-btn.reset:hover {
+                background: #718096;
+            }
+            
+            .total-section {
+                background: #2d3748;
+            }
+            
+            .total-label {
+                color: #e2e8f0;
+            }
+        }
+        
+        /* Completion Badge */
+        .completion-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .completion-badge i {
+            font-size: 1.25rem;
+        }
+        
+        /* Presets Section */
+        .presets-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .presets-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .presets-subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 2rem;
+        }
+        
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .preset-btn {
+            padding: 1.25rem 1.5rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .preset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .preset-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .preset-label {
+            display: block;
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+        
+        /* Custom Counter Section */
+        .custom-counter-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .add-counter-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: #f5576c;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+        }
+        
+        .add-counter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+        
+        .add-counter-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .counter-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .counter-actions button {
+            flex: 1;
+        }
+        
+        .reset-to-default-btn {
+            padding: 1.25rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .reset-to-default-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .reset-to-default-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .default-counters {
+            display: block;
+        }
+        
+        .default-counters.hidden {
+            display: none;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #718096;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+        }
+        
+        .modal-close:hover {
+            color: #2d3748;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .delete-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(245, 87, 108, 0.1);
+            color: #f5576c;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-btn:hover {
+            background: #f5576c;
+            color: white;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .presets-section,
+            .custom-counter-section {
+                background: #2d3748;
+            }
+            
+            .presets-title,
+            .modal-title,
+            .form-label {
+                color: #e2e8f0;
+            }
+            
+            .presets-subtitle {
+                color: #a0aec0;
+            }
+            
+            .modal-content {
+                background: #2d3748;
+            }
+            
+            .modal-close {
+                color: #a0aec0;
+            }
+            
+            .modal-close:hover {
+                color: #e2e8f0;
+            }
+            
+            .form-input {
+                background: #4a5568;
+                border-color: #718096;
+                color: #e2e8f0;
+            }
+            
+            .form-input:focus {
+                border-color: #667eea;
+            }
+        }
+    </style>
+</head>
+
+<body class="counter-page">
+    <!-- Header -->
+    <div class="menu__wrapper">
+        <div class="menu__bar">
+            <a href="../index.html" title="Mansheu Dawah">
+                <div class="logo">
+                    <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
+                    <span>Mansheu Dawah</span>
+                </div>
+            </a>
+            <img class="menu-icon" src="../assets/images/burger-menu.svg" title="Menu" alt="Menu">
+            <ul class="navigation">
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+                <li><a href="digital-counter.html" class="active">Digital Counter</a></li>
+                <li><a href="quotes-reminders.html">Quotes & Reminders</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="resources.html">Teaching Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="counter-hero">
+            <div class="container">
+                <h1>Digital Dhikr Counter</h1>
+                <p>Keep track of your daily remembrance of Allah with our beautiful, easy-to-use counter</p>
+            </div>
+        </section>
+
+        <!-- Counter Section -->
+        <section class="counter-main">
+            <div class="container">
+                <!-- Presets Section -->
+                <div class="presets-section">
+                    <h2 class="presets-title">Quick Presets</h2>
+                    <p class="presets-subtitle">Load common dhikr routines with one click</p>
+                    <div class="presets-grid">
+                        <button class="preset-btn" onclick="loadPreset('after-prayer')">
+                            <i class="fas fa-mosque"></i> After Prayer
+                            <span class="preset-label">Tasbih (33+33+34)</span>
+                        </button>
+                        <button class="preset-btn" onclick="loadPreset('before-sleep')">
+                            <i class="fas fa-moon"></i> Before Sleep
+                            <span class="preset-label">Tasbih + Ayat al-Kursi</span>
+                        </button>
+                        <button class="preset-btn" onclick="loadPreset('istighfar-100')">
+                            <i class="fas fa-heart"></i> 100 Istighfar
+                            <span class="preset-label">Seeking forgiveness</span>
+                        </button>
+                        <button class="preset-btn" onclick="loadPreset('morning-evening')">
+                            <i class="fas fa-sun"></i> Morning/Evening
+                            <span class="preset-label">Daily adhkar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Counter Section -->
+                <div class="custom-counter-section">
+                    <div class="counter-actions">
+                        <button class="add-counter-btn" onclick="openCustomCounterModal()">
+                            <i class="fas fa-plus-circle"></i> Add Custom Counter
+                        </button>
+                        <button class="reset-to-default-btn" onclick="resetToDefault()">
+                            <i class="fas fa-undo"></i> Reset to Default
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Default Counters -->
+                <div class="default-counters" id="default-counters">
+                    <div class="counter-grid">
+                    <!-- SubhanAllah Counter -->
+                    <div class="counter-card" id="subhanallah-card">
+                        <div class="counter-title">SubhanAllah</div>
+                        <div class="counter-arabic">سُبْحَانَ ٱللَّٰهِ</div>
+                        
+                        <div class="progress-circle-container">
+                            <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
+                                <defs>
+                                    <linearGradient id="gradient-subhanallah" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
+                                <circle class="progress-circle-progress" 
+                                        cx="100" cy="100" r="85" 
+                                        id="subhanallah-progress"
+                                        stroke="url(#gradient-subhanallah)"
+                                        stroke-dasharray="534.07" 
+                                        stroke-dashoffset="534.07"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <div class="count-display" id="subhanallah-count">0</div>
+                                <div class="target-display">/ 33</div>
+                            </div>
+                        </div>
+                        
+                        <div class="counter-controls">
+                            <button class="counter-btn increment" onclick="incrementCounter('subhanallah')">
+                                <i class="fas fa-plus"></i> Count
+                            </button>
+                            <button class="counter-btn reset" onclick="resetCounter('subhanallah')">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Alhamdulillah Counter -->
+                    <div class="counter-card" id="alhamdulillah-card">
+                        <div class="counter-title">Alhamdulillah</div>
+                        <div class="counter-arabic">ٱلْحَمْدُ لِلَّٰهِ</div>
+                        
+                        <div class="progress-circle-container">
+                            <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
+                                <defs>
+                                    <linearGradient id="gradient-alhamdulillah" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
+                                <circle class="progress-circle-progress" 
+                                        cx="100" cy="100" r="85" 
+                                        id="alhamdulillah-progress"
+                                        stroke="url(#gradient-alhamdulillah)"
+                                        stroke-dasharray="534.07" 
+                                        stroke-dashoffset="534.07"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <div class="count-display" id="alhamdulillah-count">0</div>
+                                <div class="target-display">/ 33</div>
+                            </div>
+                        </div>
+                        
+                        <div class="counter-controls">
+                            <button class="counter-btn increment" onclick="incrementCounter('alhamdulillah')">
+                                <i class="fas fa-plus"></i> Count
+                            </button>
+                            <button class="counter-btn reset" onclick="resetCounter('alhamdulillah')">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Allahu Akbar Counter -->
+                    <div class="counter-card" id="allahu-akbar-card">
+                        <div class="counter-title">Allahu Akbar</div>
+                        <div class="counter-arabic">ٱللَّٰهُ أَكْبَرُ</div>
+                        
+                        <div class="progress-circle-container">
+                            <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
+                                <defs>
+                                    <linearGradient id="gradient-allahu-akbar" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
+                                <circle class="progress-circle-progress" 
+                                        cx="100" cy="100" r="85" 
+                                        id="allahu-akbar-progress"
+                                        stroke="url(#gradient-allahu-akbar)"
+                                        stroke-dasharray="534.07" 
+                                        stroke-dashoffset="534.07"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <div class="count-display" id="allahu-akbar-count">0</div>
+                                <div class="target-display">/ 34</div>
+                            </div>
+                        </div>
+                        
+                        <div class="counter-controls">
+                            <button class="counter-btn increment" onclick="incrementCounter('allahu-akbar')">
+                                <i class="fas fa-plus"></i> Count
+                            </button>
+                            <button class="counter-btn reset" onclick="resetCounter('allahu-akbar')">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- End of Default Counters -->
+
+                <!-- Custom Counters Grid -->
+                <div class="counter-grid" id="counter-grid"></div>
+
+                <!-- Total Section -->
+                <div class="total-section">
+                    <div class="total-label">Total Dhikr Today</div>
+                    <div class="total-count" id="total-count">0</div>
+                    <button class="reset-all-btn" onclick="resetAllCounters()">
+                        <i class="fas fa-sync-alt"></i> Reset All Counters
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-moon"></i>
+                        <span>Mansheu Dawah</span>
+                    </div>
+                    <p class="footer-description">
+                        A dawah initiative dedicated to connecting hearts to Allah through authentic Islamic knowledge, 
+                        spiritual guidance, and community support.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Dhikr Collections</h3>
+                    <ul class="footer-links">
+                        <li><a href="morning-adhkar.html">Morning Adhkar</a></li>
+                        <li><a href="evening-adhkar.html">Evening Adhkar</a></li>
+                        <li><a href="after-salah.html">After Salah</a></li>
+                        <li><a href="names-of-allah.html">Names of Allah</a></li>
+                        <li><a href="quranic-duas.html">Quranic Du'as</a></li>
+                        <li><a href="sunnah-duas.html">Sunnah Du'as</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+                        <li><a href="digital-counter.html">Digital Counter</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="resources.html">Teaching Resources</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@mansheudawah.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+44 (0)7XXX XXX XXX</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>United Kingdom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Mansheu Dawah. All rights reserved. | A dawah initiative to connect creation to The Creator.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Custom Counter Modal -->
+    <div class="modal" id="customCounterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Custom Counter</h2>
+                <button class="modal-close" onclick="closeCustomCounterModal()">&times;</button>
+            </div>
+            <form id="customCounterForm" onsubmit="addCustomCounter(event)">
+                <div class="form-group">
+                    <label class="form-label" for="dhikrName">Dhikr Name</label>
+                    <input type="text" id="dhikrName" class="form-input" placeholder="e.g., La ilaha illallah" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="dhikrArabic">Arabic Text (Optional)</label>
+                    <input type="text" id="dhikrArabic" class="form-input" placeholder="e.g., لَا إِلَٰهَ إِلَّا ٱللَّٰهُ">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="dhikrTarget">Target Count</label>
+                    <input type="number" id="dhikrTarget" class="form-input" placeholder="e.g., 100" min="1" required>
+                </div>
+                <button type="submit" class="form-submit">
+                    <i class="fas fa-check"></i> Create Counter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Enhanced Dhikr Counter with Custom Counters and Presets
+        let dhikrCounters = {
+            'subhanallah': { count: 0, target: 33, name: 'SubhanAllah', arabic: 'سُبْحَانَ ٱللَّٰهِ', isDefault: true },
+            'alhamdulillah': { count: 0, target: 33, name: 'Alhamdulillah', arabic: 'ٱلْحَمْدُ لِلَّٰهِ', isDefault: true },
+            'allahu-akbar': { count: 0, target: 34, name: 'Allahu Akbar', arabic: 'ٱللَّٰهُ أَكْبَرُ', isDefault: true }
+        };
+
+        let customCounters = [];
+        
+        // Presets configuration
+        const presets = {
+            'after-prayer': [
+                { name: 'SubhanAllah', arabic: 'سُبْحَانَ ٱللَّٰهِ', target: 33 },
+                { name: 'Alhamdulillah', arabic: 'ٱلْحَمْدُ لِلَّٰهِ', target: 33 },
+                { name: 'Allahu Akbar', arabic: 'ٱللَّٰهُ أَكْبَرُ', target: 34 }
+            ],
+            'before-sleep': [
+                { name: 'SubhanAllah', arabic: 'سُبْحَانَ ٱللَّٰهِ', target: 33 },
+                { name: 'Alhamdulillah', arabic: 'ٱلْحَمْدُ لِلَّٰهِ', target: 33 },
+                { name: 'Allahu Akbar', arabic: 'ٱللَّٰهُ أَكْبَرُ', target: 34 },
+                { name: 'Ayat al-Kursi', arabic: 'آيَةُ الْكُرْسِيِّ', target: 1 }
+            ],
+            'istighfar-100': [
+                { name: 'Astaghfirullah', arabic: 'أَسْتَغْفِرُ ٱللَّٰهَ', target: 100 }
+            ],
+            'morning-evening': [
+                { name: 'Ayat al-Kursi', arabic: 'آيَةُ الْكُرْسِيِّ', target: 1 },
+                { name: 'Al-Ikhlas', arabic: 'قُلْ هُوَ ٱللَّٰهُ أَحَدٌ', target: 3 },
+                { name: 'Al-Falaq', arabic: 'قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ', target: 3 },
+                { name: 'An-Nas', arabic: 'قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ', target: 3 }
+            ]
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCountersFromStorage();
+            loadCustomCounters();
+            updateAllDisplays();
+            renderCustomCounters();
+            updateDefaultCountersVisibility();
+        });
+
+        // Update visibility of default counters
+        function updateDefaultCountersVisibility() {
+            const defaultCountersContainer = document.getElementById('default-counters');
+            if (customCounters.length > 0) {
+                defaultCountersContainer.classList.add('hidden');
+            } else {
+                defaultCountersContainer.classList.remove('hidden');
+            }
+        }
+
+        // Reset to default counters
+        function resetToDefault() {
+            if (customCounters.length === 0) {
+                return;
+            }
+            
+            // Clear custom counters
+            customCounters = [];
+            
+            // Reset default counters
+            Object.keys(dhikrCounters).forEach(key => {
+                dhikrCounters[key].count = 0;
+                const card = document.getElementById(`${key}-card`);
+                if (card) card.classList.remove('completed');
+            });
+            
+            saveCountersToStorage();
+            saveCustomCounters();
+            renderCustomCounters();
+            updateAllDisplays();
+            updateDefaultCountersVisibility();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+        }
+
+        // Load preset
+        function loadPreset(presetName) {
+            if (!presets[presetName]) return;
+            
+            // Clear custom counters
+            customCounters = [];
+            
+            // Reset default counters
+            Object.keys(dhikrCounters).forEach(key => {
+                dhikrCounters[key].count = 0;
+            });
+            
+            // Add preset counters as custom
+            presets[presetName].forEach(preset => {
+                const id = 'custom-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                customCounters.push({
+                    id: id,
+                    name: preset.name,
+                    arabic: preset.arabic,
+                    target: preset.target,
+                    count: 0
+                });
+            });
+            
+            saveCountersToStorage();
+            saveCustomCounters();
+            renderCustomCounters();
+            updateAllDisplays();
+            updateDefaultCountersVisibility();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Custom Counter Modal Functions
+        function openCustomCounterModal() {
+            document.getElementById('customCounterModal').classList.add('active');
+            document.getElementById('dhikrName').focus();
+        }
+
+        function closeCustomCounterModal() {
+            document.getElementById('customCounterModal').classList.remove('active');
+            document.getElementById('customCounterForm').reset();
+        }
+
+        // Add custom counter
+        function addCustomCounter(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('dhikrName').value.trim();
+            const arabic = document.getElementById('dhikrArabic').value.trim();
+            const target = parseInt(document.getElementById('dhikrTarget').value);
+            
+            if (!name || !target) return;
+            
+            const id = 'custom-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+            
+            customCounters.push({
+                id: id,
+                name: name,
+                arabic: arabic || '',
+                target: target,
+                count: 0
+            });
+            
+            saveCustomCounters();
+            renderCustomCounters();
+            updateDefaultCountersVisibility();
+            closeCustomCounterModal();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+        }
+
+        // Delete custom counter
+        function deleteCustomCounter(id) {
+            customCounters = customCounters.filter(c => c.id !== id);
+            saveCustomCounters();
+            renderCustomCounters();
+            updateDefaultCountersVisibility();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(20);
+            }
+        }
+
+        // Render custom counters
+        function renderCustomCounters() {
+            const grid = document.getElementById('counter-grid');
+            
+            // Remove existing custom counter cards
+            const existingCustom = grid.querySelectorAll('.counter-card[data-custom]');
+            existingCustom.forEach(card => card.remove());
+            
+            // Add custom counters
+            customCounters.forEach(counter => {
+                const card = createCustomCounterCard(counter);
+                grid.appendChild(card);
+            });
+            
+            updateAllDisplays();
+        }
+
+        // Create custom counter card
+        function createCustomCounterCard(counter) {
+            const card = document.createElement('div');
+            card.className = 'counter-card';
+            card.id = `${counter.id}-card`;
+            card.setAttribute('data-custom', 'true');
+            
+            const isCompleted = counter.count >= counter.target;
+            if (isCompleted) {
+                card.classList.add('completed');
+            }
+            
+            card.innerHTML = `
+                <button class="delete-btn" onclick="deleteCustomCounter('${counter.id}')">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <div class="counter-title">${counter.name}</div>
+                ${counter.arabic ? `<div class="counter-arabic">${counter.arabic}</div>` : ''}
+                
+                <div class="progress-circle-container">
+                    <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="gradient-${counter.id}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
+                        <circle class="progress-circle-progress" 
+                                cx="100" cy="100" r="85" 
+                                id="${counter.id}-progress"
+                                stroke="url(#gradient-${counter.id})"
+                                stroke-dasharray="534.07" 
+                                stroke-dashoffset="534.07"></circle>
+                    </svg>
+                    <div class="progress-text">
+                        <div class="count-display" id="${counter.id}-count">${counter.count}</div>
+                        <div class="target-display">/ ${counter.target}</div>
+                    </div>
+                </div>
+                
+                <div class="counter-controls">
+                    <button class="counter-btn increment" onclick="incrementCustomCounter('${counter.id}')">
+                        <i class="fas fa-plus"></i> Count
+                    </button>
+                    <button class="counter-btn reset" onclick="resetCustomCounter('${counter.id}')">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Increment custom counter
+        function incrementCustomCounter(id) {
+            const counter = customCounters.find(c => c.id === id);
+            if (!counter) return;
+            
+            counter.count++;
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+            
+            // Visual feedback
+            const card = document.getElementById(`${id}-card`);
+            card.classList.add('celebrating');
+            setTimeout(() => card.classList.remove('celebrating'), 600);
+            
+            // Check if target reached
+            if (counter.count === counter.target) {
+                card.classList.add('completed');
+                showCelebration();
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100, 50, 100]);
+                }
+            }
+            
+            saveCustomCounters();
+            updateCustomCounterDisplay(counter);
+            updateTotalCount();
+        }
+
+        // Reset custom counter
+        function resetCustomCounter(id) {
+            const counter = customCounters.find(c => c.id === id);
+            if (!counter) return;
+            
+            counter.count = 0;
+            const card = document.getElementById(`${id}-card`);
+            card.classList.remove('completed');
+            
+            saveCustomCounters();
+            updateCustomCounterDisplay(counter);
+            updateTotalCount();
+            
+            if (navigator.vibrate) {
+                navigator.vibrate(20);
+            }
+        }
+
+        // Update custom counter display
+        function updateCustomCounterDisplay(counter) {
+            const countElement = document.getElementById(`${counter.id}-count`);
+            if (countElement) {
+                countElement.textContent = counter.count;
+            }
+            
+            const progressCircle = document.getElementById(`${counter.id}-progress`);
+            if (progressCircle) {
+                const percentage = (counter.count / counter.target) * 100;
+                const circumference = 534.07;
+                const offset = circumference - (percentage / 100) * circumference;
+                progressCircle.style.strokeDashoffset = offset;
+            }
+        }
+
+        // Save custom counters
+        function saveCustomCounters() {
+            localStorage.setItem('customDhikrCounters', JSON.stringify(customCounters));
+        }
+
+        // Load custom counters
+        function loadCustomCounters() {
+            const saved = localStorage.getItem('customDhikrCounters');
+            if (saved) {
+                customCounters = JSON.parse(saved);
+            }
+        }
+
+        // Close modal on outside click
+        document.getElementById('customCounterModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCustomCounterModal();
+            }
+        });
+
+        function incrementCounter(type) {
+            if (dhikrCounters[type]) {
+                dhikrCounters[type].count++;
+                
+                // Haptic feedback for mobile devices
+                if (navigator.vibrate) {
+                    navigator.vibrate(10);
+                }
+                
+                // Visual feedback
+                const card = document.getElementById(`${type}-card`);
+                card.classList.add('celebrating');
+                setTimeout(() => card.classList.remove('celebrating'), 600);
+                
+                // Check if target reached
+                if (dhikrCounters[type].count === dhikrCounters[type].target) {
+                    markAsCompleted(type);
+                    showCelebration();
+                    // Stronger vibration for completion
+                    if (navigator.vibrate) {
+                        navigator.vibrate([100, 50, 100, 50, 100]);
+                    }
+                }
+                
+                saveCountersToStorage();
+                updateAllDisplays();
+            }
+        }
+
+        function resetCounter(type) {
+            if (dhikrCounters[type]) {
+                dhikrCounters[type].count = 0;
+                const card = document.getElementById(`${type}-card`);
+                card.classList.remove('completed');
+                saveCountersToStorage();
+                updateAllDisplays();
+                
+                // Light haptic feedback
+                if (navigator.vibrate) {
+                    navigator.vibrate(20);
+                }
+            }
+        }
+
+        function resetAllCounters() {
+            Object.keys(dhikrCounters).forEach(type => {
+                dhikrCounters[type].count = 0;
+                const card = document.getElementById(`${type}-card`);
+                if (card) card.classList.remove('completed');
+            });
+            
+            // Reset custom counters too
+            customCounters.forEach(counter => {
+                counter.count = 0;
+                const card = document.getElementById(`${counter.id}-card`);
+                if (card) card.classList.remove('completed');
+            });
+            
+            saveCountersToStorage();
+            saveCustomCounters();
+            updateAllDisplays();
+            renderCustomCounters();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
+        }
+
+        function updateAllDisplays() {
+            Object.keys(dhikrCounters).forEach(type => {
+                updateCountDisplay(type);
+                updateProgressCircle(type);
+            });
+            updateTotalCount();
+        }
+
+        function updateCountDisplay(type) {
+            const countElement = document.getElementById(`${type}-count`);
+            if (countElement) {
+                countElement.textContent = dhikrCounters[type].count;
+            }
+        }
+
+        function updateProgressCircle(type) {
+            const progressCircle = document.getElementById(`${type}-progress`);
+            if (progressCircle) {
+                const percentage = (dhikrCounters[type].count / dhikrCounters[type].target) * 100;
+                const circumference = 534.07; // 2 * PI * radius (85)
+                const offset = circumference - (percentage / 100) * circumference;
+                progressCircle.style.strokeDashoffset = offset;
+            }
+        }
+
+        function updateTotalCount() {
+            const totalElement = document.getElementById('total-count');
+            if (totalElement) {
+                const defaultTotal = Object.values(dhikrCounters).reduce((sum, counter) => sum + counter.count, 0);
+                const customTotal = customCounters.reduce((sum, counter) => sum + counter.count, 0);
+                totalElement.textContent = defaultTotal + customTotal;
+            }
+        }
+
+        function markAsCompleted(type) {
+            const card = document.getElementById(`${type}-card`);
+            card.classList.add('completed');
+        }
+
+        function showCelebration() {
+            // Create confetti effect
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti-container';
+            document.body.appendChild(confettiContainer);
+            
+            const colors = ['#667eea', '#764ba2', '#38ef7d', '#11998e', '#f5576c', '#f093fb'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confetti);
+            }
+            
+            setTimeout(() => {
+                document.body.removeChild(confettiContainer);
+            }, 3000);
+        }
+
+        function saveCountersToStorage() {
+            localStorage.setItem('dhikrCounters', JSON.stringify(dhikrCounters));
+        }
+
+        function loadCountersFromStorage() {
+            const saved = localStorage.getItem('dhikrCounters');
+            if (saved) {
+                dhikrCounters = JSON.parse(saved);
+                // Check which counters are completed
+                Object.keys(dhikrCounters).forEach(type => {
+                    if (dhikrCounters[type].count >= dhikrCounters[type].target) {
+                        markAsCompleted(type);
+                    }
+                });
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.target.matches('input, textarea')) return;
+            
+            switch(event.key) {
+                case '1':
+                    event.preventDefault();
+                    incrementCounter('subhanallah');
+                    break;
+                case '2':
+                    event.preventDefault();
+                    incrementCounter('alhamdulillah');
+                    break;
+                case '3':
+                    event.preventDefault();
+                    incrementCounter('allahu-akbar');
+                    break;
+                case ' ':
+                    event.preventDefault();
+                    // Space increments the first incomplete counter
+                    const incomplete = Object.keys(dhikrCounters).find(
+                        type => dhikrCounters[type].count < dhikrCounters[type].target
+                    );
+                    if (incomplete) incrementCounter(incomplete);
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
