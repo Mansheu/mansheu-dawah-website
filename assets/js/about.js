@@ -69,9 +69,9 @@ class AboutPageManager {
 
     animateStats() {
         const stats = [
-            { element: document.querySelectorAll('.stat-number')[0], target: 15000, suffix: '+' },
-            { element: document.querySelectorAll('.stat-number')[1], target: 250, suffix: '+' },
-            { element: document.querySelectorAll('.stat-number')[2], target: 50, suffix: '+' },
+            { element: document.querySelectorAll('.stat-number')[0], target: 2000000, suffix: '+' },
+            { element: document.querySelectorAll('.stat-number')[1], target: 2000, suffix: '+' },
+            { element: document.querySelectorAll('.stat-number')[2], target: 5},
             { element: document.querySelectorAll('.stat-number')[3], target: 85, suffix: '+' }
         ];
 

@@ -98,13 +98,6 @@ class ContactManager {
             }
         });
 
-        // Check privacy policy checkbox
-        const privacyCheckbox = document.getElementById('privacy');
-        if (!privacyCheckbox.checked) {
-            this.showFieldError(privacyCheckbox, 'You must agree to the Privacy Policy and Terms of Service.');
-            isValid = false;
-        }
-
         return isValid;
     }
 

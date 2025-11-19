@@ -3,8 +3,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initializeNavigation();
-    injectNavCart();
-    replaceCartIcons();
+    wrapNavActions(); // Wrap hamburger menu in nav-actions
+    // injectNavCart(); // Disabled - Publications not ready
+    // replaceCartIcons(); // Disabled - Publications not ready
     replaceFooterLogo();
     initializeScrollEffects();
     initializeNewsletter();
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFormValidation();
     initializeAnimations();
     initializeFilters();
+    initializeGlobalSearch();
 });
 
 // ========================================
@@ -84,6 +86,24 @@ function initializeNavigation() {
             }
         });
     }
+}
+
+// Wrap hamburger menu in nav-actions container for proper positioning
+function wrapNavActions() {
+    const menuBar = document.querySelector('.menu__bar');
+    if (!menuBar) return;
+    // Avoid duplicates
+    if (menuBar.querySelector('.nav-actions')) return;
+
+    const directMenuIcon = menuBar.querySelector(':scope > .menu-icon');
+    const actions = document.createElement('div');
+    actions.className = 'nav-actions';
+
+    if (directMenuIcon) {
+        actions.appendChild(directMenuIcon);
+    }
+
+    menuBar.appendChild(actions);
 }
 
 // Inject cart icon into the header and wrap hamburger + cart on the right
@@ -355,11 +375,12 @@ function initializeFormValidation() {
     
     forms.forEach(form => {
         const isNewsletter = form.classList.contains('newsletter-form');
+        const isContactForm = form.id === 'contactForm' || form.classList.contains('contact-form');
         const inputs = form.querySelectorAll('input, textarea, select');
         
         inputs.forEach(input => {
-            if (isNewsletter) {
-                // For newsletter, only show messages on submit; skip blur/auto-validation
+            if (isNewsletter || isContactForm) {
+                // Newsletter and contact page have their own validation logic
                 return;
             }
             input.addEventListener('blur', function() { validateField(this); });
@@ -709,6 +730,120 @@ function initializeFilters() {
             searchItems(resourceCards, searchTerm);
         });
     }
+}
+
+// ========================================
+// GLOBAL SEARCH
+// ========================================
+function initializeGlobalSearch() {
+    const searchForms = document.querySelectorAll('.global-search-form');
+    if (!searchForms.length) return;
+
+    const STORAGE_KEY = 'md_recent_searches';
+    const inPages = /(^|[\\/])pages[\\/]/.test(window.location.pathname);
+    const searchPagePath = inPages ? 'search.html' : 'pages/search.html';
+
+    const defaultSuggestions = [
+        'morning adhkar',
+        'evening adhkar',
+        'dhikr and dua',
+        'digital counter',
+        'islamic articles',
+        'names of Allah'
+    ];
+
+    const getRecentSearches = () => {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return [];
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (_) {
+            return [];
+        }
+    };
+
+    const saveSearch = (query) => {
+        try {
+            const recent = getRecentSearches().filter(q => q.toLowerCase() !== query.toLowerCase());
+            recent.unshift(query);
+            const trimmed = recent.slice(0, 6);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+        } catch (_) {}
+    };
+
+    searchForms.forEach(form => {
+        const input = form.querySelector('.search-input');
+        if (!input) return;
+
+        // Suggestions container
+        const suggestionsContainer = document.createElement('div');
+        suggestionsContainer.className = 'search-suggestions';
+        form.appendChild(suggestionsContainer);
+
+        const renderSuggestions = () => {
+            const recent = getRecentSearches();
+            const merged = [...recent, ...defaultSuggestions];
+            const seen = new Set();
+            const items = merged.filter(q => {
+                const key = q.toLowerCase();
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            }).slice(0, 8);
+
+            if (!items.length) {
+                suggestionsContainer.innerHTML = '';
+                suggestionsContainer.classList.remove('visible');
+                return;
+            }
+
+            suggestionsContainer.innerHTML = items.map(text => `
+                <button type="button" class="search-suggestion">${text}</button>
+            `).join('');
+            suggestionsContainer.classList.add('visible');
+
+            suggestionsContainer.querySelectorAll('.search-suggestion').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    input.value = btn.textContent;
+                    suggestionsContainer.classList.remove('visible');
+                    form.dispatchEvent(new Event('submit', { cancelable: true }));
+                });
+            });
+        };
+
+        input.addEventListener('focus', renderSuggestions);
+
+        input.addEventListener('input', () => {
+            if (!input.value.trim()) {
+                renderSuggestions();
+            } else {
+                suggestionsContainer.classList.remove('visible');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!form.contains(e.target)) {
+                suggestionsContainer.classList.remove('visible');
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = (input.value || '').trim();
+            if (!query) {
+                try {
+                    showNotification('Please enter a search term.', 'warning', 3000);
+                } catch (_) {}
+                input.focus();
+                return;
+            }
+
+            saveSearch(query);
+            const url = `${searchPagePath}?q=${encodeURIComponent(query)}`;
+            window.location.href = url;
+        });
+    });
 }
 
 // Filter items based on category

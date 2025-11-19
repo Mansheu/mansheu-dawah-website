@@ -74,16 +74,6 @@
             overflow: hidden;
         }
         
-        .counter-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-        
         .counter-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
@@ -92,10 +82,6 @@
         .counter-card.completed {
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
-        }
-        
-        .counter-card.completed::before {
-            background: linear-gradient(90deg, #38ef7d, #11998e);
         }
         
         .counter-title {
@@ -127,6 +113,8 @@
             width: 200px;
             height: 200px;
             margin: 2rem auto;
+            cursor: pointer;
+            user-select: none;
         }
         
         .progress-circle {
@@ -161,6 +149,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            pointer-events: none;
         }
         
         .count-display {
@@ -168,6 +157,8 @@
             font-weight: 700;
             color: #667eea;
             line-height: 1;
+            margin: 0;
+            padding: 0;
         }
         
         .counter-card.completed .count-display {
@@ -178,6 +169,8 @@
             font-size: 1.25rem;
             color: #718096;
             margin-top: 0.25rem;
+            margin-bottom: 0;
+            padding: 0;
         }
         
         .counter-card.completed .target-display {
@@ -186,6 +179,7 @@
         
         .counter-controls {
             display: flex;
+            flex-direction: row;
             gap: 1rem;
             justify-content: center;
             margin-top: 1.5rem;
@@ -193,6 +187,7 @@
         
         .counter-btn {
             flex: 1;
+            max-width: 50%;
             padding: 1.25rem 2rem;
             font-size: 1.25rem;
             font-weight: 600;
@@ -333,28 +328,33 @@
             .counter-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-            }
-            
-            .counter-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .progress-circle-container {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .count-display {
-                font-size: 3rem;
-            }
-            
-            .counter-btn {
-                padding: 1rem 1.5rem;
-                font-size: 1.125rem;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .total-count {
                 font-size: 3rem;
+            }
+            
+            .presets-section {
+                padding: 1.5rem;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 2rem;
+            }
+            
+            .presets-grid {
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .counter-actions {
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
         
@@ -474,34 +474,38 @@
         
         /* Custom Counter Section */
         .custom-counter-section {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
             margin-bottom: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: none;
         }
         
         .add-counter-btn {
             width: 100%;
-            padding: 1.25rem;
+            padding: 1rem;
             background: #f5576c;
             color: white;
             border: none;
             border-radius: 16px;
-            font-size: 1.125rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
         }
         
         .add-counter-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
         
         .add-counter-btn i {
-            margin-right: 0.5rem;
+            font-size: 1.25rem;
         }
         
         .counter-actions {
@@ -515,25 +519,29 @@
         }
         
         .reset-to-default-btn {
-            padding: 1.25rem;
+            padding: 1rem;
             background: #667eea;
             color: white;
             border: none;
             border-radius: 16px;
-            font-size: 1.125rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
         }
         
         .reset-to-default-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
         
         .reset-to-default-btn i {
-            margin-right: 0.5rem;
+            font-size: 1.25rem;
         }
         
         .default-counters {
@@ -675,9 +683,12 @@
         }
         
         @media (prefers-color-scheme: dark) {
-            .presets-section,
-            .custom-counter-section {
+            .presets-section {
                 background: #2d3748;
+            }
+            
+            .custom-counter-section {
+                background: transparent;
             }
             
             .presets-title,
@@ -795,7 +806,7 @@
                         <div class="counter-title">SubhanAllah</div>
                         <div class="counter-arabic">سُبْحَانَ ٱللَّٰهِ</div>
                         
-                        <div class="progress-circle-container">
+                        <div class="progress-circle-container" onclick="incrementCounter('subhanallah')">
                             <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                                 <defs>
                                     <linearGradient id="gradient-subhanallah" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -819,7 +830,7 @@
                         
                         <div class="counter-controls">
                             <button class="counter-btn increment" onclick="incrementCounter('subhanallah')">
-                                <i class="fas fa-plus"></i> Count
+                                <i class="fas fa-hand-pointer"></i>
                             </button>
                             <button class="counter-btn reset" onclick="resetCounter('subhanallah')">
                                 <i class="fas fa-redo"></i>
@@ -832,7 +843,7 @@
                         <div class="counter-title">Alhamdulillah</div>
                         <div class="counter-arabic">ٱلْحَمْدُ لِلَّٰهِ</div>
                         
-                        <div class="progress-circle-container">
+                        <div class="progress-circle-container" onclick="incrementCounter('alhamdulillah')">
                             <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                                 <defs>
                                     <linearGradient id="gradient-alhamdulillah" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -856,7 +867,7 @@
                         
                         <div class="counter-controls">
                             <button class="counter-btn increment" onclick="incrementCounter('alhamdulillah')">
-                                <i class="fas fa-plus"></i> Count
+                                <i class="fas fa-hand-pointer"></i>
                             </button>
                             <button class="counter-btn reset" onclick="resetCounter('alhamdulillah')">
                                 <i class="fas fa-redo"></i>
@@ -869,7 +880,7 @@
                         <div class="counter-title">Allahu Akbar</div>
                         <div class="counter-arabic">ٱللَّٰهُ أَكْبَرُ</div>
                         
-                        <div class="progress-circle-container">
+                        <div class="progress-circle-container" onclick="incrementCounter('allahu-akbar')">
                             <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                                 <defs>
                                     <linearGradient id="gradient-allahu-akbar" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -893,7 +904,7 @@
                         
                         <div class="counter-controls">
                             <button class="counter-btn increment" onclick="incrementCounter('allahu-akbar')">
-                                <i class="fas fa-plus"></i> Count
+                                <i class="fas fa-hand-pointer"></i>
                             </button>
                             <button class="counter-btn reset" onclick="resetCounter('allahu-akbar')">
                                 <i class="fas fa-redo"></i>
@@ -1241,7 +1252,7 @@
                 <div class="counter-title">${counter.name}</div>
                 ${counter.arabic ? `<div class="counter-arabic">${counter.arabic}</div>` : ''}
                 
-                <div class="progress-circle-container">
+                <div class="progress-circle-container" onclick="incrementCustomCounter('${counter.id}')">
                     <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                         <defs>
                             <linearGradient id="gradient-${counter.id}" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1265,7 +1276,7 @@
                 
                 <div class="counter-controls">
                     <button class="counter-btn increment" onclick="incrementCustomCounter('${counter.id}')">
-                        <i class="fas fa-plus"></i> Count
+                        <i class="fas fa-hand-pointer"></i>
                     </button>
                     <button class="counter-btn reset" onclick="resetCustomCounter('${counter.id}')">
                         <i class="fas fa-redo"></i>
@@ -1311,6 +1322,10 @@
         function resetCustomCounter(id) {
             const counter = customCounters.find(c => c.id === id);
             if (!counter) return;
+            
+            if (!confirm(`Are you sure you want to reset ${counter.name}?`)) {
+                return;
+            }
             
             counter.count = 0;
             const card = document.getElementById(`${id}-card`);
@@ -1392,6 +1407,10 @@
 
         function resetCounter(type) {
             if (dhikrCounters[type]) {
+                if (!confirm('Are you sure you want to reset this counter?')) {
+                    return;
+                }
+                
                 dhikrCounters[type].count = 0;
                 const card = document.getElementById(`${type}-card`);
                 card.classList.remove('completed');
@@ -1406,6 +1425,10 @@
         }
 
         function resetAllCounters() {
+            if (!confirm('Are you sure you want to reset ALL counters? This cannot be undone.')) {
+                return;
+            }
+            
             Object.keys(dhikrCounters).forEach(type => {
                 dhikrCounters[type].count = 0;
                 const card = document.getElementById(`${type}-card`);

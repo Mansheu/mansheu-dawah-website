@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Search Results - Mansheu Dawah</title>
+    <meta name="description" content="Search across Mansheu Dawah articles, dhikr, duas, and resources.">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="alternate icon" href="../assets/images/favicon.ico">
+</head>
+<body class="search-page">
+    <!-- Header -->
+    <div class="menu__wrapper">
+        <div class="menu__bar">
+            <a href="../index.html" title="Mansheu Dawah">
+                <div class="logo">
+                    <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
+                    <span>Mansheu Dawah</span>
+                </div>
+            </a>
+            <img
+                class="menu-icon"
+                src="../assets/images/burger-menu.svg"
+                title="Menu"
+                alt="Menu"
+            >
+            <ul class="navigation">
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
+                <li><a href="digital-counter.html">Digital Counter</a></li>
+                <li><a href="quotes-reminders.html">Quotes & Reminders</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="resources.html">Teaching Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Global Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <form class="search-form global-search-form" role="search">
+                <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
+                <button type="submit" class="btn btn-primary search-btn">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hero / Search Summary -->
+    <section class="section search-hero">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Search Results</h1>
+                <p class="section-description" id="searchSummary">
+                    Type a keyword to search across Mansheu Dawah.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section search-results-section">
+        <div class="container">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
+                        <span>Mansheu Dawah</span>
+                    </div>
+                    <p>Dedicated to spreading authentic Islamic knowledge and fostering spiritual growth through comprehensive Islamic resources and community engagement.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="dhikr-dua.html">Dhikr & Dua</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section footer-search">
+                    <h3>Search the Site</h3>
+                    <form class="search-form global-search-form" role="search">
+                        <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
+                        <button type="submit" class="btn btn-primary search-btn">
+                            <i class="fas fa-search"></i>
+                            <span>Search</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footeropyright">
+                    <p>&copy; 2024 Mansheu Dawah. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/search.js"></script>
+</body>
+</html>

@@ -12,6 +12,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,7 +26,7 @@
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="alternate icon" href="../assets/images/favicon.ico">
 </head>
-<body>
+<body class="contact-page">
     <!-- Header -->
     <div class="menu__wrapper">
         <div class="menu__bar">
@@ -49,8 +50,21 @@
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="resources.html">Teaching Resources</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Global Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <form class="search-form global-search-form" role="search">
+                <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
+                <button type="submit" class="btn btn-primary search-btn">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -61,7 +75,7 @@
             <div class="hero-content">
                 <h1 class="hero-title">Contact Us</h1>
                 <p class="hero-description">
-                    Get in touch with us for any inquiries, support, or to learn more about our Islamic educational programs and services.
+                    Get in touch with us for any inquiries, support, or to learn more about our Islamic programs and services.
                 </p>
                 <div class="hero-breadcrumb">
                     <a href="../index.html">Home</a>
@@ -206,20 +220,11 @@
                         </div>
 
                         <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="checkmark"></span>
-                                Subscribe to our newsletter for Islamic updates and educational content
-                            </label>
-                        </div>
-
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="privacy" name="privacy" required>
-                                <span class="checkmark"></span>
-                                I agree to the <a href="#" target="_blank">Privacy Policy</a> and <a href="#" target="_blank">Terms of Service</a> *
-                            </label>
-                            <span class="form-error"></span>
+                            <p class="checkbox-label">
+                                By clicking <strong>Send Message</strong>, you agree to our
+                                <a href="#" target="_blank">Privacy Policy</a> and
+                                <a href="#" target="_blank">Terms of Service</a>.
+                            </p>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-submit">
@@ -311,7 +316,7 @@
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
+    <section class="map-section section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Visit Our Center</h2>
@@ -322,9 +327,13 @@
             
             <div class="map-container">
                 <div class="map-placeholder">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <p>Interactive Map</p>
-                    <small>Google Maps integration would be placed here</small>
+                    <iframe
+                        src="https://www.google.com/maps/place/DIYAUL-HAQ%2BISLAMIC%2BSOCIETY%2BOF%2BNIGERIA/@6.6425021,3.2812884,17z"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                        aria-label="DIYAUL-HAQ ISLAMIC SOCIETY OF NIGERIA location on map">
+                    </iframe>
                 </div>
                 
                 <div class="map-info">
@@ -336,11 +345,26 @@
                         <li><i class="fas fa-wifi"></i> Free WiFi for visitors</li>
                     </ul>
                     
-                    <a href="#" class="btn btn-outline">
+                    <a href="https://maps.app.goo.gl/HszeDMwfg86yGFYy9" class="btn btn-outline" target="_blank" rel="noopener">
                         <i class="fas fa-directions"></i>
                         Get Directions
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Search Section -->
+    <section class="section global-search-section">
+        <div class="container">
+            <div class="global-search">
+                <form class="search-form global-search-form" role="search">
+                    <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
+                    <button type="submit" class="btn btn-primary search-btn">
+                        <i class="fas fa-search"></i>
+                        <span>Search</span>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -351,10 +375,10 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <i class="fas fa-mosque"></i>
+                        <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
                         <span>Mansheu Dawah</span>
                     </div>
-                    <p>Dedicated to spreading authentic Islamic knowledge and fostering spiritual growth through comprehensive educational resources and community engagement.</p>
+                    <p>Dedicated to spreading authentic Islamic knowledge and fostering spiritual growth through comprehensive islamic resources and community engagement.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -385,23 +409,6 @@
                     </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Islamic Center Street, City, State 12345</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-4567</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@mansheudawah.org</span>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <div class="footer-bottom">
@@ -421,18 +428,6 @@
     <button class="back-to-top" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
-
-    <!-- Search Overlay -->
-    <div class="search-overlay">
-        <div class="search-container">
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Search articles, resources, and more...">
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </div>
-    </div>
 
     <!-- JavaScript Files -->
     <script src="../assets/js/theme.js"></script>
