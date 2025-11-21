@@ -445,7 +445,7 @@ a:hover, a:focus {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     padding: 0 1.5rem;
@@ -476,22 +476,43 @@ a:hover, a:focus {
 
 .menu-icon {
     cursor: pointer;
-    display: flex;
-    width: 24px;
-    height: 24px;
-    color: var(--nav-text);
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    padding: 0;
     margin-left: auto;
-    /* Filter to make SVG black in light mode */
-    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(344deg) brightness(94%) contrast(106%);
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger animation to X */
+.menu-icon.active .hamburger-line:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-icon.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active .hamburger-line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Hide standalone hamburger when we use nav-actions wrapper */
 .menu__bar > .menu-icon { display: none; }
-
-/* Dark mode - make hamburger white */
-[data-theme="dark"] .menu-icon {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7479%) hue-rotate(14deg) brightness(104%) contrast(101%);
-}
 
 .navigation {
     display: flex;
@@ -503,6 +524,10 @@ a:hover, a:focus {
     background-color: transparent;
     align-items: center;
     height: 100%;
+    flex-grow: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navigation > li {
@@ -534,6 +559,48 @@ a:hover, a:focus {
     color: #1e90ff;
 }
 
+/* Mobile nav headings and icons */
+.nav-heading {
+    display: none;
+}
+
+.nav-icon {
+    margin-right: var(--spacing-sm);
+    font-size: 0.95em;
+}
+
+/* Navigation CTA button styling */
+.nav-cta {
+    display: none;
+}
+
+/* Hide descriptions on desktop */
+.nav-desc {
+    display: none;
+}
+
+.nav-cta a.btn {
+    padding: 0.5rem 1.25rem;
+    font-size: var(--font-size-sm);
+    height: auto;
+    white-space: nowrap;
+}
+
+/* Desktop: show nav-cta on the right */
+@media (min-width: 1281px) {
+    .navigation .nav-cta {
+        display: none;
+    }
+    
+    .menu__bar > .nav-cta {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+        position: absolute;
+        right: 1.5rem;
+    }
+}
+
 @media (min-width: 1281px) {
     .menu-icon {
         display: none;
@@ -546,12 +613,13 @@ a:hover, a:focus {
         position: fixed;
         top: var(--navbar-height);
         left: 0;
-        width: 100%;
+        width: 75%;
+        max-width: 320px;
         /* Make it a dropdown panel, not full-height */
         height: auto;
         max-height: 60vh;
         flex-direction: column;
-        padding: 1.25rem;
+        padding: 1.25rem 1.5rem;
         /* Semi-transparent with blur for a frosted effect */
         background-color: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
@@ -570,6 +638,7 @@ a:hover, a:focus {
         transition: opacity var(--transition-normal), transform var(--transition-normal);
         visibility: hidden;
         pointer-events: none;
+        align-items: flex-start;
     }
     
     .navigation.navigation--mobile {
@@ -581,7 +650,7 @@ a:hover, a:focus {
     }
     
     .menu-icon {
-        display: block;
+        display: flex;
     }
 
     /* Dark theme frosted dropdown */
@@ -592,7 +661,7 @@ a:hover, a:focus {
     .navigation--mobile > li,
     .navigation > li {
         border-bottom: 1px solid var(--border-color);
-        padding-bottom: 1rem;
+        padding-bottom: 0.15rem;
         height: auto;
     }
     
@@ -604,16 +673,60 @@ a:hover, a:focus {
     .navigation--mobile > li > a,
     .navigation > li > a {
         font-size: var(--font-size-lg);
-        padding: 1rem 0;
+        padding: 0.35rem 0;
         height: auto;
-        line-height: 1.5;
+        line-height: 1.1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .nav-title {
+        font-weight: 600;
+        font-size: var(--font-size-lg);
+    }
+    
+    .nav-desc {
+        display: block;
+        font-size: 0.8rem;
+        opacity: 0.65;
+        font-weight: 400;
+    }
+    
+    /* Hide desktop nav-cta button on mobile */
+    .menu__bar > .nav-cta {
+        display: none;
+    }
+    
+    /* Show nav-cta inside mobile menu */
+    .navigation .nav-cta {
+        position: static;
+        display: flex;
+        width: 100%;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+        justify-content: stretch;
+    }
+    
+    .navigation .nav-cta a.btn {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        text-align: center;
+        display: flex;
     }
 }
 
 /* === HERO SECTION === */
 .hero {
     position: relative;
-    min-height: calc(100vh - var(--navbar-height));
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -621,6 +734,59 @@ a:hover, a:focus {
     text-align: center;
     overflow: hidden;
     background: var(--bg-color);
+}
+
+/* Homepage hero with background image */
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/image_example.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.65) 50%,
+        rgba(0, 0, 0, 0.75) 100%
+    );
+    z-index: 2;
+}
+
+[data-theme="dark"] .hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.75) 50%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+[data-theme="light"] .hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.65) 50%,
+        rgba(255, 255, 255, 0.75) 100%
+    );
+}
+
+.hero .container {
+    position: relative;
+    z-index: 3;
 }
 
 .hero-about,
@@ -729,19 +895,50 @@ a:hover, a:focus {
     outline: none;
 }
 
-.top-search .search-btn i {
-    margin-right: var(--spacing-xs);
+.top-search .search-btn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
 }
 
-@media (max-width: 768px) {
+.top-search .search-btn i {
+    margin: 0;
+}
+
+  @media (max-width: 768px) {
     .top-search {
         display: none;
     }
-}
+  }
+
+  /* On the dedicated search page, keep the top search visible even on mobile */
+  @media (max-width: 768px) {
+      .search-page .top-search {
+          display: block;
+      }
+  }
 
 .hero-content {
     max-width: 800px;
     z-index: 1;
+}
+
+.hero .hero-content h1,
+.hero .hero-content p,
+.hero .hero-content .btn {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .hero .hero-content h1,
+[data-theme="light"] .hero .hero-content p {
+    color: var(--text-color);
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .hero-title {
@@ -1507,6 +1704,14 @@ a:hover, a:focus {
     margin: 0 auto;
 }
 
+.global-search-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.footer-search {
+    display: none;
+}
+
 .global-search-section .search-form {
     position: relative;
     display: flex;
@@ -1532,25 +1737,44 @@ a:hover, a:focus {
     outline: none;
 }
 
+.global-search-section .search-btn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
+}
+
 .global-search-section .search-btn i {
-    margin-right: var(--spacing-xs);
-}
-
-@media (max-width: 768px) {
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
     .global-search-section .search-form {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
+          flex-direction: row;
+          align-items: center;
+      }
+      
     .global-search-section .search-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
+          width: 48px;
+          height: 48px;
+      }
 
-.search-suggestions {
-    position: absolute;
-    top: 100%;
+    .global-search-section {
+        display: none;
+    }
+
+    .search-page .footer-search {
+        display: block;
+    }
+  }
+
+  .search-suggestions {
+      position: absolute;
+      top: 100%;
     left: 0;
     right: 0;
     margin-top: var(--spacing-sm);
@@ -1561,9 +1785,92 @@ a:hover, a:focus {
     padding: var(--spacing-sm);
     display: none;
     max-height: 320px;
-    overflow-y: auto;
-    z-index: 1000;
-}
+      overflow-y: auto;
+      z-index: 1000;
+  }
+
+  /* === SEARCH RESULTS PAGE === */
+  .search-results-section {
+      padding-top: var(--spacing-xl);
+  }
+
+  .search-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--spacing-lg);
+  }
+
+  .search-result-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-xl);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  }
+
+  .search-result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--text-color);
+  }
+
+  .search-result-title {
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-sm);
+  }
+
+  .search-result-title a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color var(--transition-normal);
+  }
+
+  .search-result-title a:hover {
+      color: var(--text-secondary);
+  }
+
+  .search-result-description {
+      flex: 1;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-md);
+  }
+
+  .search-result-card mark {
+      background: rgba(37, 99, 235, 0.18);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 3px;
+  }
+
+  .search-result-link {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-weight: 600;
+      color: var(--primary-color, #2563eb);
+      text-decoration: none;
+  }
+
+  .search-result-link i {
+      font-size: 0.875rem;
+  }
+
+  .search-empty {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--text-secondary);
+  }
+
+  .search-empty p + p {
+      margin-top: var(--spacing-sm);
+  }
 
 .search-suggestions.visible {
     display: block;
@@ -1661,6 +1968,28 @@ a:hover, a:focus {
     max-width: var(--card-max-width);
     width: 100%;
     box-shadow: var(--shadow-lg);
+}
+
+.article-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.article-card-link:hover .article-card {
+    transform: translateY(-8px);
+    border-color: var(--text-color);
+    border-width: 2px;
+}
+
+.article-card-link:hover .article-card::before {
+    transform: scaleX(1);
+}
+
+.article-card-link:hover .article-image img {
+    transform: scale(1.15);
 }
 
 /* Ensure theme-aware backgrounds for all card types */

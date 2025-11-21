@@ -90,13 +90,16 @@
     }
     
     .hero-actions {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
     }
     
     .hero-actions .btn {
-        width: 100%;
-        max-width: 300px;
+        width: auto;
+        max-width: none;
+        min-width: 140px;
     }
     
     /* Sections */
@@ -218,6 +221,13 @@
     .nav-brand .logo {
         font-size: var(--font-size-lg);
     }
+
+    /* Hide page-level breadcrumb navigation on mobile */
+    .breadcrumb,
+    .breadcrumb-list,
+    .hero-breadcrumb {
+        display: none !important;
+    }
     
     /* Hero adjustments */
     .hero {
@@ -289,12 +299,43 @@
     }
     
     .search-form {
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
     }
     
-    .search-input,
+    .search-input {
+        flex: 1;
+    }
+    
     .search-btn {
-        width: 100%;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        padding: 0;
+    }
+    
+    /* Footer search specific styling */
+    .footer-search .search-form {
+        background: var(--card-bg);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xs);
+        border: 1px solid var(--border-color);
+    }
+    
+    .footer-search .search-input {
+        padding: 0.75rem 1rem;
+        background: transparent;
+        color: var(--text-color);
+        border: none;
+        font-size: var(--font-size-base);
+    }
+    
+    .footer-search .search-input::placeholder {
+        color: var(--text-secondary);
+    }
+    
+    .footer-search .search-btn {
+        border-radius: var(--border-radius-lg);
     }
     
     /* Social links */
@@ -372,7 +413,19 @@
     .dhikr-card,
     .publication-card,
     .resource-card {
+        margin: 0 auto;
+        max-width: 90%;
+    }
+    
+    .article-image {
+        width: 100%;
         margin: 0;
+        border-radius: 0;
+    }
+    
+    .article-image img {
+        width: 100%;
+        display: block;
     }
     
     .article-content,

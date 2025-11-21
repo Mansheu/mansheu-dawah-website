@@ -384,18 +384,23 @@
     }
 
     resultsContainer.innerHTML = results.map(item => `
-      <article class="search-result-card">
-          <h2 class="search-result-title">
-              <a href="${item.url}">${highlight(item.title, query)}</a>
-          </h2>
-          <p class="search-result-description">
-              ${highlight(item.description, query)}
-          </p>
-          <a class="search-result-link" href="${item.url}">
-              Open page
-              <i class="fas fa-arrow-right"></i>
-          </a>
-      </article>
+      <a href="${item.url}" class="article-card-link">
+        <article class="article-card">
+            <div class="article-image">
+                <img src="../assets/images/image_example.jpg" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="article-content">
+                <h3 class="article-title">${highlight(item.title, query)}</h3>
+                <p class="article-excerpt">
+                    ${highlight(item.description, query)}
+                </p>
+                <span class="btn btn-outline">
+                    Read More
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+            </div>
+        </article>
+      </a>
     `).join('');
   });
 })();

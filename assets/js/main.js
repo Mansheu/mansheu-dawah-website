@@ -215,16 +215,20 @@ function toggleMenu(menuIcon) {
 
 function openMobileMenu(menuIcon, navigation) {
     navigation.classList.add('navigation--mobile');
-    if (menuIcon && menuIcon.style) menuIcon.style.transform = 'rotate(90deg)';
-    menuIcon.setAttribute('aria-expanded', 'true');
+    if (menuIcon) {
+        menuIcon.classList.add('active');
+        menuIcon.setAttribute('aria-expanded', 'true');
+    }
     navigation.setAttribute('aria-hidden', 'false');
     // Do not lock body scroll; allow page to remain scrollable
 }
 
 function closeMobileMenu(menuIcon, navigation) {
     navigation.classList.remove('navigation--mobile');
-    if (menuIcon && menuIcon.style) menuIcon.style.transform = 'rotate(0deg)';
-    menuIcon.setAttribute('aria-expanded', 'false');
+    if (menuIcon) {
+        menuIcon.classList.remove('active');
+        menuIcon.setAttribute('aria-expanded', 'false');
+    }
     navigation.setAttribute('aria-hidden', 'true');
     // No scroll lock class to remove
 }

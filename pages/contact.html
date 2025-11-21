@@ -36,22 +36,49 @@
                     <span>Mansheu Dawah</span>
                 </div>
             </a>
-            <img
-                class="menu-icon"
-                src="../assets/images/burger-menu.svg"
-                title='Menu'
-                alt='Menu'
-            >
+            <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
             <ul class="navigation">
-                <li><a href="articles.html">Articles</a></li>
-                <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
-                <li><a href="digital-counter.html">Digital Counter</a></li>
-                <li><a href="quotes-reminders.html">Quotes & Reminders</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="resources.html">Teaching Resources</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="articles.html">
+                    <span class="nav-title">Articles</span>
+                    <span class="nav-desc">Islamic guidance & insights</span>
+                </a></li>
+                <li><a href="dhikr-dua.html">
+                    <span class="nav-title">Dhikr & Du'a</span>
+                    <span class="nav-desc">Remembrance & supplications guide</span>
+                </a></li>
+                <li><a href="quotes-reminders.html">
+                    <span class="nav-title">Quotes & Reminders</span>
+                    <span class="nav-desc">Inspirational Islamic wisdom</span>
+                </a></li>
+                <li><a href="publications.html">
+                    <span class="nav-title">Publications</span>
+                    <span class="nav-desc">Coming Soon</span>
+                </a></li>
+                <li><a href="resources.html">
+                    <span class="nav-title">Teaching Resources</span>
+                    <span class="nav-desc">Coming Soon</span>
+                </a></li>
+                <li><a href="about.html">
+                    <span class="nav-title">About</span>
+                    <span class="nav-desc">Our mission & vision</span>
+                </a></li>
+                <li><a href="contact.html" class="active">
+                    <span class="nav-title">Contact</span>
+                    <span class="nav-desc">Get in touch</span>
+                </a></li>
+                <li><a href="search.html">
+                    <span class="nav-title">Search</span>
+                    <span class="nav-desc">Find content quickly</span>
+                </a></li>
+                <li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
             </ul>
+            <div class="nav-cta">
+                <a href="digital-counter.html" class="btn btn-primary">Digital Counter</a>
+            </div>
         </div>
     </div>
 
@@ -60,9 +87,8 @@
         <div class="container">
             <form class="search-form global-search-form" role="search">
                 <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
-                <button type="submit" class="btn btn-primary search-btn">
+                <button type="submit" class="btn btn-primary search-btn" aria-label="Search">
                     <i class="fas fa-search"></i>
-                    <span>Search</span>
                 </button>
             </form>
         </div>
@@ -252,7 +278,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section section">
+    <section class="faq-section section" id="faq">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Frequently Asked Questions</h2>
@@ -264,11 +290,11 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How can I access your online courses?</h3>
+                        <h3>Do you offer online courses?</h3>
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>You can access our online courses through the Resources section. Simply create an account, browse our course catalog, and enroll in the courses that interest you. All courses are designed to be self-paced and accessible on any device.</p>
+                        <p>We are currently focused on providing articles, dhikr and du'a collections, and teaching resources through the website. Structured online courses are not available yet, but we plan to introduce them in the future, in sh&#x101;&#x2bc; All&#x101;h. You can use the &quot;Courses &amp; Education&quot; subject in the contact form to share your interest or ask about upcoming programs.</p>
                     </div>
                 </div>
 
@@ -278,27 +304,27 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we offer publications in multiple languages including English, Arabic, and other regional languages. Each publication page indicates the available language options.</p>
+                        <p>Our Publications section is currently being prepared. When it launches, our goal is to offer materials primarily in English at first, then gradually add Arabic and other regional languages. Each publication page will clearly show which languages are available.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>How can I contribute articles to your website?</h3>
+                        <h3>How can I contribute articles or resources?</h3>
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We welcome scholarly contributions! Please contact us through this form with "Article Submission" as the subject. Include your credentials and a brief outline of your proposed article. Our editorial team will review and respond within 5-7 business days.</p>
+                        <p>We welcome beneficial, well-researched contributions. Please contact us through this form, select the most relevant subject (such as &quot;Publications&quot;, &quot;Courses &amp; Education&quot;, or &quot;Other&quot;), and include &quot;Article Submission&quot; or &quot;Resource Contribution&quot; in your message. Share a brief outline of your proposed content and your background, and we will review and respond as time allows.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Do you offer group discounts for educational institutions?</h3>
+                        <h3>Do you collaborate with mosques or educational institutions?</h3>
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we provide special pricing for educational institutions, mosques, and Islamic centers. Contact us with details about your institution and the number of users to receive a customized quote.</p>
+                        <p>Yes, we are happy to support mosques, Islamic centers, schools, and study circles by sharing our digital resources and exploring possible collaborations. Please contact us with details about your institution and how you would like to use Mansheu Dawah materials, using the &quot;Partnership&quot; subject in the contact form.</p>
                     </div>
                 </div>
 
@@ -308,7 +334,77 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>For technical support, please use the "Technical Support" option in the subject field above, or email us directly at support@mansheudawah.org. Include details about the issue and your device/browser information for faster resolution.</p>
+                        <p>For technical support, please use the &quot;Technical Support&quot; option in the subject field above. Include details about the issue, the page you were on, and your device/browser information so we can resolve it more quickly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is all content on Mansheu Dawah free to access?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all articles, dhikr and du'a collections, and digital tools on our website are free to access. If we introduce any paid offerings in the future, they will be clearly labeled.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I download or print your adhkar and articles?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You may download or print our content for personal use, teaching, or dawah, as long as you do not alter it in a misleading way and you keep a clear reference to Mansheu Dawah as the source.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I use your materials in my classes or khutbahs?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you are welcome to use our materials in study circles, school lessons, or khutbahs. Please mention Mansheu Dawah as the source and, where possible, link back to the original page.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How often is the website updated with new content?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We aim to add new articles, reminders, and resources regularly. You can check back often or follow our channels to stay informed about updates.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need an account to use the website?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, you do not need to create an account to read articles, view adhkar, or use the digital counter. All main features are available without logging in.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there a mobile app for Mansheu Dawah?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We do not currently have a mobile app, but the website is designed to be mobile-friendly so you can easily access content from your phone or tablet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I stay informed about new publications and resources?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can visit the Publications and Teaching Resources pages to see updates, and you may also contact us to express interest so we know what types of materials are most beneficial.</p>
                     </div>
                 </div>
             </div>
@@ -360,9 +456,8 @@
             <div class="global-search">
                 <form class="search-form global-search-form" role="search">
                     <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
-                    <button type="submit" class="btn btn-primary search-btn">
+                    <button type="submit" class="btn btn-primary search-btn" aria-label="Search">
                         <i class="fas fa-search"></i>
-                        <span>Search</span>
                     </button>
                 </form>
             </div>
@@ -402,13 +497,23 @@
                     <h3>Support</h3>
                     <ul class="footer-links">
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.html#faq">FAQ</a></li>
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
-                
+
+                <div class="footer-section footer-search">
+                    <h3>Search the Site</h3>
+                    <form class="search-form global-search-form" role="search">
+                        <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
+                        <button type="submit" class="btn btn-primary search-btn" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
             </div>
             
             <div class="footer-bottom">
