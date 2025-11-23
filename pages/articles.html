@@ -38,470 +38,351 @@
                     <img src="../assets/images/logo.png" alt="Mansheu Dawah Logo" width="150" height="auto">
                 </div>
             </a>
-            <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
             <ul class="navigation">
-                <li><a href="articles.html" class="active">
-                    <span class="nav-title">Articles</span>
-                    <span class="nav-desc">Islamic guidance & insights</span>
+                <li><a href="articles.html">
+                    <span class="nav-title">Read</span>
+                    <span class="nav-desc">Articles & written features</span>
                 </a></li>
-                <li><a href="dhikr-dua.html">
-                    <span class="nav-title">Dhikr & Du'a</span>
-                    <span class="nav-desc">Remembrance & supplications guide</span>
+                <li><a href="videos.html">
+                    <span class="nav-title">Watch</span>
+                    <span class="nav-desc">Talks, clips & films</span>
                 </a></li>
-                <li><a href="quotes-reminders.html">
-                    <span class="nav-title">Quotes & Reminders</span>
-                    <span class="nav-desc">Inspirational Islamic wisdom</span>
+                <li><a href="learn.html">
+                    <span class="nav-title">Learn</span>
+                    <span class="nav-desc">Guides, lessons & courses</span>
+                </a></li>
+                <li><a href="infographics.html">
+                    <span class="nav-title">Infographics</span>
+                    <span class="nav-desc">Visual explainers & briefs</span>
                 </a></li>
                 <li><a href="about.html">
                     <span class="nav-title">About</span>
                     <span class="nav-desc">Our mission & vision</span>
                 </a></li>
-                <li><a href="contact.html">
-                    <span class="nav-title">Contact</span>
-                    <span class="nav-desc">Get in touch</span>
-                </a></li>
-                <li><a href="search.html">
-                    <span class="nav-title">Search</span>
-                    <span class="nav-desc">Find content quickly</span>
-                </a></li>
-<li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
+                <li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
             </ul>
-            <div class="nav-cta">
-                <a href="digital-counter.html" class="btn btn-primary">Digital Counter</a>
+            <div class="nav-actions">
+                <div class="nav-controls">
+                    <a href="search.html" class="nav-search" aria-label="Search the site">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </a>
+                    <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                <div class="nav-cta">
+                    <a href="digital-counter.html" class="btn btn-primary">Digital Counter</a>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Global Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <form class="search-form global-search-form" role="search">
-                <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
-                <button type="submit" class="btn btn-primary search-btn" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
         </div>
     </div>
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Page Header -->
-        <section class="page-header page-header--articles">
+        <!-- Read Page Header -->
+        <section class="read-page-header section">
             <div class="container">
-                <div class="page-header-content">
-                    <h1 class="page-title">Islamic Articles</h1>
-                    <p class="page-subtitle">
-                        Discover inspiring content to strengthen your faith and deepen your understanding of Islam
-                    </p>
-                    <nav class="breadcrumb" aria-label="Breadcrumb">
-                        <ol class="breadcrumb-list">
-                            <li><a href="../index.html">Home</a></li>
-                            <li aria-current="page">Articles</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </section>
-
-        <!-- Articles Filter Section -->
-        <section class="articles-filter section">
-            <div class="container">
-                <div class="filter-controls">
-                    <div class="filter-categories">
-                        <span class="filter-label">Filter: </span>
-                        <button class="filter-btn active" data-category="all">All Articles</button>
-                        <button class="filter-btn" data-category="faith">Faith & Belief</button>
-                        <button class="filter-btn" data-category="prayer">Prayer & Worship</button>
-                        <button class="filter-btn" data-category="character">Character Building</button>
-                        <button class="filter-btn" data-category="quran">Quran Studies</button>
-                        <button class="filter-btn" data-category="sunnah">Prophetic Teachings</button>
-                        <button class="filter-btn" data-category="spirituality">Spirituality</button>
+                <h1 class="read-page-title">Read<span class="read-period">.</span></h1>
+                
+                <!-- Content Type Navigation -->
+                <div class="read-nav-wrapper">
+                    <div class="read-nav-carousel">
+                        <a href="series.html" class="read-nav-item">Series</a>
+                        <a href="books.html" class="read-nav-item">Books</a>
+                        <a href="discover.html" class="read-nav-item">Discover</a>
+                        <a href="printables.html" class="read-nav-item">Printables</a>
                     </div>
-                    
-                    <div class="filter-sort">
-                        <span class="sort-label">Sort: </span>
-                        <select class="sort-select" aria-label="Sort articles">
-                            <option value="newest">Newest First</option>
-                            <option value="oldest">Oldest First</option>
-                            <option value="popular">Most Popular</option>
-                            <option value="alphabetical">A-Z</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Articles -->
-        <section class="featured-articles section">
-            <div class="container">
-                <div class="featured-content-grid">
-                    <div class="content-column">
-                        <div class="section-header">
-                            <h2 class="section-title">Featured Articles</h2>
-                        </div>
-                        
-                        <div class="featured-grid">
-                    <article class="article-card" data-category="faith">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="The Power of Sincere Repentance" loading="lazy">
-                            <div class="article-category">Faith</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=sincere-repentance">The Power of Sincere Repentance (Tawbah)</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Explore the transformative power of sincere repentance and how it brings us closer to Allah's mercy and forgiveness. Learn about the conditions of true tawbah and its impact on spiritual purification.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 20, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="spirituality">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="Sincere Intention (Ikhlas) in Worship" loading="lazy">
-                            <div class="article-category">Spirituality</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=ikhlas">Sincere Intention (Ikhlas) in Worship</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Understanding the role of sincerity in all acts of worship and how to purify intentions for Allah alone.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 19, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-                        </div>
-                    </div>
-
-                    <div class="content-column">
-                        <div class="section-header">
-                            <h2 class="section-title">Latest Articles</h2>
-                        </div>
-                        <div class="featured-grid">
-                            <article class="article-card" data-category="latest">
-                                <div class="article-image">
-                                    <img src="../assets/images/image_example.jpg" alt="Balancing Hope and Fear in Islam" loading="lazy">
-                                    <div class="article-category">Latest</div>
-                                </div>
-                                <div class="article-content">
-                                    <h3 class="article-title">
-                                        <a href="article-detail.html?id=hope-fear-balance">Balancing Hope and Fear in Islam</a>
-                                    </h3>
-                                    <p class="article-excerpt">
-                                        A practical look at maintaining balance between hope in Allah’s mercy and fear of accountability.
-                                    </p>
-                                    <div class="article-meta">
-                                        <span class="article-date"><i class="fas fa-calendar"></i> September 17, 2025</span>
-                                        <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                                    </div>
-                                    <div class="article-author-profile">
-                                        <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                        <span class="author-name">Sheu Babakar</span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="article-card" data-category="latest">
-                                <div class="article-image">
-                                    <img src="../assets/images/image_example.jpg" alt="Guarding the Tongue: Speech Etiquette" loading="lazy">
-                                    <div class="article-category">Latest</div>
-                                </div>
-                                <div class="article-content">
-                                    <h3 class="article-title">
-                                        <a href="article-detail.html?id=guarding-tongue">Guarding the Tongue: Speech Etiquette</a>
-                                    </h3>
-                                    <p class="article-excerpt">
-                                        Teachings from Quran and Sunnah on mindful speech and avoiding harmful words.
-                                    </p>
-                                    <div class="article-meta">
-                                        <span class="article-date"><i class="fas fa-calendar"></i> September 15, 2025</span>
-                                        <span class="read-time"><i class="fas fa-clock"></i> 5 min read</span>
-                                    </div>
-                                    <div class="article-author-profile">
-                                        <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                        <span class="author-name">Sheu Babakar</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- All Articles (Filtered) -->
-        <section class="all-articles section bg-light">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Filtered Articles</h2>
-                </div>
-                <div class="articles-grid" id="articlesContainer">
-                    <!-- Faith & Belief Articles -->
-                    <article class="article-card" data-category="faith">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="Understanding Allah's 99 Beautiful Names" loading="lazy">
-                            <div class="article-category">Faith</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=asma-ul-husna">Understanding Allah's 99 Beautiful Names (Asma ul-Husna)</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Discover the profound meanings behind Allah's beautiful names and how reflecting upon them can transform our relationship with our Creator.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 18, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="character">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="Building Strong Character Through Islamic Values" loading="lazy">
-                            <div class="article-category">Character</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=strong-character">Building Strong Character Through Islamic Values</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Learn how Islamic teachings guide us in developing noble character traits that benefit both this life and the hereafter.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 16, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="prayer">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="The Beauty of Night Prayer (Tahajjud)" loading="lazy">
-                            <div class="article-category">Prayer</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=tahajjud-beauty">The Beauty of Night Prayer (Tahajjud)</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Discover the spiritual rewards and practical benefits of establishing night prayers in your daily routine.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 14, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 5 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="quran">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="The Miracle of the Quran" loading="lazy">
-                            <div class="article-category">Quran</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=quran-miracle">The Miracle of the Quran: Scientific and Linguistic Wonders</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Explore the miraculous aspects of the Holy Quran that continue to amaze scientists and linguists worldwide.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 12, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 9 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="spirituality">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="Understanding Rizq in Islam" loading="lazy">
-                            <div class="article-category">Spirituality</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=rizq-concept">Understanding the Concept of Rizq in Islam</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Learn about Allah's provision (rizq) and how understanding this concept can bring peace and contentment to your life.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 10, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="sunnah">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="Following the Sunnah in Daily Life" loading="lazy">
-                            <div class="article-category">Sunnah</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=following-sunnah">Following the Sunnah in Daily Life</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Discover practical ways to incorporate the beautiful teachings of Prophet Muhammad (ﷺ) into your daily routine.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 8, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="prayer">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="The Importance of Seeking Knowledge in Islam" loading="lazy">
-                            <div class="article-category">Knowledge</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=seeking-knowledge">The Importance of Seeking Knowledge in Islam</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Explore the Islamic perspective on seeking knowledge and its role in spiritual and personal development.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 6, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="character">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="Patience and Gratitude in Islam" loading="lazy">
-                            <div class="article-category">Character</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=sabr-shukr">Patience (Sabr) and Gratitude (Shukr) in Islam</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Learn about the twin virtues of patience and gratitude and how they can transform your spiritual journey.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 4, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card" data-category="faith">
-                        <div class="article-image">
-                            <img src="../assets/images/image_example.jpg" alt="The Five Pillars of Islam Explained" loading="lazy">
-                            <div class="article-category">Faith</div>
-                        </div>
-                        <div class="article-content">
-                            <h3 class="article-title">
-                                <a href="article-detail.html?id=five-pillars">The Five Pillars of Islam: A Comprehensive Guide</a>
-                            </h3>
-                            <p class="article-excerpt">
-                                Understand the fundamental pillars of Islam and their significance in building a strong foundation of faith.
-                            </p>
-                            <div class="article-meta">
-                                <span class="article-date"><i class="fas fa-calendar"></i> September 2, 2025</span>
-                                <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
-                            </div>
-                            <div class="article-author-profile">
-                                <img src="../assets/images/image_example.jpg" alt="Author: Sheu Babakar" width="28" height="28" loading="lazy">
-                                <span class="author-name">Sheu Babakar</span>
-                            </div>
-                        </div>
-                    </article>
                 </div>
                 
-                <!-- Load More Button -->
-                <div class="section-footer">
-                    <button class="btn btn-outline" id="loadMoreBtn">
-                        <span>Load More Articles</span>
-                        <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                <!-- Topics Section -->
+                <div class="read-topics">
+                    <span class="topics-label">Topics:</span>
+                    <div class="topics-list">
+                        <button class="topic-tag" data-topic="faith">Faith</button>
+                        <button class="topic-tag" data-topic="sharia">Sharia</button>
+                        <button class="topic-tag" data-topic="politics">Politics</button>
+                        <button class="topic-tag" data-topic="psychology">Wellness</button>
+                        <button class="topic-tag" data-topic="history">History</button>
+                        <button class="topic-tag" data-topic="science">Science</button>
+                        <button class="topic-tag" data-topic="family">Family</button>
+                        <button class="topic-tag" data-topic="data">Data</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Spotlight -->
+        <section class="featured-spotlight section">
+            <div class="container">
+                <div class="spotlight-container">
+                    <div class="spotlight-image">
+                        <img src="../assets/images/image_example.jpg" alt="The Power of Sincere Repentance" loading="lazy">
+                    </div>
+                    <div class="spotlight-content">
+                        <h2 class="spotlight-label">In the Featured</h2>
+                        <div class="spotlight-divider"></div>
+                        <h3 class="spotlight-topic">FAITH</h3>
+                        <h1 class="spotlight-title">The Power of Sincere Repentance (Tawbah)</h1>
+                        <p class="spotlight-author">Ust. Sheu Babakar</p>
+                        <a href="article-detail.html?id=sincere-repentance" class="spotlight-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Articles -->
+        <section class="latest-articles section">
+            <div class="container">
+                <h1 class="latest-title">Latest</h1>
+                <div class="latest-divider"></div>
+                
+                <div class="latest-grid">
+                    <!-- Article 1 -->
+                    <a href="article-detail.html?id=sincere-intention" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Sincere Intention in Worship" loading="lazy">
+                        </div>
+                        <span class="latest-tag">SPIRITUALITY</span>
+                        <h3 class="latest-article-title">Sincere Intention (Ikhlas) in Worship</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 2 -->
+                    <a href="article-detail.html?id=hope-fear-balance" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Balancing Hope and Fear in Islam" loading="lazy">
+                        </div>
+                        <span class="latest-tag">FAITH</span>
+                        <h3 class="latest-article-title">Balancing Hope and Fear in Islam</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 3 -->
+                    <a href="article-detail.html?id=guarding-tongue" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Guarding the Tongue" loading="lazy">
+                        </div>
+                        <span class="latest-tag">CHARACTER</span>
+                        <h3 class="latest-article-title">Guarding the Tongue: Speech Etiquette</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 4 -->
+                    <a href="article-detail.html?id=asma-ul-husna" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Understanding Allah's 99 Names" loading="lazy">
+                        </div>
+                        <span class="latest-tag">FAITH</span>
+                        <h3 class="latest-article-title">Understanding Allah's 99 Beautiful Names (Asma ul-Husna)</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 5 -->
+                    <a href="article-detail.html?id=strong-character" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Building Strong Character" loading="lazy">
+                        </div>
+                        <span class="latest-tag">CHARACTER</span>
+                        <h3 class="latest-article-title">Building Strong Character Through Islamic Values</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 6 -->
+                    <a href="article-detail.html?id=tahajjud-beauty" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Night Prayer" loading="lazy">
+                        </div>
+                        <span class="latest-tag">PRAYER</span>
+                        <h3 class="latest-article-title">The Beauty of Night Prayer (Tahajjud)</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 7 -->
+                    <a href="article-detail.html?id=quran-miracle" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Miracle of the Quran" loading="lazy">
+                        </div>
+                        <span class="latest-tag">QURAN</span>
+                        <h3 class="latest-article-title">The Miracle of the Quran: Scientific and Linguistic Wonders</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 8 -->
+                    <a href="article-detail.html?id=sabr-trials" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Patience in Trials" loading="lazy">
+                        </div>
+                        <span class="latest-tag">SPIRITUALITY</span>
+                        <h3 class="latest-article-title">Patience (Sabr) in Times of Trials and Tribulations</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Islam Says About Section -->
+        <section class="islam-topics-section">
+            <div class="container">
+                <h4 class="islam-topics-subtitle">HELPING YOU UNDERSTAND BETTER</h4>
+                <h2 class="islam-topics-title">What Islam Says About...</h2>
+                
+                <div class="islam-carousel-wrapper">
+                    <button class="carousel-btn carousel-btn-prev" aria-label="Previous">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="islam-carousel">
+                        <!-- Card 1: Basics of Islam -->
+                        <a href="#basics-of-islam" class="islam-card">
+                            <h3 class="islam-card-title">Basics of Islam</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Islam is a monotheistic faith founded on the belief in one God (Allah) and the teachings of Prophet Muhammad (peace be upon him). Muslims follow the Five Pillars of Islam and believe in the Quran as the final revelation from God.
+                            </p>
+                        </a>
+
+                        <!-- Card 2: Hajj and Umrah -->
+                        <a href="#hajj-umrah" class="islam-card">
+                            <h3 class="islam-card-title">Hajj and Umrah</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Hajj is the annual pilgrimage to Mecca that every able-bodied Muslim must perform at least once in their lifetime. Umrah is a shorter pilgrimage that can be performed at any time of the year, offering spiritual rewards and closeness to Allah.
+                            </p>
+                        </a>
+
+                        <!-- Card 3: Ramadan -->
+                        <a href="#ramadan" class="islam-card">
+                            <h3 class="islam-card-title">Ramadan</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Ramadan is the ninth month of the Islamic calendar when Muslims fast from dawn to sunset. It's a time of spiritual reflection, prayer, charity, and community gathering, culminating in the celebration of Eid al-Fitr.
+                            </p>
+                        </a>
+
+                        <!-- Card 4: Shariah -->
+                        <a href="#shariah" class="islam-card">
+                            <h3 class="islam-card-title">Shariah</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Shariah is Islamic law derived from the Quran and Sunnah. It provides guidance on worship, ethics, family life, and social justice. Shariah emphasizes compassion, fairness, and the protection of human dignity in all aspects of life.
+                            </p>
+                        </a>
+
+                        <!-- Card 5: Health & Wellness -->
+                        <a href="#health-wellness" class="islam-card">
+                            <h3 class="islam-card-title">Health & Wellness</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Islam teaches that the body is a trust from Allah and must be cared for properly. Muslims are encouraged to maintain physical health through balanced nutrition, exercise, and cleanliness, while also nurturing mental and spiritual well-being.
+                            </p>
+                        </a>
+
+                        <!-- Card 6: Charity -->
+                        <a href="#charity" class="islam-card">
+                            <h3 class="islam-card-title">Charity</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Charity is a fundamental principle in Islam. Zakat (obligatory charity) is one of the Five Pillars, while Sadaqah (voluntary charity) is highly encouraged. Giving purifies wealth and helps create a just and compassionate society.
+                            </p>
+                        </a>
+
+                        <!-- Card 7: Peace & Violence -->
+                        <a href="#peace-violence" class="islam-card">
+                            <h3 class="islam-card-title">Peace & Violence</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Islam promotes peace, justice, and the sanctity of human life. The religion condemns terrorism and unjust violence. True jihad is primarily a spiritual struggle for self-improvement, while physical defense is only permitted in specific, limited circumstances.
+                            </p>
+                        </a>
+
+                        <!-- Card 8: Women -->
+                        <a href="#women" class="islam-card">
+                            <h3 class="islam-card-title">Women</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Islam grants women rights to education, property ownership, and spiritual equality with men. Women are honored as mothers, daughters, wives, and professionals. Islamic teachings emphasize respect, dignity, and protection for women in all spheres of life.
+                            </p>
+                        </a>
+
+                        <!-- Card 9: Men -->
+                        <a href="#men" class="islam-card">
+                            <h3 class="islam-card-title">Men</h3>
+                            <div class="islam-card-divider"></div>
+                            <p class="islam-card-text">
+                                Men in Islam are called to be protectors and maintainers of their families with justice and compassion. Islamic masculinity emphasizes responsibility, humility, emotional intelligence, and service to family and community while striving for personal spiritual growth.
+                            </p>
+                        </a>
+                    </div>
+                    
+                    <button class="carousel-btn carousel-btn-next" aria-label="Next">
+                        <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Newsletter Section -->
-        <section class="newsletter section bg-primary">
+        <!-- All Articles -->
+        <section class="latest-articles section">
             <div class="container">
-                <div class="newsletter-content">
-                    <h2 class="newsletter-title">Stay Updated with Islamic Knowledge</h2>
-                    <p class="newsletter-subtitle">
-                        Subscribe to receive our latest articles and Islamic insights directly in your inbox
-                    </p>
-                    
-                    <form class="newsletter-form" id="newsletter-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Enter your email address" required>
-                            <button type="submit" class="btn btn-secondary">
-                                <span>Subscribe</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
+                <div class="latest-grid">
+                    <!-- Article 9 -->
+                    <a href="article-detail.html?id=rizq-concept" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Understanding Rizq" loading="lazy">
                         </div>
-                        <p class="newsletter-privacy">
-                            We respect your privacy. Unsubscribe at any time.
-                        </p>
-                    </form>
+                        <span class="latest-tag">SPIRITUALITY</span>
+                        <h3 class="latest-article-title">Understanding the Concept of Rizq in Islam</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 10 -->
+                    <a href="article-detail.html?id=following-sunnah" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Following the Sunnah" loading="lazy">
+                        </div>
+                        <span class="latest-tag">SUNNAH</span>
+                        <h3 class="latest-article-title">Following the Sunnah in Daily Life</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 11 -->
+                    <a href="article-detail.html?id=seeking-knowledge" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Seeking Knowledge" loading="lazy">
+                        </div>
+                        <span class="latest-tag">KNOWLEDGE</span>
+                        <h3 class="latest-article-title">The Importance of Seeking Knowledge in Islam</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 12 -->
+                    <a href="article-detail.html?id=sabr-shukr" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Patience and Gratitude" loading="lazy">
+                        </div>
+                        <span class="latest-tag">CHARACTER</span>
+                        <h3 class="latest-article-title">Patience (Sabr) and Gratitude (Shukr) in Islam</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
+
+                    <!-- Article 13 -->
+                    <a href="article-detail.html?id=five-pillars" class="latest-card">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Five Pillars of Islam" loading="lazy">
+                        </div>
+                        <span class="latest-tag">FAITH</span>
+                        <h3 class="latest-article-title">The Five Pillars of Islam: A Comprehensive Guide</h3>
+                        <p class="latest-author">Ust. Sheu Babakar</p>
+                    </a>
                 </div>
             </div>
         </section>
-    </main>
 
+        
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -608,5 +489,104 @@
     <script src="../assets/js/theme.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/articles.js"></script>
+    <script>
+        // Islam Topics Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.islam-carousel');
+            const prevBtn = document.querySelector('.carousel-btn-prev');
+            const nextBtn = document.querySelector('.carousel-btn-next');
+            
+            if (carousel && prevBtn && nextBtn) {
+                const scrollAmount = carousel.offsetWidth * 0.8; // Scroll 80% of visible width
+                
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Drag to scroll functionality
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                carousel.addEventListener('mousedown', (e) => {
+                    // Don't trigger drag if clicking on a card link
+                    if (e.target.closest('.islam-card')) {
+                        return;
+                    }
+                    isDown = true;
+                    carousel.style.cursor = 'grabbing';
+                    startX = e.pageX - carousel.offsetLeft;
+                    scrollLeft = carousel.scrollLeft;
+                    e.preventDefault();
+                });
+
+                carousel.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    carousel.style.cursor = 'grab';
+                });
+
+                carousel.addEventListener('mouseup', () => {
+                    isDown = false;
+                    carousel.style.cursor = 'grab';
+                });
+
+                carousel.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - carousel.offsetLeft;
+                    const walk = (x - startX) * 1.5; // Scroll speed multiplier
+                    carousel.scrollLeft = scrollLeft - walk;
+                });
+
+                // Prevent click on card during drag
+                let isDragging = false;
+                carousel.addEventListener('mousedown', () => {
+                    isDragging = false;
+                });
+
+                carousel.addEventListener('mousemove', () => {
+                    if (isDown) isDragging = true;
+                });
+
+                carousel.querySelectorAll('.islam-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        if (isDragging) {
+                            e.preventDefault();
+                        }
+                    });
+                });
+
+                // Touch events for mobile drag
+                let touchStartX;
+                let touchScrollLeft;
+
+                carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].pageX;
+                    touchScrollLeft = carousel.scrollLeft;
+                });
+
+                carousel.addEventListener('touchmove', (e) => {
+                    if (!touchStartX) return;
+                    const x = e.touches[0].pageX;
+                    const walk = (touchStartX - x) * 1.5;
+                    carousel.scrollLeft = touchScrollLeft + walk;
+                });
+
+                carousel.addEventListener('touchend', () => {
+                    touchStartX = null;
+                });
+            }
+        });
+    </script>
 </body>
 </html>
