@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeFilters();
     initializeGlobalSearch();
+    initializeDailyPoll();
+    initializeActionCards();
 });
 
 // ========================================
@@ -121,24 +123,8 @@ function injectNavCart() {
         actions.appendChild(directMenuIcon);
     }
 
-    const cart = document.createElement('a');
-    cart.className = 'cart-icon';
-    cart.title = 'Shopping Cart';
-    // Determine correct link target based on current location
-    const inPages = /(^|\/|\\)pages(\/|\\|$)/.test(window.location.pathname);
-    cart.href = inPages ? 'publications.html' : 'pages/publications.html';
-    // Try opening sidebar if available
-    cart.addEventListener('click', function(e) {
-        if (typeof window.showCartSidebar === 'function') {
-            e.preventDefault();
-            try { window.showCartSidebar(); } catch(_) {}
-        }
-    });
-    cart.innerHTML = `
-        <i class="fas fa-cart-shopping"></i>
-        <span class="cart-count">0</span>
-    `;
-    actions.appendChild(cart);
+    // Cart/shopping cart feature removed as publications section is no longer available
+
     menuBar.appendChild(actions);
 }
 
@@ -294,61 +280,37 @@ function initializeNewsletter() {
     if (newsletterForm) {
         const emailInput = newsletterForm.querySelector('input[type="email"]');
         const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+        const newsletterToast = document.getElementById('newsletterToast');
 
-        // Remove any inline messages when user starts typing again
-        if (emailInput) {
-            emailInput.addEventListener('input', function() {
-                const group = emailInput.closest('.form-group') || emailInput.parentNode;
-                try {
-                    group.querySelectorAll('.error-message, .success-message').forEach(n => n.remove());
-                } catch (_) {}
-                emailInput.classList.remove('error');
-            });
-        }
+        if (!emailInput || !submitBtn || !newsletterToast) return;
+
+        emailInput.addEventListener('input', function() {
+            emailInput.classList.remove('error');
+        });
 
         newsletterForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            
-            const emailInput = this.querySelector('input[type="email"]');
-            const submitBtn = this.querySelector('button[type="submit"]');
             const email = emailInput.value.trim();
-            
+
             if (validateEmail(email)) {
-                // Show loading state
                 submitBtn.classList.add('loading');
                 submitBtn.disabled = true;
-                
-                // Simulate API call
+
                 setTimeout(() => {
-                    // Inline success below the input/button row
-                    const group = emailInput.closest('.form-group') || emailInput.parentNode;
-                    // Remove any existing messages
-                    try { group.querySelectorAll('.error-message, .success-message').forEach(n => n.remove()); } catch (_) {}
-                    const success = document.createElement('div');
-                    success.className = 'success-message';
-                    success.textContent = 'Thank you for subscribing! You will receive our newsletter shortly.';
-                    if (group && group.insertAdjacentElement) {
-                        group.insertAdjacentElement('afterend', success);
-                    }
-                    // Auto-dismiss after a few seconds
-                    setTimeout(() => { success.remove(); }, 4000);
+                    showToast(newsletterToast, 'success', 'Successfully subscribed! Check your email for confirmation.');
                     emailInput.value = '';
-                    // Clean any inline errors when successful
-                    const inlineErrorInGroup = (emailInput.parentNode && emailInput.parentNode.querySelector('.error-message'));
-                    if (inlineErrorInGroup) inlineErrorInGroup.remove();
-                    if (group && group.nextElementSibling && group.nextElementSibling.classList && group.nextElementSibling.classList.contains('error-message')) { group.nextElementSibling.remove(); }
+                    emailInput.classList.remove('error');
                     submitBtn.classList.remove('loading');
                     submitBtn.disabled = false;
-                }, 2000);
+                }, 1500);
             } else {
-                // Inline error just under the input for newsletter
-                validateField(emailInput);
+                emailInput.classList.add('error');
+                showToast(newsletterToast, 'error', 'Mission failed, invalid email address.');
                 emailInput.focus({ preventScroll: true });
             }
         });
     }
 }
-
 // ========================================
 // COOKIE BANNER
 // ========================================
@@ -400,57 +362,29 @@ function validateField(field) {
     let isValid = true;
     let errorMessage = '';
     
+    const newsletterWrapper = field.closest('.newsletter-form');
+    const newsletterFeedback = newsletterWrapper ? newsletterWrapper.querySelector('.newsletter-feedback') : null;
+    
     // Remove existing error states
     field.classList.remove('error');
-    const existingError = field.parentNode.querySelector('.error-message');
-    if (existingError) {
-        existingError.remove();
+    if (newsletterFeedback) {
+        newsletterFeedback.innerHTML = '';
+    } else {
+        const existingError = field.parentNode.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
     }
     
-    // Required field validation (do not inject custom text, rely on native UI)
+    // Required field validation
     const requiredEmpty = field.hasAttribute('required') && !value;
     if (requiredEmpty) {
         isValid = false;
-        // Intentionally no custom error message
     }
     
     // Email validation
     if (field.type === 'email' && value && !validateEmail(value)) {
         isValid = false;
-        errorMessage = 'Please enter a valid email address';
-    }
-    
-    // Show error if invalid; only render a message when we have one (e.g., email format)
-    if (!isValid) {
-        field.classList.add('error');
-        if (errorMessage) {
-            const errorElement = document.createElement('div');
-            errorElement.className = 'error-message';
-            errorElement.textContent = errorMessage;
-
-            const isNewsletter = !!field.closest('.newsletter-form');
-            if (isNewsletter) {
-                const group = field.closest('.form-group') || field.parentNode;
-                // Remove any prior inline errors under this group or immediately after the group
-                try { group.querySelectorAll('.error-message').forEach(n => n.remove()); } catch (_) {}
-                if (group && group.nextElementSibling && group.nextElementSibling.classList && group.nextElementSibling.classList.contains('error-message')) {
-                    group.nextElementSibling.remove();
-                }
-                // Place error after the entire group so it appears under the Subscribe button
-                if (group && group.insertAdjacentElement) {
-                    group.insertAdjacentElement('afterend', errorElement);
-                } else {
-                    field.parentNode.appendChild(errorElement);
-                }
-                // Auto-dismiss the inline error after a few seconds for newsletter form
-                setTimeout(() => {
-                    try { if (errorElement && errorElement.parentNode) errorElement.remove(); } catch (_) {}
-                    field.classList.remove('error');
-                }, 4000);
-            } else {
-                field.parentNode.appendChild(errorElement);
-            }
-        }
     }
     
     return isValid;
@@ -892,6 +826,303 @@ function searchItems(items, searchTerm) {
             item.style.opacity = '0';
         }
     });
+}
+
+// ========================================
+// DAILY POLL (Featured Section)
+// ========================================
+function initializeDailyPoll() {
+    const pollElement = document.querySelector('[data-daily-poll]');
+    if (!pollElement) return;
+
+    const polls = [
+        {
+            id: 'quran-habits',
+            question: 'Which daily habit keeps you most connected to the Qur\'an?',
+            description: 'Share the routine that helps you stay consistent with Allah\'s words each day.',
+            options: [
+                { id: 'tajweed', label: 'Reciting with tajweed after Fajr' },
+                { id: 'tafseer', label: 'Listening to tafseer during commutes' },
+                { id: 'study-circle', label: 'Weekly study circle with friends' },
+                { id: 'memorisation', label: 'Memorising a new ayah daily' }
+            ]
+        },
+        {
+            id: 'community-service',
+            question: 'Where do you feel inspired to serve your community most?',
+            description: 'Let us know which space pulls your heart toward meaningful service.',
+            options: [
+                { id: 'masjid', label: 'Organising programs at the masjid' },
+                { id: 'youth', label: 'Mentoring youth and teens' },
+                { id: 'charity', label: 'Coordinating local charity drives' },
+                { id: 'online', label: 'Creating uplifting digital content' }
+            ]
+        },
+        {
+            id: 'spiritual-reset',
+            question: 'What best helps you reset your iman during a busy week?',
+            description: 'Your answer might inspire someone else\'s next spiritual reset.',
+            options: [
+                { id: 'qiyam', label: 'Late night qiyam sessions' },
+                { id: 'nature', label: 'Reflecting on nature and creation' },
+                { id: 'mentorship', label: 'Speaking with a mentor or teacher' },
+                { id: 'journaling', label: 'Writing duas and reflections in a journal' }
+            ]
+        }
+    ];
+
+    if (!polls.length) return;
+
+    const todayIndex = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+    const activePoll = polls[todayIndex % polls.length];
+
+    const questionEl = pollElement.querySelector('[data-poll-question]');
+    const descriptionEl = pollElement.querySelector('[data-poll-description]');
+    const optionsEl = pollElement.querySelector('[data-poll-options]');
+    const totalEl = pollElement.querySelector('[data-poll-total]');
+    const resetBtn = pollElement.querySelector('[data-poll-reset]');
+    const dateEl = pollElement.querySelector('[data-poll-date]');
+
+    if (!optionsEl) return;
+
+    const formattedDate = (() => {
+        try {
+            return new Intl.DateTimeFormat(undefined, {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric'
+            }).format(new Date());
+        } catch (_) {
+            return new Date().toLocaleDateString();
+        }
+    })();
+
+    if (dateEl) dateEl.textContent = formattedDate;
+    if (questionEl) questionEl.textContent = activePoll.question;
+    if (descriptionEl) descriptionEl.textContent = activePoll.description;
+
+    const votesKey = `md_poll_votes_${activePoll.id}`;
+    const responseKey = `md_poll_response_${activePoll.id}`;
+
+    const loadPollData = () => {
+        let parsed;
+        try {
+            const raw = localStorage.getItem(votesKey);
+            if (raw) parsed = JSON.parse(raw);
+        } catch (_) {
+            parsed = null;
+        }
+
+        if (!parsed || typeof parsed !== 'object') {
+            parsed = { total: 0, options: {} };
+        }
+
+        if (typeof parsed.total !== 'number') {
+            parsed.total = 0;
+        }
+
+        if (!parsed.options || typeof parsed.options !== 'object') {
+            parsed.options = {};
+        }
+
+        activePoll.options.forEach(option => {
+            if (typeof parsed.options[option.id] !== 'number') {
+                parsed.options[option.id] = 0;
+            }
+        });
+
+        return parsed;
+    };
+
+    const savePollData = (data) => {
+        try {
+            localStorage.setItem(votesKey, JSON.stringify(data));
+        } catch (_) {}
+    };
+
+    const getUserVote = () => {
+        try {
+            return localStorage.getItem(responseKey);
+        } catch (_) {
+            return null;
+        }
+    };
+
+    const setUserVote = (value) => {
+        try {
+            if (value) {
+                localStorage.setItem(responseKey, value);
+            } else {
+                localStorage.removeItem(responseKey);
+            }
+        } catch (_) {}
+    };
+
+    let pollData = loadPollData();
+    let userVote = getUserVote();
+
+    const updateTotals = () => {
+        if (!totalEl) return;
+        if (pollData.total > 0) {
+            totalEl.textContent = `${pollData.total} ${pollData.total === 1 ? 'vote' : 'votes'}`;
+        } else {
+            totalEl.textContent = 'Be the first to vote';
+        }
+    };
+
+    const renderOptions = () => {
+        optionsEl.innerHTML = '';
+        activePoll.options.forEach(option => {
+            const optionId = option.id;
+            const optionVotes = pollData.options[optionId] || 0;
+            const percentage = pollData.total ? Math.round((optionVotes / pollData.total) * 100) : 0;
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'poll-option';
+            if (userVote && userVote !== optionId) {
+                button.disabled = true;
+            }
+            if (userVote === optionId) {
+                button.classList.add('selected');
+            }
+
+            const header = document.createElement('div');
+            header.className = 'poll-option-header';
+
+            const label = document.createElement('span');
+            label.className = 'poll-option-label';
+            label.textContent = option.label;
+
+            const percentageLabel = document.createElement('span');
+            percentageLabel.className = 'poll-option-percentage';
+            percentageLabel.textContent = pollData.total ? `${percentage}%` : '';
+
+            header.appendChild(label);
+            header.appendChild(percentageLabel);
+
+            const bar = document.createElement('span');
+            bar.className = 'poll-option-bar';
+
+            const barFill = document.createElement('span');
+            barFill.className = 'poll-option-bar-fill';
+            barFill.style.width = pollData.total ? `${percentage}%` : '0%';
+
+            bar.appendChild(barFill);
+
+            button.appendChild(header);
+            button.appendChild(bar);
+
+            button.addEventListener('click', () => {
+                if (userVote) return;
+                recordVote(optionId);
+            });
+
+            optionsEl.appendChild(button);
+        });
+
+        if (resetBtn) {
+            resetBtn.disabled = !userVote;
+        }
+
+        updateTotals();
+    };
+
+    const recordVote = (optionId) => {
+        pollData.total += 1;
+        pollData.options[optionId] = (pollData.options[optionId] || 0) + 1;
+        savePollData(pollData);
+        userVote = optionId;
+        setUserVote(optionId);
+        renderOptions();
+    };
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (!userVote) return;
+            const previousVotes = pollData.options[userVote] || 0;
+            if (previousVotes > 0) {
+                pollData.options[userVote] = previousVotes - 1;
+                pollData.total = Math.max(0, pollData.total - 1);
+                savePollData(pollData);
+            }
+            userVote = null;
+            setUserVote(null);
+            renderOptions();
+        });
+    }
+
+    renderOptions();
+}
+
+// ========================================
+// ACTION CARDS (Newsletter & Signup)
+// ========================================
+function initializeActionCards() {
+    // Newsletter Form
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterToast = document.getElementById('newsletterToast');
+    
+    if (newsletterForm && newsletterToast) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('newsletterEmail');
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                showToast(newsletterToast, 'error', 'Please enter your email address.');
+                return;
+            }
+            
+            if (validateEmail(email)) {
+                // Show success toast
+                showToast(newsletterToast, 'success', 'Successfully subscribed! Check your email for confirmation.');
+                emailInput.value = '';
+            } else {
+                // Show error toast
+                showToast(newsletterToast, 'error', 'Mission failed, invalid email address');
+            }
+        });
+    }
+    
+    // Signup Button
+    const signupBtn = document.getElementById('signupBtn');
+    const signupToast = document.getElementById('signupToast');
+    
+    if (signupBtn && signupToast) {
+        signupBtn.addEventListener('click', function() {
+            // Simulate signup action
+            showToast(signupToast, 'success', 'Redirecting to signup page...');
+            
+            // Optional: Redirect after a delay
+            setTimeout(() => {
+                // window.location.href = 'pages/signup.html';
+            }, 1500);
+        });
+    }
+}
+
+function showToast(toastElement, type, message) {
+    // Remove existing classes
+    toastElement.classList.remove('show', 'success', 'error');
+    
+    // Set icon based on type
+    const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+    
+    // Set content
+    toastElement.innerHTML = `
+        <i class="fas ${icon}"></i>
+        <span>${message}</span>
+    `;
+    
+    // Add classes
+    toastElement.classList.add('show', type);
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        toastElement.classList.remove('show');
+    }, 5000);
 }
 
 // Export functions for use in other scripts

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -46,8 +46,7 @@
         <div class="menu__bar">
             <a href="index.html" title="Mansheu Dawah">
                 <div class="logo">
-                    <img src="assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
-                    <span>Mansheu Dawah</span>
+                    <img src="assets/images/logo.png" alt="Mansheu Dawah Logo" width="150" height="auto">
                 </div>
             </a>
             <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
@@ -68,14 +67,6 @@
                     <span class="nav-title">Quotes & Reminders</span>
                     <span class="nav-desc">Inspirational Islamic wisdom</span>
                 </a></li>
-                <li><a href="pages/publications.html">
-                    <span class="nav-title">Publications</span>
-                    <span class="nav-desc">Coming Soon</span>
-                </a></li>
-                <li><a href="pages/resources.html">
-                    <span class="nav-title">Teaching Resources</span>
-                    <span class="nav-desc">Coming Soon</span>
-                </a></li>
                 <li><a href="pages/about.html">
                     <span class="nav-title">About</span>
                     <span class="nav-desc">Our mission & vision</span>
@@ -88,7 +79,7 @@
                     <span class="nav-title">Search</span>
                     <span class="nav-desc">Find content quickly</span>
                 </a></li>
-                <li class="nav-cta"><a href="pages/digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
+<li class="nav-cta"><a href="pages/digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
             </ul>
             <div class="nav-cta">
                 <a href="pages/digital-counter.html" class="btn btn-primary">Digital Counter</a>
@@ -96,323 +87,735 @@
         </div>
     </div>
 
-    <!-- Global Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <form class="search-form global-search-form" role="search">
-                <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
-                <button type="submit" class="btn btn-primary search-btn" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-background">
-                <div class="hero-overlay"></div>
-            </div>
+        <section class="hero hero-redesigned">
             <div class="container">
                 <div class="hero-content">
+                    <!-- Hero Text -->
                     <h1 class="hero-title">
-                        Connect to The Creator. Discover More...
+                        Connect to <span class="hero-highlight">The Creator</span>. Discover More...
                     </h1>
                     <p class="hero-subtitle">
                         Join Mansheu Dawah in strengthening your connection with Allah through authentic Islamic knowledge,
                         spiritual guidance, and community support.
                     </p>
-                    <div class="hero-actions">
-                        <a href="pages/articles.html" class="btn btn-primary">Explore Articles</a>
-                        <a href="pages/dhikr-dua.html" class="btn btn-secondary">Daily Dhikr</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Content Section - Articles & Publications -->
-        <section class="featured-content section">
-            <div class="container">
-                <div class="featured-content-grid">
-                    <!-- Featured Articles Column -->
-                    <div class="content-column">
-                        <div class="section-header">
-                            <h2 class="section-title">Featured Articles</h2>
-                            <p class="section-subtitle">Discover inspiring content to strengthen your faith</p>
-                        </div>
-
-                        <div class="articles-grid vertical">
-                            <article class="article-card">
-                                <div class="article-image">
-                                    <img src="assets/images/image_example.jpg" alt="Building Strong Character Through Islamic Values" loading="lazy">
-                                    <div class="article-category">Character</div>
-                                </div>
-                                <div class="article-content">
-                                    <h3 class="article-title">
-                                        <a href="pages/article-detail.html?id=strong-character">Building Strong Character</a>
-                                    </h3>
-                                    <div class="article-meta">
-                                        <span class="article-date">
-                                            <i class="fas fa-calendar"></i> September 18, 2025
-                                        </span>
-                                        <span class="read-time">
-                                            <i class="fas fa-clock"></i> 7 min read
-                                        </span>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="article-card">
-                                <div class="article-image">
-                                    <img src="assets/images/image_example.jpg" alt="The Beauty of Night Prayer (Tahajjud)" loading="lazy">
-                                    <div class="article-category">Prayer</div>
-                                </div>
-                                <div class="article-content">
-                                    <h3 class="article-title">
-                                        <a href="pages/article-detail.html?id=tahajjud-beauty">The Beauty of Tahajjud</a>
-                                    </h3>
-                                    <div class="article-meta">
-                                        <span class="article-date">
-                                            <i class="fas fa-calendar"></i> September 15, 2025
-                                        </span>
-                                        <span class="read-time">
-                                            <i class="fas fa-clock"></i> 6 min read
-                                        </span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="section-footer">
-                            <a href="pages/articles.html" class="btn btn-outline">View All Articles</a>
-                        </div>
-                    </div>
-
-                    <!-- Teaching Resources Column -->
-                    <div class="content-column">
-                        <div class="section-header">
-                            <h2 class="section-title">Teaching Resources</h2>
-                            <p class="section-subtitle">Educational materials for Islamic learning and development</p>
-                        </div>
-
-                        <div class="articles-list single-column">
-                            <article class="article-item resource-card">
-                                <div class="resource-image">
-                                    <img src="assets/images/image_example.jpg" alt="Islamic Studies Curriculum" loading="lazy">
-                                </div>
-                                <div class="resource-content">
-                                    <h3 class="resource-title">Islamic Studies Curriculum</h3>
-                                    <a href="pages/resources.html" class="resource-link">Download Resources</a>
-                                </div>
-                            </article>
-
-                            <article class="article-item resource-card">
-                                <div class="resource-image">
-                                    <img src="assets/images/image_example.jpg" alt="Community Workshop Guides" loading="lazy">
-                                </div>
-                                <div class="resource-content">
-                                    <h3 class="resource-title">Community Workshop Guides</h3>
-                                    <a href="pages/resources.html" class="resource-link">Download Resources</a>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="section-footer">
-                            <a href="pages/resources.html" class="btn btn-secondary">All Teaching Resources</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <!-- Dhikr & Du'a Section -->
-        <section class="dhikr-section section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Daily Dhikr & Du'a</h2>
-                    <p class="section-subtitle">Strengthen your connection with Allah through remembrance</p>
-                </div>
-                
-                <div class="dhikr-grid">
-                    <div class="dhikr-card">
-                        <div class="dhikr-image">
-                            <img src="assets/images/image_example.jpg" alt="Morning Adhkar" loading="lazy">
-                        </div>
-                        <div class="dhikr-content">
-                            <h3 class="dhikr-title">Morning Adhkar</h3>
-                            <a href="pages/morning-adhkar.html" class="dhikr-link">Explore</a>
-                        </div>
-                    </div>
                     
-                    <div class="dhikr-card">
-                        <div class="dhikr-image">
-                            <img src="assets/images/image_example.jpg" alt="Evening Adhkar" loading="lazy">
-                        </div>
-                        <div class="dhikr-content">
-                            <h3 class="dhikr-title">Evening Adhkar</h3>
-                            <a href="pages/evening-adhkar.html" class="dhikr-link">Explore</a>
-                        </div>
-                    </div>
-                    
-                    <div class="dhikr-card">
-                        <div class="dhikr-image">
-                            <img src="assets/images/image_example.jpg" alt="Before Sleep Adhkar" loading="lazy">
-                        </div>
-                        <div class="dhikr-content">
-                            <h3 class="dhikr-title">Before Sleep Adhkar</h3>
-                            <a href="pages/before-sleep-adhkar.html" class="dhikr-link">Explore</a>
-                        </div>
-                    </div>
-                    
-                    <div class="dhikr-card">
-                        <div class="dhikr-image">
-                            <img src="assets/images/image_example.jpg" alt="Prophetic Du'as" loading="lazy">
-                        </div>
-                        <div class="dhikr-content">
-                            <h3 class="dhikr-title">Prophetic Du'as</h3>
-                            <a href="pages/dhikr-dua.html#prophetic" class="dhikr-link">Explore</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quotes and Reminders Section -->
-        <section class="quotes section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Quotes and Reminders</h2>
-                    <p class="section-subtitle">Inspiring Islamic quotes and daily reminders for spiritual reflection</p>
-                </div>
-                
-                <div class="quotes-grid">
-                    <div class="quote-card">
-                        <div class="quote-image">
-                            <img src="assets/images/image_example.jpg" alt="Islamic Quote 1" loading="lazy">
-                        </div>
-                        <div class="quote-download">
-                            <a href="assets/images/image_example.jpg" download="Faith_Guidance_Quote.jpg" class="download-btn">
-                                <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="quote-card">
-                        <div class="quote-image">
-                            <img src="assets/images/image_example.jpg" alt="Islamic Quote 2" loading="lazy">
-                        </div>
-                        <div class="quote-download">
-                            <a href="assets/images/image_example.jpg" download="Patience_Trust_Quote.jpg" class="download-btn">
-                                <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="quote-card">
-                        <div class="quote-image">
-                            <img src="assets/images/image_example.jpg" alt="Islamic Quote 3" loading="lazy">
-                        </div>
-                        <div class="quote-download">
-                            <a href="assets/images/image_example.jpg" download="Gratitude_Peace_Quote.jpg" class="download-btn">
-                                <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="quote-card">
-                        <div class="quote-image">
-                            <img src="assets/images/image_example.jpg" alt="Islamic Quote 4" loading="lazy">
-                        </div>
-                        <div class="quote-download">
-                            <a href="assets/images/image_example.jpg" download="Hope_Mercy_Quote.jpg" class="download-btn">
-                                <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section-footer">
-                    <a href="pages/quotes-reminders.html" class="btn btn-secondary">All Quotes and Reminders</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Islamic Publications Section -->
-        <section class="resources section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Islamic Publications</h2>
-                    <p class="section-subtitle">Deepen your knowledge with our curated Islamic resources</p>
-                </div>
-                
-                <div class="resources-grid">
-                    <article class="article-item publication-item">
-                        <div class="article-image">
-                            <img src="assets/images/image_example.jpg" alt="The Path to Paradise" loading="lazy">
-                            <a href="#" class="preview-icon" title="Preview" onclick="previewBook('path-to-paradise'); return false;">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <div class="publication-badge">New</div>
-                        </div>
-                    </article>
-                    
-                    <article class="article-item publication-item">
-                        <div class="article-image">
-                            <img src="assets/images/image_example.jpg" alt="Daily Dhikr Companion" loading="lazy">
-                            <a href="#" class="preview-icon" title="Preview" onclick="previewBook('daily-dhikr'); return false;">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </div>
-                    </article>
-                    
-                    <article class="article-item publication-item">
-                        <div class="article-image">
-                            <img src="assets/images/image_example.jpg" alt="Quranic Reflections" loading="lazy">
-                            <a href="#" class="preview-icon" title="Preview" onclick="previewBook('quranic-reflections'); return false;">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <div class="publication-badge">Popular</div>
-                        </div>
-                    </article>
-                    
-                    <article class="article-item publication-item">
-                        <div class="article-image">
-                            <img src="assets/images/image_example.jpg" alt="Islamic Ethics & Morality" loading="lazy">
-                            <a href="#" class="preview-icon" title="Preview" onclick="previewBook('islamic-ethics'); return false;">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </div>
-                    </article>
-                </div>
-                
-                <div class="section-footer">
-                    <a href="pages/publications.html" class="btn btn-primary">View All Publications</a>
-                </div>
-            </div>
-        </section>
-        <!-- Newsletter Section -->
-        <section class="newsletter section bg-primary">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2 class="newsletter-title">Join Our Islamic Community</h2>
-                    <p class="newsletter-subtitle">
-                        Subscribe to receive weekly Islamic insights, du'as, and spiritual guidance directly in your inbox
-                    </p>
-
-                    <form class="newsletter-form" id="newsletter-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Enter your email address" required>
-                            <button type="submit" class="btn btn-secondary">
-                                <span>Subscribe</span>
-                                <i class="fas fa-paper-plane"></i>
+                    <!-- Search Bar -->
+                    <div class="hero-search">
+                        <form class="search-form global-search-form" role="search">
+                            <input type="text" class="search-input" placeholder="Search articles, dhikr, duas, and more..." aria-label="Search the site">
+                            <button type="submit" class="btn btn-primary search-btn" aria-label="Search">
+                                <i class="fas fa-search"></i>
                             </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Trending Topics -->
+                    <div class="hero-trending">
+                        <span class="trending-label">TRENDING:</span>
+                        <div class="trending-buttons">
+                            <a href="pages/articles.html?topic=islam-101" class="trending-btn">Islam 101</a>
+                            <a href="pages/articles.html?topic=ghusl" class="trending-btn">Ghusl</a>
+                            <a href="pages/articles.html?topic=istikharah" class="trending-btn">Istikharah</a>
+                            <a href="pages/articles.html?topic=hijab" class="trending-btn">Hijab</a>
+                            <a href="pages/articles.html?topic=racism" class="trending-btn">Racism</a>
                         </div>
-                        <p class="newsletter-privacy">
-                            We respect your privacy. Unsubscribe at any time.
-                        </p>
-                    </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section class="featured-section section">
+            <div class="container-wide">
+                <div class="section-header">
+                    <h2 class="section-title">Featured</h2>
+                </div>
+
+                <div class="featured-layout">
+                    <!-- Left Side - 70% -->
+                    <div class="featured-left">
+                        <!-- Top 70% -->
+                        <div class="featured-left-top">
+                            <a href="pages/article-detail.html?id=ikhlas" class="featured-card">
+                                <div class="featured-image">
+                                    <img src="assets/images/image_example.jpg" alt="Sincere Intention in Worship" loading="lazy">
+                                </div>
+                                <div class="featured-content">
+                                    <h4 class="featured-badge">LATEST</h4>
+                                    <h3 class="featured-category">BLOG</h3>
+                                    <h2 class="featured-title">Sincere Intention (Ikhlas) in Worship</h2>
+                                    <div class="featured-divider"></div>
+                                    <p class="featured-text">Understanding the role of sincerity in all acts of worship and how to purify intentions for Allah alone. Explore the transformative power of having pure intentions in every action we take. Learn about the fundamental importance of ikhlas in Islam and how it serves as the foundation for all accepted deeds. Discover practical steps to maintain sincerity and avoid showing off (riya) in your daily worship and interactions.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Bottom 30% -->
+                        <div class="featured-left-bottom">
+                            <a href="pages/article-detail.html?id=sincere-repentance" class="featured-card featured-card-horizontal">
+                                <div class="featured-image-small">
+                                    <img src="assets/images/image_example.jpg" alt="The Power of Sincere Repentance" loading="lazy">
+                                </div>
+                                <div class="featured-content">
+                                    <h4 class="featured-badge">JUST FOR YOU</h4>
+                                    <h4 class="featured-category">ARTICLE</h4>
+                                    <h3 class="featured-title-small">The Power of Sincere Repentance (Tawbah)</h3>
+                                    <div class="featured-divider"></div>
+                                    <p class="featured-text">Explore the transformative power of sincere repentance and how it brings us closer to Allah's mercy and forgiveness. Learn about the conditions of true tawbah and its profound impact on spiritual purification. Understand how Allah loves those who constantly turn to Him in repentance and how this beautiful act can completely transform one's relationship with the Creator.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - 30% -->
+                    <div class="featured-right">
+                        <!-- Top 25% -->
+                        <div class="featured-right-top">
+                            <section class="featured-poll" data-daily-poll>
+                                <div class="poll-meta">
+                                    <span class="poll-badge">Daily Pulse</span>
+                                    <span class="poll-date" data-poll-date>Updating...</span>
+                                </div>
+                                <h3 class="poll-question" data-poll-question>Loading today's reflection...</h3>
+                                <p class="poll-description" data-poll-description>Check back shortly to cast your vote.</p>
+                                <div class="poll-options" data-poll-options role="group" aria-label="Daily poll choices">
+                                    <button class="poll-option skeleton" type="button" disabled>Loading options...</button>
+                                </div>
+                                <div class="poll-footer">
+                                    <button class="poll-reset" type="button" data-poll-reset disabled>Change Vote</button>
+                                    <span class="poll-total" data-poll-total>0 votes</span>
+                                </div>
+                                <p class="poll-disclaimer">Votes store locally until the global poll service launches.</p>
+                            </section>
+                        </div>
+                        <!-- Bottom 75% - Divided into 4 equal parts -->
+                        <div class="featured-right-bottom">
+                            <div class="featured-right-item">
+                                <a href="pages/article-detail.html?id=hope-fear-balance" class="featured-card featured-card-horizontal">
+                                    <div class="featured-image-small">
+                                        <img src="assets/images/image_example.jpg" alt="Balancing Hope and Fear" loading="lazy">
+                                    </div>
+                                    <div class="featured-content">
+                                        <h4 class="featured-category">ARTICLE</h4>
+                                        <h3 class="featured-title-small">Balancing Hope and Fear in Islam</h3>
+                                        <div class="featured-divider"></div>
+                                        <p class="featured-text">A practical look at maintaining balance between hope in Allah's mercy and fear of accountability.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="featured-right-item">
+                                <a href="pages/article-detail.html?id=guarding-tongue" class="featured-card featured-card-horizontal">
+                                    <div class="featured-image-small">
+                                        <img src="assets/images/image_example.jpg" alt="Guarding the Tongue" loading="lazy">
+                                    </div>
+                                    <div class="featured-content">
+                                        <h4 class="featured-category">ARTICLE</h4>
+                                        <h3 class="featured-title-small">Guarding the Tongue: Speech Etiquette</h3>
+                                        <div class="featured-divider"></div>
+                                        <p class="featured-text">Teachings from Quran and Sunnah on mindful speech and avoiding harmful words.</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="featured-right-item">
+                                <a href="pages/article-detail.html?id=asma-ul-husna" class="featured-card featured-card-horizontal">
+                                    <div class="featured-image-small">
+                                        <img src="assets/images/image_example.jpg" alt="Allah's 99 Names" loading="lazy">
+                                    </div>
+                                    <div class="featured-content">
+                                        <h4 class="featured-category">FAITH</h4>
+                                        <h3 class="featured-title-small">Understanding Allah's 99 Beautiful Names</h3>
+                                        <div class="featured-divider"></div>
+                                        <p class="featured-text">Discover the profound meanings behind Allah's beautiful names and how they transform our relationship with our Creator.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- See Latest Navigation -->
+                <div class="see-latest-nav">
+                    <span class="see-latest-label">See Latest:</span>
+                    <div class="see-latest-buttons">
+                        <a href="#" class="see-latest-btn">Infographics</a>
+                        <a href="#" class="see-latest-btn">Curriculum</a>
+                        <a href="#" class="see-latest-btn">Videos</a>
+                        <a href="#" class="see-latest-btn">Blogs</a>
+                        <a href="#" class="see-latest-btn">Event</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Content Section - Articles -->
+        <section class="featured-content section">
+            <div class="container-wide">
+                <div class="two-column-cards">
+                    <!-- Left Card - Digital Counter promotion -->
+                    <div class="column-card">
+                        <article class="promo-card promo-card--counter">
+                            <div class="promo-card-content">
+                                <p class="promo-eyebrow">Digital Tool</p>
+                                <h3 class="promo-title">Digital Dhikr Counter</h3>
+                                <p class="promo-text">
+                                    Keep your adhkar flowing wherever you are. Log tasbih, tahmid and takbir sessions with a clean,
+                                    distraction-free counter designed for daily remembrance.
+                                </p>
+                                <ul class="promo-list">
+                                    <li>Set custom targets and track progress in real time.</li>
+                                    <li>Resume unfinished sessions with saved totals.</li>
+                                    <li>Optimised for mobile and desktop worship routines.</li>
+                                </ul>
+                            </div>
+                            <a href="pages/digital-counter.html" class="btn btn-primary promo-action" style="background: white; color: #1e90ff;">Launch Digital Counter</a>
+                        </article>
+                    </div>
+                    
+                    <!-- Right Card - Light Upon Light event -->
+                    <div class="column-card">
+                        <article class="promo-card promo-card--event">
+                            <div class="promo-card-content">
+                                <p class="promo-eyebrow">Upcoming Event</p>
+                                <h3 class="promo-title">Light Upon Light Winter Conference 2025</h3>
+                                <p class="promo-text">
+                                    This nationwide winter tour gathers Mufti Menk, Imam Omar Suleiman, Shaykh Abu Bakr Zoud,
+                                    Shaykh Ali Hammuda, and more inspiring voices to uplift hearts across the UK.
+                                </p>
+                                <ul class="promo-list">
+                                    <li>Multiple UK cities with immersive programmes.</li>
+                                    <li>Powerful reminders focused on reconnecting to Allah.</li>
+                                    <li>Organised by Light Upon Light Global.</li>
+                                </ul>
+                            </div>
+                            <a href="https://lightuponlight.co.uk/event/winter-2025/" class="btn btn-secondary promo-action" target="_blank" rel="noopener">
+                                Explore Event Details
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Width Light Blue Section -->
+        <section class="full-width-blue-section">
+            <div class="blue-section-content">
+                <!-- Icon -->
+                <div class="blue-section-icon">
+                    <img src="assets/images/connect.svg" alt="Connect" class="connect-icon">
+                </div>
+                
+                <!-- Card 1 - Newsletter -->
+                <div class="blue-section-card">
+                    <div class="action-card newsletter-card">
+                        <h3 class="action-card-title">Subscribe to <span class="highlight-text">Newsletter</span></h3>
+                        <ul class="action-card-benefits">
+                            <li class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Weekly highlights</span>
+                            </li>
+                            <li class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Upcoming content, behind the scenes</span>
+                            </li>
+                            <li class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Events and happenings</span>
+                            </li>
+                        </ul>
+                        <form class="action-card-form" id="newsletterForm">
+                            <input type="email" class="email-input" id="newsletterEmail" placeholder="Enter your email address" required>
+                            <button type="submit" class="subscribe-btn">Subscribe</button>
+                        </form>
+                        <div class="form-toast" id="newsletterToast"></div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 - Membership -->
+                <div class="blue-section-card">
+                    <div class="action-card membership-card">
+                        <h3 class="action-card-title">Become a <span class="highlight-text">Member</span></h3>
+                        <ul class="action-card-benefits">
+                            <li class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Bookmark content</span>
+                            </li>
+                            <li class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Manage your donations</span>
+                            </li>
+                            <li class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Track your spiritual growth</span>
+                            </li>
+                        </ul>
+                        <button class="signup-btn" id="signupBtn">Sign Up</button>
+                        <div class="form-toast" id="signupToast"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection Card Section -->
+        <section class="collection-card-section section">
+            <div class="container-wide">
+                <div class="collection-card">
+                    <!-- Left Part - Image (30%) -->
+                    <div class="collection-image">
+                        <img src="assets/images/image_example.jpg" alt="Collection Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 0 0 8px;">
+                    </div>
+                    
+                    <!-- Right Part - Content (70%) -->
+                    <div class="collection-content">
+                        <h4 class="collection-category">COLLECTION</h4>
+                        <h1 class="collection-title">Islamic Wisdom</h1>
+                        
+                        <div class="collection-filters">
+                            <button class="filter-btn">Blog</button>
+                            <button class="filter-btn">Lecture</button>
+                            <button class="filter-btn">Article</button>
+                            <button class="filter-btn">Infographics</button>
+                        </div>
+                        
+                        <div class="collection-links">
+                            <h3><a href="#">Understanding the Five Pillars of Islam</a></h3>
+                            <div class="link-divider"></div>
+                            <h3><a href="#">The Importance of Daily Prayer in Modern Life</a></h3>
+                            <div class="link-divider"></div>
+                            <h3><a href="#">Building Character Through Islamic Values</a></h3>
+                        </div>
+                        
+                        <a href="#" class="collection-more">
+                            <span>More on Islamic Wisdom</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Articles Section -->
+        <section class="trending-articles-section">
+            <div class="trending-articles-header">
+                <div class="trending-header-line"></div>
+                <a href="#" class="trending-header-link">
+                    <h2>Trending Articles</h2>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <div class="trending-header-line"></div>
+            </div>
+            <div class="trending-articles-content">
+                <!-- Card 1 -->
+                <a href="#" class="trending-card">
+                    <i class="fas fa-file-alt trending-icon"></i>
+                    <h4 class="trending-category">DHIKR</h4>
+                    <h3 class="trending-title">The Power of Remembrance</h3>
+                    <p class="trending-excerpt">Discover the spiritual benefits and transformative power of consistent dhikr in daily life.</p>
+                </a>
+                
+                <!-- Card 2 -->
+                <a href="#" class="trending-card">
+                    <i class="fas fa-file-alt trending-icon"></i>
+                    <h4 class="trending-category">PRAYER</h4>
+                    <h3 class="trending-title">Perfecting Your Salah</h3>
+                    <p class="trending-excerpt">Learn the essential elements and etiquettes of performing the perfect prayer.</p>
+                </a>
+                
+                <!-- Card 3 -->
+                <a href="#" class="trending-card">
+                    <i class="fas fa-file-alt trending-icon"></i>
+                    <h4 class="trending-category">QURAN</h4>
+                    <h3 class="trending-title">Understanding Surah Al-Fatiha</h3>
+                    <p class="trending-excerpt">Explore the deep meanings and lessons within the opening chapter of the Quran.</p>
+                </a>
+                
+                <!-- Card 4 -->
+                <a href="#" class="trending-card">
+                    <i class="fas fa-file-alt trending-icon"></i>
+                    <h4 class="trending-category">HADITH</h4>
+                    <h3 class="trending-title">Prophetic Wisdom</h3>
+                    <p class="trending-excerpt">Reflect on timeless teachings from the sayings of Prophet Muhammad (peace be upon him).</p>
+                </a>
+                
+                <!-- Card 5 -->
+                <a href="#" class="trending-card">
+                    <i class="fas fa-file-alt trending-icon"></i>
+                    <h4 class="trending-category">SPIRITUALITY</h4>
+                    <h3 class="trending-title">Path to Inner Peace</h3>
+                    <p class="trending-excerpt">Practical guidance for achieving tranquility and spiritual growth in modern times.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Trending Videos Section -->
+        <section class="trending-videos-section">
+            <div class="trending-videos-header">
+                <div class="trending-header-line"></div>
+                <a href="#" class="trending-header-link">
+                    <h2>Trending Videos</h2>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <div class="trending-header-line"></div>
+            </div>
+            <div class="trending-videos-content">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3 class="video-title">The Beauty of Patience in Islam</h3>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3 class="video-title">Daily Adhkar: Morning Remembrance</h3>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3 class="video-title">Understanding Islamic Finance</h3>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3 class="video-title">The Importance of Seeking Knowledge</h3>
+                </div>
+                
+                <!-- Video 5 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3 class="video-title">Prophetic Character and Mercy</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- eBooks Section -->
+        <section class="ebooks-section">
+            <div class="ebooks-header">
+                <div class="trending-header-line"></div>
+                <a href="#" class="trending-header-link">
+                    <h2>eBooks</h2>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <div class="trending-header-line"></div>
+            </div>
+            <div class="ebooks-content">
+                <!-- eBook 1 -->
+                <div class="ebook-card">
+                    <a href="#" class="ebook-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Book Cover">
+                    </a>
+                    <a href="#" class="ebook-title">Islamic Teachings for Daily Life</a>
+                </div>
+                
+                <!-- eBook 2 -->
+                <div class="ebook-card">
+                    <a href="#" class="ebook-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Book Cover">
+                    </a>
+                    <a href="#" class="ebook-title">The Science of Dhikr</a>
+                </div>
+                
+                <!-- eBook 3 -->
+                <div class="ebook-card">
+                    <a href="#" class="ebook-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Book Cover">
+                    </a>
+                    <a href="#" class="ebook-title">Understanding the Quran</a>
+                </div>
+                
+                <!-- eBook 4 -->
+                <div class="ebook-card">
+                    <a href="#" class="ebook-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Book Cover">
+                    </a>
+                    <a href="#" class="ebook-title">The Prophetic Way</a>
+                </div>
+                
+                <!-- eBook 5 -->
+                <div class="ebook-card">
+                    <a href="#" class="ebook-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Book Cover">
+                    </a>
+                    <a href="#" class="ebook-title">Spiritual Excellence</a>
+                </div>
+                
+                <!-- eBook 6 -->
+                <div class="ebook-card">
+                    <a href="#" class="ebook-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Book Cover">
+                    </a>
+                    <a href="#" class="ebook-title">Prayer and Contemplation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curriculum Section -->
+        <section class="curriculum-section">
+            <div class="curriculum-header">
+                <div class="trending-header-line"></div>
+                <a href="#" class="trending-header-link">
+                    <h2>Curriculum</h2>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <div class="trending-header-line"></div>
+            </div>
+            <div class="curriculum-content">
+                <!-- Curriculum 1 -->
+                <div class="curriculum-card">
+                    <a href="#" class="curriculum-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Curriculum">
+                    </a>
+                    <div class="curriculum-info">
+                        <a href="#" class="curriculum-title">Foundations of Faith</a>
+                        <div class="curriculum-divider"></div>
+                        <p class="curriculum-desc">A comprehensive guide to understanding the core beliefs and practices of Islam.</p>
+                    </div>
+                </div>
+                
+                <!-- Curriculum 2 -->
+                <div class="curriculum-card">
+                    <a href="#" class="curriculum-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Curriculum">
+                    </a>
+                    <div class="curriculum-info">
+                        <a href="#" class="curriculum-title">Quranic Studies</a>
+                        <div class="curriculum-divider"></div>
+                        <p class="curriculum-desc">Deep dive into Quranic interpretation and practical application in modern life.</p>
+                    </div>
+                </div>
+                
+                <!-- Curriculum 3 -->
+                <div class="curriculum-card">
+                    <a href="#" class="curriculum-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Curriculum">
+                    </a>
+                    <div class="curriculum-info">
+                        <a href="#" class="curriculum-title">Islamic History</a>
+                        <div class="curriculum-divider"></div>
+                        <p class="curriculum-desc">Journey through the key events and figures that shaped Islamic civilization.</p>
+                    </div>
+                </div>
+                
+                <!-- Curriculum 4 -->
+                <div class="curriculum-card">
+                    <a href="#" class="curriculum-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Curriculum">
+                    </a>
+                    <div class="curriculum-info">
+                        <a href="#" class="curriculum-title">Fiqh & Jurisprudence</a>
+                        <div class="curriculum-divider"></div>
+                        <p class="curriculum-desc">Understand Islamic law and its practical implementation in daily affairs.</p>
+                    </div>
+                </div>
+                
+                <!-- Curriculum 5 -->
+                <div class="curriculum-card">
+                    <a href="#" class="curriculum-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Curriculum">
+                    </a>
+                    <div class="curriculum-info">
+                        <a href="#" class="curriculum-title">Spiritual Development</a>
+                        <div class="curriculum-divider"></div>
+                        <p class="curriculum-desc">Cultivate inner peace and spiritual growth through Islamic practices.</p>
+                    </div>
+                </div>
+                
+                <!-- Curriculum 6 -->
+                <div class="curriculum-card">
+                    <a href="#" class="curriculum-thumbnail">
+                        <img src="assets/images/image_example.jpg" alt="Curriculum">
+                    </a>
+                    <div class="curriculum-info">
+                        <a href="#" class="curriculum-title">Islamic Ethics</a>
+                        <div class="curriculum-divider"></div>
+                        <p class="curriculum-desc">Learn the principles of moral conduct and ethical behavior in Islam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Column Cards Section -->
+        <section class="featured-content section">
+            <div class="container-wide">
+                <div class="two-column-cards">
+                    <!-- Left Card - Daily Dhikr & Dua -->
+                    <div class="column-card">
+                        <div class="info-card">
+                            <h3 class="info-card-title">Daily Dhikr & Dua</h3>
+                            <p class="info-card-description">Start your day with powerful supplications and remembrance of Allah. Discover authentic prophetic adhkar for morning, evening, and every moment of your daily life.</p>
+                            <a href="pages/dhikr-dua.html" class="info-card-link">
+                                All Adhkar
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Card - Quotes & Reminders -->
+                    <div class="column-card">
+                        <div class="info-card">
+                            <h3 class="info-card-title">Quotes & Reminders</h3>
+                            <p class="info-card-description">Find inspiration and spiritual guidance through carefully selected Islamic quotes and daily reminders that nurture your faith and strengthen your connection with Allah.</p>
+                            <a href="pages/quotes-reminders.html" class="info-card-link">
+                                All Reminders
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Large Card Section -->
+        <section class="final-card-section">
+            <div class="container-wide">
+                <div class="final-large-card">
+                    <!-- Card 1 - Popular -->
+                    <div class="final-vertical-card">
+                        <h4 class="final-card-header">Popular</h4>
+                        <div class="final-card-divider"></div>
+                        <div class="final-card-links">
+                            <a href="#">History</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Racism</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Hajj</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Ramadan</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Marriage</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Digital Dhikr Counter</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 - Staff Picks -->
+                    <div class="final-vertical-card">
+                        <h4 class="final-card-header">Staff Picks</h4>
+                        <div class="final-card-divider"></div>
+                        <div class="final-card-links">
+                            <a href="#">Masjidul Aqsa</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Muslim rights</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Injustice</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Women in Islam</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Quiz App</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Mansheu Weekly</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 - Do More -->
+                    <div class="final-vertical-card">
+                        <h4 class="final-card-header">Do More</h4>
+                        <div class="final-card-divider"></div>
+                        <div class="final-card-links">
+                            <a href="#">Donate</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Become a member</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Volunteer</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Work with us</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Newsletters</a>
+                            <div class="final-link-separator"></div>
+                            <a href="#">Follow us</a>
+                            <div class="final-social-icons">
+                                <a href="#" class="social-icon"><i class="fab fa-facebook" style="color: #1877F2;"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter" style="color: #1DA1F2;"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-instagram" style="color: #E4405F;"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-youtube" style="color: #FF0000;"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin" style="color: #0A66C2;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OLD Featured Content Section - Articles (Hidden) -->
+        <section class="featured-content-old section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Articles</h2>
+                    <p class="section-subtitle">Discover inspiring content to strengthen your faith</p>
+                </div>
+
+                <div class="articles-grid vertical">
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="assets/images/image_example.jpg" alt="Building Strong Character Through Islamic Values" loading="lazy">
+                            <div class="article-category">Character</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="pages/article-detail.html?id=strong-character">Building Strong Character</a>
+                            </h3>
+                            <div class="article-meta">
+                                <span class="article-date">
+                                    <i class="fas fa-calendar"></i> September 18, 2025
+                                </span>
+                                <span class="read-time">
+                                    <i class="fas fa-clock"></i> 7 min read
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-image">
+                            <img src="assets/images/image_example.jpg" alt="The Beauty of Night Prayer (Tahajjud)" loading="lazy">
+                            <div class="article-category">Prayer</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="pages/article-detail.html?id=tahajjud-beauty">The Beauty of Tahajjud</a>
+                            </h3>
+                            <div class="article-meta">
+                                <span class="article-date">
+                                    <i class="fas fa-calendar"></i> September 15, 2025
+                                </span>
+                                <span class="read-time">
+                                    <i class="fas fa-clock"></i> 6 min read
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-footer">
+                    <a href="pages/articles.html" class="btn btn-outline">View All Articles</a>
                 </div>
             </div>
         </section>
@@ -424,8 +827,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <i class="fas fa-moon"></i>
-                        <span>Mansheu Dawah</span>
+                        <img src="assets/images/logo-light.png" alt="Mansheu Dawah Logo" class="footer-logo-img">
                     </div>
                     <p class="footer-description">
                         A dawah initiative dedicated to connecting hearts to Allah through authentic Islamic knowledge,
@@ -457,8 +859,6 @@
                         <li><a href="pages/articles.html">Articles</a></li>
                         <li><a href="pages/dhikr-dua.html">Dhikr & Du'a</a></li>
                         <li><a href="pages/digital-counter.html">Digital Counter</a></li>
-                        <li><a href="pages/publications.html">Publications</a></li>
-                        <li><a href="pages/resources.html">Teaching Resources</a></li>
                         <li><a href="pages/about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -535,6 +935,5 @@
     <!-- JavaScript -->
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/publications.js"></script>
 </body>
 </html>

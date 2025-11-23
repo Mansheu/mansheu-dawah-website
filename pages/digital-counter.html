@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -27,703 +27,7 @@
     <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <link rel="alternate icon" href="../assets/images/favicon.ico">
     
-    <style>
-        /* Digital Counter Specific Styles */
-        .counter-page {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .counter-hero {
-            padding: 6rem 0 3rem;
-            text-align: center;
-            color: white;
-        }
-        
-        .counter-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .counter-hero p {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .counter-main {
-            padding: 2rem 0 4rem;
-        }
-        
-        .counter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .counter-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .counter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
-        }
-        
-        .counter-card.completed {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-        }
-        
-        .counter-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #2d3748;
-        }
-        
-        .counter-card.completed .counter-title {
-            color: white;
-        }
-        
-        .counter-arabic {
-            font-family: 'Amiri', serif;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            color: #4a5568;
-            font-weight: 700;
-        }
-        
-        .counter-card.completed .counter-arabic {
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        /* Circular Progress */
-        .progress-circle-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 2rem auto;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        .progress-circle {
-            transform: rotate(-90deg);
-        }
-        
-        .progress-circle-bg {
-            fill: none;
-            stroke: #e2e8f0;
-            stroke-width: 12;
-        }
-        
-        .counter-card.completed .progress-circle-bg {
-            stroke: rgba(255, 255, 255, 0.2);
-        }
-        
-        .progress-circle-progress {
-            fill: none;
-            stroke: url(#gradient);
-            stroke-width: 12;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-        
-        .counter-card.completed .progress-circle-progress {
-            stroke: #fff;
-        }
-        
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            pointer-events: none;
-        }
-        
-        .count-display {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #667eea;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .counter-card.completed .count-display {
-            color: white;
-        }
-        
-        .target-display {
-            font-size: 1.25rem;
-            color: #718096;
-            margin-top: 0.25rem;
-            margin-bottom: 0;
-            padding: 0;
-        }
-        
-        .counter-card.completed .target-display {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .counter-controls {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-        
-        .counter-btn {
-            flex: 1;
-            max-width: 50%;
-            padding: 1.25rem 2rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 60px;
-            touch-action: manipulation;
-        }
-        
-        .counter-btn.increment {
-            background: #667eea;
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .counter-btn.increment:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-        }
-        
-        .counter-btn.increment:active {
-            transform: scale(0.95);
-        }
-        
-        .counter-btn.reset {
-            background: #f7fafc;
-            color: #4a5568;
-            border: 2px solid #e2e8f0;
-        }
-        
-        .counter-btn.reset:hover {
-            background: #edf2f7;
-            border-color: #cbd5e0;
-        }
-        
-        .counter-card.completed .counter-btn.increment {
-            background: white;
-            color: #11998e;
-        }
-        
-        .counter-card.completed .counter-btn.reset {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Total Section */
-        .total-section {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            margin-bottom: 2rem;
-        }
-        
-        .total-label {
-            font-size: 1.25rem;
-            color: #4a5568;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .total-count {
-            font-size: 4rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 1.5rem;
-        }
-        
-        .reset-all-btn {
-            padding: 1rem 2.5rem;
-            background: #f5576c;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .reset-all-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
-        }
-        
-        /* Celebration Animation */
-        @keyframes celebrate {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.05) rotate(2deg); }
-            50% { transform: scale(1.08); }
-            75% { transform: scale(1.05) rotate(-2deg); }
-        }
-        
-        .counter-card.celebrating {
-            animation: celebrate 0.6s ease;
-        }
-        
-        /* Confetti */
-        .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            top: -10px;
-            animation: confetti-fall 3s linear forwards;
-        }
-        
-        @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .counter-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .counter-hero p {
-                font-size: 1rem;
-            }
-            
-            .counter-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                max-width: 350px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .total-count {
-                font-size: 3rem;
-            }
-            
-            .presets-section {
-                padding: 1.5rem;
-                max-width: 400px;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 2rem;
-            }
-            
-            .presets-grid {
-                max-width: 350px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .counter-actions {
-                max-width: 350px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-        
-        /* Dark Mode */
-        @media (prefers-color-scheme: dark) {
-            .counter-card {
-                background: #2d3748;
-            }
-            
-            .counter-title,
-            .counter-arabic {
-                color: #e2e8f0;
-            }
-            
-            .progress-circle-bg {
-                stroke: #4a5568;
-            }
-            
-            .target-display {
-                color: #a0aec0;
-            }
-            
-            .counter-btn.reset {
-                background: #4a5568;
-                color: #e2e8f0;
-                border-color: #718096;
-            }
-            
-            .counter-btn.reset:hover {
-                background: #718096;
-            }
-            
-            .total-section {
-                background: #2d3748;
-            }
-            
-            .total-label {
-                color: #e2e8f0;
-            }
-        }
-        
-        /* Completion Badge */
-        .completion-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-        
-        .completion-badge i {
-            font-size: 1.25rem;
-        }
-        
-        /* Presets Section */
-        .presets-section {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-        
-        .presets-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .presets-subtitle {
-            text-align: center;
-            color: #718096;
-            margin-bottom: 2rem;
-        }
-        
-        .presets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        
-        .preset-btn {
-            padding: 1.25rem 1.5rem;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        .preset-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-        
-        .preset-btn i {
-            margin-right: 0.5rem;
-        }
-        
-        .preset-label {
-            display: block;
-            font-size: 0.875rem;
-            opacity: 0.9;
-            margin-top: 0.25rem;
-        }
-        
-        /* Custom Counter Section */
-        .custom-counter-section {
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            margin-bottom: 2rem;
-            box-shadow: none;
-        }
-        
-        .add-counter-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #f5576c;
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        
-        .add-counter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        }
-        
-        .add-counter-btn i {
-            font-size: 1.25rem;
-        }
-        
-        .counter-actions {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .counter-actions button {
-            flex: 1;
-        }
-        
-        .reset-to-default-btn {
-            padding: 1rem;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        
-        .reset-to-default-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        }
-        
-        .reset-to-default-btn i {
-            font-size: 1.25rem;
-        }
-        
-        .default-counters {
-            display: block;
-        }
-        
-        .default-counters.hidden {
-            display: none;
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: modalSlideIn 0.3s ease;
-        }
-        
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #2d3748;
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: #718096;
-            cursor: pointer;
-            line-height: 1;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-        }
-        
-        .modal-close:hover {
-            color: #2d3748;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .form-submit {
-            width: 100%;
-            padding: 1rem;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-        
-        .delete-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(245, 87, 108, 0.1);
-            color: #f5576c;
-            border: none;
-            border-radius: 8px;
-            padding: 0.5rem 0.75rem;
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-        }
-        
-        .delete-btn:hover {
-            background: #f5576c;
-            color: white;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            .presets-section {
-                background: #2d3748;
-            }
-            
-            .custom-counter-section {
-                background: transparent;
-            }
-            
-            .presets-title,
-            .modal-title,
-            .form-label {
-                color: #e2e8f0;
-            }
-            
-            .presets-subtitle {
-                color: #a0aec0;
-            }
-            
-            .modal-content {
-                background: #2d3748;
-            }
-            
-            .modal-close {
-                color: #a0aec0;
-            }
-            
-            .modal-close:hover {
-                color: #e2e8f0;
-            }
-            
-            .form-input {
-                background: #4a5568;
-                border-color: #718096;
-                color: #e2e8f0;
-            }
-            
-            .form-input:focus {
-                border-color: #667eea;
-            }
-        }
-    </style>
+    
 </head>
 
 <body class="counter-page">
@@ -732,8 +36,7 @@
         <div class="menu__bar">
             <a href="../index.html" title="Mansheu Dawah">
                 <div class="logo">
-                    <img src="../assets/images/logo.svg" alt="Mansheu Dawah Logo" width="32" height="32">
-                    <span>Mansheu Dawah</span>
+                    <img src="../assets/images/logo.png" alt="Mansheu Dawah Logo" width="150" height="auto">
                 </div>
             </a>
             <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
@@ -754,14 +57,6 @@
                     <span class="nav-title">Quotes & Reminders</span>
                     <span class="nav-desc">Inspirational Islamic wisdom</span>
                 </a></li>
-                <li><a href="publications.html">
-                    <span class="nav-title">Publications</span>
-                    <span class="nav-desc">Coming Soon</span>
-                </a></li>
-                <li><a href="resources.html">
-                    <span class="nav-title">Teaching Resources</span>
-                    <span class="nav-desc">Coming Soon</span>
-                </a></li>
                 <li><a href="about.html">
                     <span class="nav-title">About</span>
                     <span class="nav-desc">Our mission & vision</span>
@@ -774,7 +69,7 @@
                     <span class="nav-title">Search</span>
                     <span class="nav-desc">Find content quickly</span>
                 </a></li>
-                <li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
+<li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
             </ul>
             <div class="nav-cta">
                 <a href="digital-counter.html" class="btn btn-primary">Digital Counter</a>
@@ -802,6 +97,14 @@
                 <p>Keep track of your daily remembrance of Allah with our beautiful, easy-to-use counter</p>
             </div>
         </section>
+
+        <!-- How to Use CTA -->
+        <div class="counter-guide-cta">
+            <a href="#counter-guide" class="btn guide-btn">
+                <i class="fas fa-lightbulb"></i>
+                How to Use
+            </a>
+        </div>
 
         <!-- Counter Section -->
         <section class="counter-main">
@@ -854,8 +157,8 @@
                             <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                                 <defs>
                                     <linearGradient id="gradient-subhanallah" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:#0f5bb5;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#66b3ff;stop-opacity:1" />
                                     </linearGradient>
                                 </defs>
                                 <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
@@ -891,8 +194,8 @@
                             <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                                 <defs>
                                     <linearGradient id="gradient-alhamdulillah" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:#0f5bb5;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#66b3ff;stop-opacity:1" />
                                     </linearGradient>
                                 </defs>
                                 <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
@@ -928,8 +231,8 @@
                             <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                                 <defs>
                                     <linearGradient id="gradient-allahu-akbar" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:#0f5bb5;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#66b3ff;stop-opacity:1" />
                                     </linearGradient>
                                 </defs>
                                 <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
@@ -969,6 +272,36 @@
                     <button class="reset-all-btn" onclick="resetAllCounters()">
                         <i class="fas fa-sync-alt"></i> Reset All Counters
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use Section -->
+        <section class="counter-guide" id="counter-guide" aria-label="How to use the digital counter">
+            <div class="container">
+                <div class="counter-guide-header">
+                    <h2>How to Make the Most of Your Dhikr</h2>
+                    <p>Set a sincere intention, pick your routine, and let the counter keep pace with your remembrance.</p>
+                </div>
+                <div class="counter-guide-grid">
+                    <article class="guide-card">
+                        <h3>1. Choose Your Focus</h3>
+                        <p>Select a preset or load your own sequence, then tap the circle to count each tasbih.</p>
+                        <ul class="guide-list">
+                            <li>Use presets for After Salah, Morning/Evening, and more.</li>
+                            <li>Set personal targets for unique dhikr goals.</li>
+                            <li>Watch the circle fill as you progress.</li>
+                        </ul>
+                    </article>
+                    <article class="guide-card guide-card--light">
+                        <h3>2. Track, Reset & Reflect</h3>
+                        <p>Increment with a tap, reset with assurance, and save totals locally for the next session.</p>
+                        <ul class="guide-list">
+                            <li>Use the reset buttons to restart any counter.</li>
+                            <li>Create custom counters for family, classes, or events.</li>
+                            <li>See the total tally update across every dhikr.</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1015,8 +348,6 @@
                         <li><a href="articles.html">Articles</a></li>
                         <li><a href="dhikr-dua.html">Dhikr & Du'a</a></li>
                         <li><a href="digital-counter.html">Digital Counter</a></li>
-                        <li><a href="publications.html">Publications</a></li>
-                        <li><a href="resources.html">Teaching Resources</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -1310,8 +641,8 @@
                     <svg class="progress-circle" width="200" height="200" viewBox="0 0 200 200">
                         <defs>
                             <linearGradient id="gradient-${counter.id}" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#ff7a00;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ffb347;stop-opacity:1" />
                             </linearGradient>
                         </defs>
                         <circle class="progress-circle-bg" cx="100" cy="100" r="85"></circle>
@@ -1552,7 +883,7 @@
             confettiContainer.className = 'confetti-container';
             document.body.appendChild(confettiContainer);
             
-            const colors = ['#667eea', '#764ba2', '#38ef7d', '#11998e', '#f5576c', '#f093fb'];
+            const colors = ['#0f5bb5', '#1e90ff', '#66b3ff', '#ff7a00', '#ffb347', '#f0f0f0'];
             
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
