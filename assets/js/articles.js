@@ -9,7 +9,8 @@
   });
 
   function initializeArticles() {
-    const filterButtons = document.querySelectorAll('.articles-filter .filter-btn');
+    // Use topic-tag buttons for filtering
+    const filterButtons = document.querySelectorAll('.topic-tag');
     const sortSelect = document.querySelector('.articles-filter .sort-select');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
 
@@ -25,26 +26,27 @@
       currentCategory = urlCategory;
     }
 
-    // Wire up filter buttons
+    // Wire up topic filter buttons
     filterButtons.forEach(btn => {
       btn.addEventListener('click', function() {
         filterButtons.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        currentCategory = this.getAttribute('data-category') || 'all';
-        applyCategoryFilter(currentCategory);
+        const topic = this.getAttribute('data-topic') || 'all';
+        currentCategory = topic;
+        applyTopicFilter(topic);
       });
     });
 
-    // Set active filter from URL (or default to 'all')
+    // Set active filter to 'all' by default
     if (currentCategory !== 'all') {
-      const activeBtn = Array.from(filterButtons).find(b => (b.getAttribute('data-category') || '').toLowerCase() === currentCategory);
+      const activeBtn = Array.from(filterButtons).find(b => (b.getAttribute('data-topic') || '').toLowerCase() === currentCategory);
       if (activeBtn) {
         activeBtn.click();
       } else {
-        applyCategoryFilter('all');
+        applyTopicFilter('all');
       }
     } else {
-      applyCategoryFilter('all');
+      applyTopicFilter('all');
     }
 
     // Sorting
@@ -144,14 +146,24 @@
     ];
   }
 
-  function applyCategoryFilter(category) {
-    const container = document.getElementById('articlesContainer');
-    if (!container) return;
-    const cards = container.querySelectorAll('.article-card');
+  function applyTopicFilter(topic) {
+    // Get all article cards from both sections
+    const latestCards = document.querySelectorAll('.latest-card');
+    const featuredSpotlight = document.querySelector('.featured-spotlight');
     let visibleCount = 0;
 
-    cards.forEach(card => {
-      const matches = category === 'all' || (card.getAttribute('data-category') || '').toLowerCase() === category;
+    console.log(`Filtering for topic: ${topic}`);
+    console.log(`Total cards found: ${latestCards.length}`);
+
+    // Filter latest cards by matching the tag text
+    latestCards.forEach(card => {
+      const tagElement = card.querySelector('.latest-tag');
+      const cardTopic = tagElement ? tagElement.textContent.trim().toLowerCase() : '';
+      
+      const matches = topic === 'all' || cardTopic === topic;
+      
+      console.log(`Card topic: "${cardTopic}", matches: ${matches}`);
+      
       if (matches) {
         card.style.display = 'block';
         card.style.opacity = '1';
@@ -162,7 +174,43 @@
       }
     });
 
+    // Handle featured spotlight visibility
+    if (featuredSpotlight) {
+      const spotlightTopic = featuredSpotlight.querySelector('.spotlight-topic');
+      const spotlightTopicText = spotlightTopic ? spotlightTopic.textContent.trim().toLowerCase() : '';
+      
+      if (topic === 'all' || spotlightTopicText === topic) {
+        featuredSpotlight.style.display = 'block';
+        visibleCount++;
+      } else {
+        featuredSpotlight.style.display = 'none';
+      }
+    }
+
+    console.log(`Visible count: ${visibleCount}`);
     notify(`Showing ${visibleCount} article${visibleCount === 1 ? '' : 's'}`);
+  }
+
+  function showAllArticles() {
+    // Show all article cards
+    const latestCards = document.querySelectorAll('.latest-card');
+    const featuredSpotlight = document.querySelector('.featured-spotlight');
+    
+    latestCards.forEach(card => {
+      card.style.display = 'block';
+      card.style.opacity = '1';
+    });
+    
+    if (featuredSpotlight) {
+      featuredSpotlight.style.display = 'block';
+    }
+    
+    currentCategory = 'all';
+  }
+
+  function applyCategoryFilter(category) {
+    // Redirect to new function
+    applyTopicFilter(category);
   }
 
   function sortArticles(criteria) {

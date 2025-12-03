@@ -162,25 +162,39 @@
     /* Newsletter */
     .newsletter-form {
         padding: 6px;
+        flex-direction: column;
+        gap: 8px;
     }
     
     .newsletter-form .form-group {
         flex-direction: row;
         align-items: stretch;
+        width: 100%;
+    }
+    
+    .newsletter-form .form-control {
+        flex: 1;
+        min-width: 0;
+        font-size: 14px;
     }
     
     .newsletter-form .btn {
-        min-width: 48px;
-        width: 48px;
-        padding: 0;
+        min-width: 100px;
+        width: 100%;
+        padding: 12px 16px;
+        justify-content: center;
+        font-size: 14px;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
     }
     
     .newsletter-form .btn span {
-        display: none;
+        display: inline;
     }
     
     .newsletter-form .btn i {
-        margin: 0;
+        margin-left: 8px;
     }
     
     /* Footer */
@@ -403,6 +417,28 @@
     .btn-sm {
         padding: var(--spacing-xs) var(--spacing-md);
         font-size: var(--font-size-xs);
+    }
+    
+    /* Action Card Form - Newsletter */
+    .action-card-form {
+        flex-direction: column;
+        gap: 10px;
+        border: none;
+        border-radius: 0;
+    }
+    
+    .email-input {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .subscribe-btn {
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 14px;
+        width: 100%;
     }
     
     /* Navigation */
