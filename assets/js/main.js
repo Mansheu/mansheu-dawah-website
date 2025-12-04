@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeGlobalSearch();
     initializeDailyPoll();
     initializeActionCards();
+    initializeBottomNav();
 });
 
 // ========================================
@@ -1132,3 +1133,77 @@ window.MansheudawahWebsite = {
     debounce,
     throttle
 };
+
+// ========================================
+// BOTTOM CONTENTS NAVIGATION
+// ========================================
+function initializeBottomNav() {
+    const bottomNav = document.getElementById('bottomContentsNav');
+    const toggleBtn = document.getElementById('bottomNavToggle');
+    const navBtns = document.querySelectorAll('.bottom-nav-btn');
+    
+    if (!bottomNav || !toggleBtn) return;
+    
+    // Toggle navigation panel
+    toggleBtn.addEventListener('click', function() {
+        bottomNav.classList.toggle('open');
+        const isOpen = bottomNav.classList.contains('open');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+    });
+    
+    // Scroll spy - highlight active section
+    const sections = Array.from(navBtns).map(btn => {
+        const href = btn.getAttribute('href');
+        return document.querySelector(href);
+    }).filter(Boolean);
+    
+    function updateActiveSection() {
+        const scrollPos = window.scrollY + 100;
+        
+        let currentSection = null;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                currentSection = section;
+            }
+        });
+        
+        navBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (currentSection && btn.getAttribute('href') === '#' + currentSection.id) {
+                btn.classList.add('active');
+            }
+        });
+    }
+    
+    // Update on scroll with throttle
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateActiveSection);
+    });
+    
+    // Smooth scroll to section when clicked
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Initial update
+    updateActiveSection();
+}
