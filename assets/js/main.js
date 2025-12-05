@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDailyPoll();
     initializeActionCards();
     initializeBottomNav();
+    initializePrintableEnlarge();
 });
 
 // ========================================
@@ -1206,4 +1207,64 @@ function initializeBottomNav() {
     
     // Initial update
     updateActiveSection();
+}
+
+// ========================================
+// PRINTABLE PAGE - IMAGE ENLARGE
+// ========================================
+function initializePrintableEnlarge() {
+    const previewImage = document.querySelector('.printable-preview-image');
+    const enlargeBtn = document.querySelector('.preview-enlarge-btn');
+    
+    if (!previewImage || !enlargeBtn) return;
+    
+    const img = previewImage.querySelector('img');
+    if (!img) return;
+    
+    // Click on button or image to enlarge
+    const openModal = () => {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.className = 'image-modal';
+        modal.innerHTML = `
+            <div class="image-modal-overlay"></div>
+            <div class="image-modal-content">
+                <button class="image-modal-close" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img src="${img.src}" alt="${img.alt}">
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Animate in
+        setTimeout(() => modal.classList.add('active'), 10);
+        
+        // Close handlers
+        const closeModal = () => {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }, 300);
+        };
+        
+        modal.querySelector('.image-modal-close').addEventListener('click', closeModal);
+        modal.querySelector('.image-modal-overlay').addEventListener('click', closeModal);
+        
+        // Close on ESC key
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', handleEsc);
+            }
+        };
+        document.addEventListener('keydown', handleEsc);
+    };
+    
+    enlargeBtn.addEventListener('click', openModal);
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', openModal);
 }

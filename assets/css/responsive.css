@@ -447,8 +447,9 @@
     }
     
     .logo img {
-        max-width: 130px;
-        height: auto;
+        max-height: 75px;
+        height: 75px;
+        width: auto;
     }
     
     .nav-brand .logo {
