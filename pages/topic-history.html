@@ -112,7 +112,35 @@
                 <div class="latest-divider"></div>
                 
                 <div class="latest-grid">
-                    <p style="text-align: center; color: #666; padding: 2rem;">No articles available yet. Check back soon!</p>
+                    <!-- Article 1 -->
+                    <a href="navigating-ramadan-at-work.html" class="latest-card" data-topic="islam in the west">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Navigating Ramadan at Work" loading="lazy">
+                        </div>
+                        <span class="latest-tag">ISLAM IN THE WEST</span>
+                        <h3 class="latest-article-title">Navigating Ramadan at Work: A Guide for Western Muslim Professionals</h3>
+                        <p class="latest-author">Editorial Team</p>
+                    </a>
+
+                    <!-- Article 2 -->
+                    <a href="rise-of-eco-mosques.html" class="latest-card" data-topic="islam in the west">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="The Rise of Eco-Mosques" loading="lazy">
+                        </div>
+                        <span class="latest-tag">ISLAM IN THE WEST</span>
+                        <h3 class="latest-article-title">The Rise of Eco-Mosques: How Western Muslim Communities Lead in Environmental Stewardship</h3>
+                        <p class="latest-author">Editorial Team</p>
+                    </a>
+
+                    <!-- Article 3 -->
+                    <a href="ahmed-al-ahmed-bondi-hero.html" class="latest-card" data-topic="islam in the west">
+                        <div class="latest-image">
+                            <img src="../assets/images/image_example.jpg" alt="Muslim Hero Ahmed al-Ahmed" loading="lazy">
+                        </div>
+                        <span class="latest-tag">ISLAM IN THE WEST</span>
+                        <h3 class="latest-article-title">Muslim Hero Ahmed al-Ahmed: The Man Who Disarmed the Bondi Attacker</h3>
+                        <p class="latest-author">Editorial Team</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -224,5 +252,26 @@
     <script src="../assets/js/theme.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/topic-filter.js"></script>
+    <script>
+        // Check if page loaded with hash and activate corresponding filter
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1); // Remove the # symbol
+            if (hash === 'islam-in-the-west') {
+                const filterButtons = document.querySelectorAll('.topic-tag');
+                const targetButton = Array.from(filterButtons).find(btn => 
+                    btn.getAttribute('data-filter') === 'islam in the west'
+                );
+                
+                if (targetButton) {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to target button
+                    targetButton.classList.add('active');
+                    // Trigger click to filter articles
+                    targetButton.click();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
