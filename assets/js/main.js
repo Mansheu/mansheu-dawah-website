@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeActionCards();
     initializeBottomNav();
     initializePrintableEnlarge();
+    initializeArticleActions(); // Share / bookmark / rating controls on article pages
 });
 
 // ========================================
@@ -1267,4 +1268,145 @@ function initializePrintableEnlarge() {
     enlargeBtn.addEventListener('click', openModal);
     img.style.cursor = 'pointer';
     img.addEventListener('click', openModal);
+}
+
+// ========================================
+// ARTICLE ACTIONS (Share, Bookmark, Rating)
+// ========================================
+function initializeArticleActions() {
+    const pageUrl = (window.location && window.location.href ? window.location.href.split('#')[0] : '');
+    const heading = document.querySelector('.article-detail-title') || document.querySelector('h1');
+    const pageTitle = heading ? heading.textContent.trim() : (document.title || 'Mansheu Dawah');
+
+    const notify = (message, type = 'success') => {
+        try {
+            showNotification(message, type, 3000);
+        } catch (_) {
+            const existing = document.querySelector('.article-inline-toast');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.className = `article-inline-toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 10);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+    };
+
+    const copyToClipboard = async (value) => {
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(value);
+                return true;
+            }
+        } catch (_) {}
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        let ok = false;
+        try { ok = document.execCommand('copy'); } catch (_) { ok = false; }
+        document.body.removeChild(textarea);
+        return ok;
+    };
+
+    // Share button
+    const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const payload = { title: pageTitle, text: `${pageTitle} — via Mansheu Dawah`, url: pageUrl };
+            if (navigator.share) {
+                try {
+                    await navigator.share(payload);
+                    return;
+                } catch (_) {
+                    // fall back to copy
+                }
+            }
+            const copied = await copyToClipboard(pageUrl || window.location.href);
+            notify(copied ? 'Link copied to clipboard.' : 'Unable to copy link, please share manually.', copied ? 'success' : 'warning');
+        });
+    }
+
+    // Bookmark toggle (localStorage)
+    const bookmarkBtn = document.getElementById('bookmarkBtn');
+    const BOOKMARK_KEY = 'md_bookmarks';
+    const loadBookmarks = () => {
+        try {
+            const raw = localStorage.getItem(BOOKMARK_KEY);
+            const parsed = raw ? JSON.parse(raw) : [];
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (_) { return []; }
+    };
+    const saveBookmarks = (list) => {
+        try { localStorage.setItem(BOOKMARK_KEY, JSON.stringify(list)); } catch (_) {}
+    };
+    if (bookmarkBtn && pageUrl) {
+        const syncBookmarkState = () => {
+            const list = loadBookmarks();
+            const isSaved = list.includes(pageUrl);
+            bookmarkBtn.classList.toggle('active', isSaved);
+            bookmarkBtn.setAttribute('aria-pressed', isSaved.toString());
+            bookmarkBtn.title = isSaved ? 'Remove bookmark' : 'Save bookmark';
+        };
+        syncBookmarkState();
+        bookmarkBtn.addEventListener('click', () => {
+            const list = loadBookmarks();
+            const isSaved = list.includes(pageUrl);
+            const updated = isSaved ? list.filter(item => item !== pageUrl) : [...list, pageUrl];
+            saveBookmarks(updated);
+            syncBookmarkState();
+            notify(isSaved ? 'Bookmark removed.' : 'Article bookmarked.');
+        });
+    }
+
+    // Rating (thumbs up/down) inside takeaways
+    const ratingButtons = Array.from(document.querySelectorAll('.takeaways-feedback .feedback-btn'));
+    if (ratingButtons.length) {
+        const statusHolder = (() => {
+            const existing = document.querySelector('.takeaways-feedback .feedback-status');
+            if (existing) return existing;
+            const span = document.createElement('span');
+            span.className = 'feedback-status';
+            const container = document.querySelector('.takeaways-feedback');
+            if (container) container.appendChild(span);
+            return span;
+        })();
+
+        const ratingKey = `md_rating_${pageUrl}`;
+        const setStatus = (text) => { if (statusHolder) statusHolder.textContent = text || ''; };
+        const loadRating = () => {
+            try { return localStorage.getItem(ratingKey); } catch (_) { return null; }
+        };
+        const saveRating = (value) => {
+            try { localStorage.setItem(ratingKey, value); } catch (_) {}
+        };
+        const applySelection = (value) => {
+            ratingButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.rating === value));
+        };
+
+        const existing = loadRating();
+        if (existing) {
+            applySelection(existing);
+            setStatus('Thanks for your feedback.');
+        }
+
+        ratingButtons.forEach(btn => {
+            const value = btn.dataset.rating || ((btn.getAttribute('aria-label') || '').toLowerCase().includes('down') ? 'down' : 'up');
+            btn.dataset.rating = value;
+            btn.addEventListener('click', () => {
+                saveRating(value);
+                applySelection(value);
+                setStatus('Thanks for your feedback.');
+                notify('Feedback recorded.');
+            });
+        });
+    }
 }
