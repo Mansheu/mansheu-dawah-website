@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+    <title>Become a Member - Join Our Global Islamic Community | Mansheu Dawah</title>
+    <meta name="description" content="Join thousands of Muslims worldwide in our global dawah community. Connect through WhatsApp, Telegram, Instagram, YouTube, Facebook, and TikTok.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="alternate icon" href="../assets/images/favicon.ico">
+    
+    <style>
+        .membership-page {
+            background: #f8f9fa;
+        }
+
+        .menu__bar {
+            background: #ffffff !important;
+        }
+
+        .menu__bar *,
+        .menu__bar .navigation a,
+        .menu__bar .nav-title,
+        .menu__bar .nav-desc,
+        .menu__bar a,
+        .menu__bar span {
+            color: #000000 !important;
+        }
+
+        .menu__bar .btn-primary {
+            color: #ffffff !important;
+        }
+
+        .menu__bar .hamburger-line {
+            background-color: #000000 !important;
+        }
+
+        /* Hero Section */
+        .membership-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 5rem 0 4rem;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .membership-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .membership-category {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .membership-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .membership-description {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #ffffff;
+            opacity: 0.95;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .membership-stats {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .benefit-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .benefit-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Platforms Section */
+        .platforms-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .platform-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            border-color: #10b981;
+        }
+
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+
+        .platform-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .platform-telegram {
+            background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+        }
+
+        .platform-instagram {
+            background: linear-gradient(135deg, #E4405F 0%, #C13584 100%);
+        }
+
+        .platform-youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
+
+        .platform-facebook {
+            background: linear-gradient(135deg, #1877F2 0%, #0d5dbf 100%);
+        }
+
+        .platform-tiktok {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        }
+
+        .platform-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .platform-type {
+            font-size: 0.875rem;
+            color: #10b981;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .platform-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+        }
+
+        .platform-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+            text-align: left;
+        }
+
+        .platform-features li {
+            font-size: 0.9rem;
+            color: #555;
+            padding: 0.5rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .platform-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .join-btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .join-btn i {
+            margin-right: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-white {
+            background: #ffffff;
+            color: #1e40af;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .membership-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .membership-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="membership-page">
+    <!-- Header -->
+    <div class="menu__wrapper">
+        <div class="menu__bar">
+            <a href="../index.html" title="Mansheu Dawah">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Mansheu Dawah Logo">
+                </div>
+            </a>
+            <ul class="navigation">
+                <li><a href="articles.html">
+                    <span class="nav-title">Read</span>
+                    <span class="nav-desc">Articles & written features</span>
+                </a></li>
+                <li><a href="videos.html">
+                    <span class="nav-title">Watch</span>
+                    <span class="nav-desc">Talks, clips & films</span>
+                </a></li>
+                <li><a href="learn.html">
+                    <span class="nav-title">Learn</span>
+                    <span class="nav-desc">Guides, lessons & courses</span>
+                </a></li>
+                <li><a href="infographics.html">
+                    <span class="nav-title">Infographics</span>
+                    <span class="nav-desc">Visual explainers & briefs</span>
+                </a></li>
+                <li><a href="about.html">
+                    <span class="nav-title">About</span>
+                    <span class="nav-desc">Our mission & vision</span>
+                </a></li>
+                <li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="nav-controls">
+                    <a href="search.html" class="nav-search" aria-label="Search the site">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </a>
+                    <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                <div class="nav-cta">
+                    <a href="digital-counter.html" class="btn btn-primary">Digital Counter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="membership-header">
+            <div class="container">
+                <div class="membership-category">JOIN OUR COMMUNITY</div>
+                <h1 class="membership-title">Become a Member</h1>
+                <p class="membership-description">
+                    Connect with thousands of Muslims worldwide in our global dawah community. 
+                    Receive daily Islamic reminders, exclusive content, and be part of a movement 
+                    spreading authentic Islamic knowledge across the world.
+                </p>
+                <div class="membership-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Members Worldwide</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Platforms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support & Content</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Membership Benefits</h2>
+                    <p class="section-subtitle">
+                        Join our community and unlock exclusive access to valuable Islamic content and resources
+                    </p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-quran"></i>
+                        </div>
+                        <h3 class="benefit-title">Daily Islamic Content</h3>
+                        <p class="benefit-description">
+                            Receive authentic Quranic verses, Hadiths, and Islamic reminders every day
+                        </p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="benefit-title">Global Community</h3>
+                        <p class="benefit-description">
+                            Connect with Muslims from around the world and strengthen your faith together
+                        </p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="benefit-title">Educational Resources</h3>
+                        <p class="benefit-description">
+                            Access exclusive guides, courses, and educational materials for spiritual growth
+                        </p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="benefit-title">Video & Audio Content</h3>
+                        <p class="benefit-description">
+                            Watch lectures, listen to recitations, and enjoy multimedia Islamic content
+                        </p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="benefit-title">Exclusive Access</h3>
+                        <p class="benefit-description">
+                            Get early access to new content, events, and special programs
+                        </p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 class="benefit-title">Q&A Support</h3>
+                        <p class="benefit-description">
+                            Ask questions and get guidance from knowledgeable members and scholars
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platforms Section -->
+        <section class="platforms-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Choose Your Platform</h2>
+                    <p class="section-subtitle">
+                        Join us on your preferred social media platform and start your journey today
+                    </p>
+                </div>
+                <div class="platforms-grid">
+                    <!-- WhatsApp Community -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="platform-name">WhatsApp Community</h3>
+                        <div class="platform-type">Group Discussions</div>
+                        <p class="platform-description">
+                            Join our vibrant WhatsApp community for group discussions, Islamic reminders, and community support
+                        </p>
+                        <ul class="platform-features">
+                            <li>Daily Quranic verses & Hadiths</li>
+                            <li>Group discussions & Q&A</li>
+                            <li>Event announcements</li>
+                            <li>Community support</li>
+                        </ul>
+                        <a href="https://chat.whatsapp.com/CBzY3NSAUYeIFP5tkQO80k" target="_blank" rel="noopener noreferrer" class="join-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Join Community
+                        </a>
+                    </div>
+
+                    <!-- WhatsApp Direct -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="platform-name">WhatsApp Direct</h3>
+                        <div class="platform-type">One-on-One</div>
+                        <p class="platform-description">
+                            Connect directly with us for personalized guidance, questions, and spiritual support
+                        </p>
+                        <ul class="platform-features">
+                            <li>Personal Islamic guidance</li>
+                            <li>Private consultations</li>
+                            <li>Customized content delivery</li>
+                            <li>Confidential support</li>
+                        </ul>
+                        <a href="https://w.app/mansheudawah" target="_blank" rel="noopener noreferrer" class="join-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Message Us
+                        </a>
+                    </div>
+
+                    <!-- Telegram -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-telegram">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h3 class="platform-name">Telegram Channel</h3>
+                        <div class="platform-type">Daily Reminders</div>
+                        <p class="platform-description">
+                            Subscribe to our Telegram channel for daily Islamic reminders, articles, and exclusive content
+                        </p>
+                        <ul class="platform-features">
+                            <li>Daily Islamic reminders</li>
+                            <li>Article notifications</li>
+                            <li>Exclusive content</li>
+                            <li>Multimedia resources</li>
+                        </ul>
+                        <a href="#" class="join-btn">
+                            <i class="fab fa-telegram"></i>
+                            Join Channel
+                        </a>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-instagram">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3 class="platform-name">Instagram</h3>
+                        <div class="platform-type">Visual Content</div>
+                        <p class="platform-description">
+                            Follow us on Instagram for beautiful Islamic quotes, infographics, and visual inspiration
+                        </p>
+                        <ul class="platform-features">
+                            <li>Islamic quotes & graphics</li>
+                            <li>Infographics & visuals</li>
+                            <li>Stories & reels</li>
+                            <li>Community engagement</li>
+                        </ul>
+                        <a href="https://www.instagram.com/mansheu.dawah?igsh=c3l4aWVucXV5eXNr" target="_blank" rel="noopener noreferrer" class="join-btn">
+                            <i class="fab fa-instagram"></i>
+                            Follow Us
+                        </a>
+                    </div>
+
+                    <!-- YouTube -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-youtube">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3 class="platform-name">YouTube</h3>
+                        <div class="platform-type">Video Content</div>
+                        <p class="platform-description">
+                            Subscribe to our YouTube channel for Islamic lectures, Quran recitations, and educational videos
+                        </p>
+                        <ul class="platform-features">
+                            <li>Islamic lectures & talks</li>
+                            <li>Quran recitations</li>
+                            <li>Educational series</li>
+                            <li>Live sessions</li>
+                        </ul>
+                        <a href="https://youtube.com/@mansheudawah117?si=iYW6IB4TMa23cDAX" target="_blank" rel="noopener noreferrer" class="join-btn">
+                            <i class="fab fa-youtube"></i>
+                            Subscribe Now
+                        </a>
+                    </div>
+
+                    <!-- Facebook -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-facebook">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h3 class="platform-name">Facebook</h3>
+                        <div class="platform-type">Community Hub</div>
+                        <p class="platform-description">
+                            Like our Facebook page for community updates, event announcements, and engaging Islamic content
+                        </p>
+                        <ul class="platform-features">
+                            <li>Community updates</li>
+                            <li>Event announcements</li>
+                            <li>Interactive posts</li>
+                            <li>Live broadcasts</li>
+                        </ul>
+                        <a href="https://www.facebook.com/share/1XuMPFMZPL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="join-btn">
+                            <i class="fab fa-facebook"></i>
+                            Like Page
+                        </a>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="platform-card">
+                        <div class="platform-icon platform-tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h3 class="platform-name">TikTok</h3>
+                        <div class="platform-type">Short-Form Content</div>
+                        <p class="platform-description">
+                            Follow us on TikTok for bite-sized Islamic wisdom, quick reminders, and engaging short videos
+                        </p>
+                        <ul class="platform-features">
+                            <li>Short Islamic reminders</li>
+                            <li>Quick tips & wisdom</li>
+                            <li>Engaging video content</li>
+                            <li>Trending Islamic topics</li>
+                        </ul>
+                        <a href="https://www.tiktok.com/@mansheu_?_r=1&_t=ZS-92O7zfvupv6" target="_blank" rel="noopener noreferrer" class="join-btn">
+                            <i class="fab fa-tiktok"></i>
+                            Follow Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Join Our Global Community?</h2>
+                <p class="cta-description">
+                    Start your journey today by connecting with us on any of our platforms. 
+                    Join thousands of Muslims worldwide who are strengthening their faith and 
+                    spreading the message of Islam together.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary-white">Choose Your Platform</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Smooth scroll for CTA button
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctaBtn = document.querySelector('.cta-buttons .btn-primary-white');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('.platforms-section').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

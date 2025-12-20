@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+    <title>Volunteer - Make a Difference | Mansheu Dawah</title>
+    <meta name="description" content="Join our team of dedicated volunteers and help spread authentic Islamic knowledge. Volunteer opportunities in research, marketing, development, and more.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="alternate icon" href="../assets/images/favicon.ico">
+    
+    <style>
+        .volunteer-page {
+            background: #f8f9fa;
+        }
+
+        .menu__bar {
+            background: #ffffff !important;
+        }
+
+        .menu__bar *,
+        .menu__bar .navigation a,
+        .menu__bar .nav-title,
+        .menu__bar .nav-desc,
+        .menu__bar a,
+        .menu__bar span {
+            color: #000000 !important;
+        }
+
+        .menu__bar .btn-primary {
+            color: #ffffff !important;
+        }
+
+        .menu__bar .hamburger-line {
+            background-color: #000000 !important;
+        }
+
+        /* Hero Section */
+        .volunteer-header {
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            padding: 5rem 0 4rem;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .volunteer-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .volunteer-category {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .volunteer-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .volunteer-description {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #ffffff;
+            opacity: 0.95;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .volunteer-quote {
+            font-size: 1rem;
+            font-style: normal;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            position: relative;
+            z-index: 1;
+            color: #333;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .volunteer-quote:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .impact-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .impact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF7A00 0%, #e66900 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        .impact-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .impact-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Roles Section */
+        .roles-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .role-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .role-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .role-card.research { border-top-color: #3b82f6; }
+        .role-card.marketing { border-top-color: #ec4899; }
+        .role-card.partner { border-top-color: #f59e0b; }
+        .role-card.curriculum { border-top-color: #10b981; }
+        .role-card.engineering { border-top-color: #8b5cf6; }
+        .role-card.development { border-top-color: #06b6d4; }
+        .role-card.creative { border-top-color: #ef4444; }
+        .role-card.media { border-top-color: #f97316; }
+        .role-card.outreach { border-top-color: #14b8a6; }
+
+        .role-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+
+        .role-card.research .role-icon { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+        .role-card.marketing .role-icon { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+        .role-card.partner .role-icon { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .role-card.curriculum .role-icon { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .role-card.engineering .role-icon { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .role-card.development .role-icon { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+        .role-card.creative .role-icon { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+        .role-card.media .role-icon { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+        .role-card.outreach .role-icon { background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); }
+
+        .role-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .role-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-responsibilities {
+            margin-bottom: 2rem;
+        }
+
+        .responsibilities-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .role-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .role-list li {
+            font-size: 0.95rem;
+            color: #555;
+            padding: 0.5rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .role-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #7c3aed;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, #FF7A00 0%, #e66900 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.4);
+            background: linear-gradient(135deg, #e66900 0%, #cc5c00 100%);
+        }
+
+        .apply-btn i {
+            margin-right: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-white {
+            background: #ffffff;
+            color: #1e40af;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .volunteer-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="volunteer-page">
+    <!-- Header -->
+    <div class="menu__wrapper">
+        <div class="menu__bar">
+            <a href="../index.html" title="Mansheu Dawah">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Mansheu Dawah Logo">
+                </div>
+            </a>
+            <ul class="navigation">
+                <li><a href="articles.html">
+                    <span class="nav-title">Read</span>
+                    <span class="nav-desc">Articles & written features</span>
+                </a></li>
+                <li><a href="videos.html">
+                    <span class="nav-title">Watch</span>
+                    <span class="nav-desc">Talks, clips & films</span>
+                </a></li>
+                <li><a href="learn.html">
+                    <span class="nav-title">Learn</span>
+                    <span class="nav-desc">Guides, lessons & courses</span>
+                </a></li>
+                <li><a href="infographics.html">
+                    <span class="nav-title">Infographics</span>
+                    <span class="nav-desc">Visual explainers & briefs</span>
+                </a></li>
+                <li><a href="about.html">
+                    <span class="nav-title">About</span>
+                    <span class="nav-desc">Our mission & vision</span>
+                </a></li>
+                <li class="nav-cta"><a href="digital-counter.html" class="btn btn-primary">Digital Counter</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="nav-controls">
+                    <a href="search.html" class="nav-search" aria-label="Search the site">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </a>
+                    <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                <div class="nav-cta">
+                    <a href="digital-counter.html" class="btn btn-primary">Digital Counter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="volunteer-header">
+            <div class="container">
+                <div class="volunteer-category">MAKE A DIFFERENCE</div>
+                <h1 class="volunteer-title">Volunteer With Us</h1>
+                <p class="volunteer-description">
+                    Use your skills and passion to help spread authentic Islamic knowledge worldwide. 
+                    Join our dedicated team of volunteers making a real impact in the lives of Muslims around the globe.
+                </p>
+                <div class="volunteer-quote">
+                    "The best of people are those who bring most benefit to the rest of mankind." 
+                    <br>- Prophet Muhammad ﷺ
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="impact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Your Impact</h2>
+                    <p class="section-subtitle">
+                        As a volunteer, you'll be part of something bigger - a global movement spreading Islamic knowledge
+                    </p>
+                </div>
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="impact-title">Reach Millions</h3>
+                        <p class="impact-description">
+                            Help us reach and educate millions of Muslims worldwide through our content
+                        </p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="impact-title">Spread Knowledge</h3>
+                        <p class="impact-description">
+                            Contribute to spreading authentic Islamic teachings and resources
+                        </p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="impact-title">Build Community</h3>
+                        <p class="impact-description">
+                            Be part of a supportive global community of dedicated volunteers
+                        </p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="impact-title">Grow Your Skills</h3>
+                        <p class="impact-description">
+                            Develop new skills while earning rewards from Allah
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roles Section -->
+        <section class="roles-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Volunteer Opportunities</h2>
+                    <p class="section-subtitle">
+                        Find the role that matches your skills and passion
+                    </p>
+                </div>
+                <div class="roles-grid">
+                    <!-- Research Role -->
+                    <div class="role-card research">
+                        <div class="role-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="role-name">Research</h3>
+                        <p class="role-description">
+                            Help us research and verify Islamic content, find authentic sources, and fact-check articles to ensure accuracy.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Research Islamic topics and sources</li>
+                                <li>Verify Quranic verses and Hadiths</li>
+                                <li>Fact-check articles and content</li>
+                                <li>Compile research reports</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Marketing Role -->
+                    <div class="role-card marketing">
+                        <div class="role-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="role-name">Marketing</h3>
+                        <p class="role-description">
+                            Promote our content and reach wider audiences through strategic marketing campaigns and social media outreach.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Manage social media campaigns</li>
+                                <li>Create marketing strategies</li>
+                                <li>Engage with online communities</li>
+                                <li>Analyze engagement metrics</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Partner Development Role -->
+                    <div class="role-card partner">
+                        <div class="role-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="role-name">Partner Development</h3>
+                        <p class="role-description">
+                            Build relationships with Islamic organizations, scholars, and institutions to expand our network and impact.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Identify partnership opportunities</li>
+                                <li>Build relationships with organizations</li>
+                                <li>Coordinate collaborative projects</li>
+                                <li>Maintain partner communications</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Curriculum Role -->
+                    <div class="role-card curriculum">
+                        <div class="role-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="role-name">Curriculum</h3>
+                        <p class="role-description">
+                            Develop educational programs, courses, and learning materials to help Muslims deepen their Islamic knowledge.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Design educational curricula</li>
+                                <li>Create lesson plans and materials</li>
+                                <li>Develop learning assessments</li>
+                                <li>Review and improve courses</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Engineering Role -->
+                    <div class="role-card engineering">
+                        <div class="role-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="role-name">Engineering</h3>
+                        <p class="role-description">
+                            Build and maintain technical infrastructure, optimize systems, and ensure our platform runs smoothly.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Maintain system infrastructure</li>
+                                <li>Optimize platform performance</li>
+                                <li>Implement technical solutions</li>
+                                <li>Troubleshoot technical issues</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Development Role -->
+                    <div class="role-card development">
+                        <div class="role-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="role-name">Development</h3>
+                        <p class="role-description">
+                            Code new features, build web applications, and create digital tools that enhance the user experience.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Develop website features</li>
+                                <li>Build web applications</li>
+                                <li>Create interactive tools</li>
+                                <li>Debug and improve code</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Creative Role -->
+                    <div class="role-card creative">
+                        <div class="role-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="role-name">Creative</h3>
+                        <p class="role-description">
+                            Design beautiful graphics, create engaging visuals, and produce multimedia content that inspires and educates.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Design graphics and infographics</li>
+                                <li>Create video and audio content</li>
+                                <li>Develop visual branding</li>
+                                <li>Produce multimedia materials</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Media Role -->
+                    <div class="role-card media">
+                        <div class="role-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="role-name">Media</h3>
+                        <p class="role-description">
+                            Manage social media platforms, create engaging content, and produce videos and podcasts to reach wider audiences.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Manage social media accounts</li>
+                                <li>Produce video and audio content</li>
+                                <li>Edit podcasts and recordings</li>
+                                <li>Create engaging media campaigns</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+
+                    <!-- Outreach Role -->
+                    <div class="role-card outreach">
+                        <div class="role-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="role-name">Outreach</h3>
+                        <p class="role-description">
+                            Organize and participate in charity outreach programs, community events, and dawah activities to serve the community.
+                        </p>
+                        <div class="role-responsibilities">
+                            <h4 class="responsibilities-title">What You'll Do:</h4>
+                            <ul class="role-list">
+                                <li>Organize charity outreach programs</li>
+                                <li>Coordinate community events</li>
+                                <li>Engage in dawah activities</li>
+                                <li>Support local communities in need</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="apply-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Make an Impact?</h2>
+                <p class="cta-description">
+                    Join our team of dedicated volunteers today and help us spread authentic Islamic knowledge 
+                    to millions of Muslims around the world. Every contribution counts, and your efforts will 
+                    earn you rewards in this life and the hereafter, insha'Allah.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary-white">
+                        <i class="fas fa-envelope"></i>
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
